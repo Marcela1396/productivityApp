@@ -19,6 +19,7 @@
                 </form>
             </li>
     @else
+        <!-- Opciones cuando el usuario no esta autenticado -->
             <li class="nav-item">
                 <a href="{{ route('login') }}" class="btn btn-secondary me-3"> <i class="fas fa-user"></i> Iniciar Sesión</a>
             </li>
@@ -31,11 +32,8 @@
         @endauth
         </ul>
     @endif
-        <!-- Left links -->
         </div>
-    <!-- Collapsible wrapper -->
   </div>
-  <!-- Container wrapper -->
 </nav>
 
 

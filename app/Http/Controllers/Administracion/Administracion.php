@@ -11,7 +11,6 @@ class Administracion extends Controller
         return view('layouts.inicio');
     }
 
-
     public function dashboard(){
         return view('dashboard.home');
     }

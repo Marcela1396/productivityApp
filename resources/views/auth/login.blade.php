@@ -7,28 +7,23 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center"> <i class="fas fa-plane-departure fa-lg"></i> {{ __(' Registrar Usuario ') }}</div>
+                    <div class="card-header text-center"> <i class="fas fa-user fa-lg"></i> {{ __(' Iniciar Sesión ') }}</div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
                                     <!-- Email input -->
-                                
                                 <div class="form-outline mb-4">
-                                    
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     <label class="form-label" for="loginName">Correo electronico</label>
                                     
-
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                             </span>
                                     @enderror
-                                    
                                 </div>
-
-                                <!-- Password input -->
+                                 <!-- Password input -->
                                 <div class="form-outline mb-4">
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     @error('password')
