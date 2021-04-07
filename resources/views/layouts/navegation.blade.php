@@ -1,41 +1,43 @@
+<!-- Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #880E4F;">
-
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-    <a href="{{ route('inicio') }}" class="text-light"> <i class="fas fa-plane-departure fa-white"></i> Travel Aventure </a>
+    <div class="container-fluid justify-content-between">
+       <!-- Left elements -->
+        <div class="d-flex">
+            <!-- Brand -->
+            <a href="{{ route('inicio') }}" class="text-light"> <i class="fas fa-users fa-white"></i> Scrum Team Productivity </a>
+        </div>
+    <!-- Left elements -->
     @if (Route::has('login'))
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
-            <!-- Left links -->
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Right elements -->
+        <ul class="navbar-nav flex-row">
+
         @auth
-        <!-- Aqui  van las opciones que el usuario observa cuando se autentica -->
-            <li class="nav-item">
-                <a href="{{ url('home') }}" class="btn btn-warning me-3 " > <i class="fas fa-home"></i>  Inicio </a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                class="btn btn-danger me-3 " > <i class="fas fa-sign-out-alt"></i>  Salir </a>
+            <!-- Aqui  van las opciones que el usuario observa cuando se autentica -->
+            <li class="nav-item me-3 me-lg-1">
+                <a href="{{ url('home') }}" class="btn btn-warning me-3 " > <i class="fas fa-home"></i>  Home </a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-danger me-3 " > <i class="fas fa-sign-out-alt"></i>  Logout </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
                     @csrf
                 </form>
             </li>
     @else
-        <!-- Opciones cuando el usuario no esta autenticado -->
-            <li class="nav-item">
-                <a href="{{ route('login') }}" class="btn btn-secondary me-3"> <i class="fas fa-user"></i> Iniciar Sesión</a>
+
+            <li class="nav-item me-3 me-lg-1">
+                <a href="{{ route('login') }}" class="btn btn-primary me-1" > <i class="fas fa-user"></i> Login </a>
             </li>
             @if (Route::has('register'))
-            <li class="nav-item">
-                <a href="{{ route('register') }}" class="btn btn-primary me-3" > <i class="fas fa-user-edit"></i> Registrarse </a>
-            </li>
+                <li class="nav-item me-3 me-lg-1">
+                    <a href="{{ route('register') }}" class="btn btn-success me-1"  > <i class="fas fa-user-edit"></i> Register </a>
+                </li>
             @endif
-            
-        @endauth
+        @endauth 
         </ul>
     @endif
-        </div>
-  </div>
+        <!-- Right elements -->
+    </div>
 </nav>
-
+<!-- Navbar -->
 
            
+            
             

@@ -11,7 +11,7 @@ el link de recuperación
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center"> <i class="fas fa-key"></i> {{ __(' Restablecer Contraseña ') }}</div>
+                    <div class="card-header text-center"> <i class="fas fa-key"></i> {{ __(' Restore Password ') }}</div>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -24,7 +24,7 @@ el link de recuperación
                                 <div class="form-outline mb-4">
                                     
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                    <label class="form-label" for="loginName">Correo electronico</label>
+                                    <label class="form-label" for="loginName">Email</label>
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@ el link de recuperación
 
                                 <!-- Submit button -->
                                 <div  class="d-flex align-items-center justify-content-center">
-                                    <button type="submit" class="btn btn-primary">Restablecer</button>
+                                    <button type="submit" class="btn btn-primary">Restore</button>
                                 <div>
                             </form>
                             
@@ -44,6 +44,7 @@ el link de recuperación
             </div>
         </div>
     </div>
+    <br> <br>
 </div>
 
 @stop

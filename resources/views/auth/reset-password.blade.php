@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center"> <i class="fas fa-key"></i> {{ __(' Restablecer Contraseña ') }}</div>
+                    <div class="card-header text-center"> <i class="fas fa-key"></i> {{ __(' Restore Password ') }}</div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('password.update') }}">
@@ -17,7 +17,7 @@
                                 <div class="form-outline mb-4">
                                             
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $request->email }}" required autocomplete="email" autofocus>
-                                    <label class="form-label" for="loginName">Correo electronico</label>
+                                    <label class="form-label" for="loginName">Email</label>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,23 +33,24 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <label class="form-label" for="loginPassword">Contraseña </label>
+                                    <label class="form-label" for="loginPassword">Password </label>
                                 </div>
 
                                 <div class="form-outline mb-4">        
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    <label class="form-label" for="password-confirm"> Confirmar Contraseña </label>
+                                    <label class="form-label" for="password-confirm"> Confirm Password </label>
                                 </div>
 
                                 <!-- Submit button -->
                                 <div  class="d-flex align-items-center justify-content-center">
-                                    <button type="submit" class="btn btn-primary"> Enviar </button>
+                                    <button type="submit" class="btn btn-primary"> Send </button>
                                 <div>            
                             </form>
                         </div>
                 </div>
             </div>
         </div>
+        <br> <br>
     </div>
-
+    
 @stop
