@@ -1,6 +1,5 @@
 @extends('layouts.main')
-
-@section('content')
+@section('content')  
 <!-- Carousel wrapper -->
 <br><br>
 <div class="container">

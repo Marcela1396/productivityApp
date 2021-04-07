@@ -1,5 +1,5 @@
 <!-- Navbar-->
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #880E4F;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1565C0;">
     <div class="container-fluid justify-content-between">
        <!-- Left elements -->
         <div class="d-flex">
@@ -12,18 +12,11 @@
         <ul class="navbar-nav flex-row">
 
         @auth
-            <!-- Aqui  van las opciones que el usuario observa cuando se autentica -->
-            <li class="nav-item me-3 me-lg-1">
-                <a href="{{ url('home') }}" class="btn btn-warning me-3 " > <i class="fas fa-home"></i>  Home </a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-danger me-3 " > <i class="fas fa-sign-out-alt"></i>  Logout </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                </form>
-            </li>
+            @include('dashboard.home');
     @else
 
             <li class="nav-item me-3 me-lg-1">
-                <a href="{{ route('login') }}" class="btn btn-primary me-1" > <i class="fas fa-user"></i> Login </a>
+                <a href="{{ route('login') }}" class="btn btn-info me-3" > <i class="fas fa-user"></i> Login </a>
             </li>
             @if (Route::has('register'))
                 <li class="nav-item me-3 me-lg-1">

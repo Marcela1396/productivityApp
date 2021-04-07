@@ -39,7 +39,7 @@
                 <!-- Grid container -->
 
                 <!-- Copyright -->
-                <div class="text-center p-1" style="background-color:#880E4F;;">
+                <div class="text-center p-1" style="background-color:#1565C0;">
                     © 2021 Copyright:<br>
                     Ing. Sandra Marcela Guerrero Calvache 
                 </div>

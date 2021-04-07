@@ -16,5 +16,5 @@ use App\Http\Controllers\Administracion\Administracion;
 
 Route::get('/', [Administracion::class, 'index'])->name('inicio');
 
-Route::get('/home', [Administracion::class, 'dashboard'])->name('home');
+Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard');
 
