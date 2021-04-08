@@ -15,7 +15,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="{{ route('dashboard')}}">
+                    <a href=>
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -58,7 +58,8 @@
                 </li>
 				<li class="active-pro">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
-                        <i class="pe-7s-bell"></i><p>Logout</p>
+                        <i class="pe-7s-
+                        "></i><p>Logout</p>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf
                         </form>
