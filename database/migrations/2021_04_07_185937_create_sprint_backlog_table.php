@@ -15,9 +15,12 @@ class CreateSprintBacklogTable extends Migration
     {
         Schema::create('sprint_backlog', function (Blueprint $table) {
             $table->id();
-            $table->float('sprint_backlog_hours');
+            $table->float('sprint_backlog_hours')->default(0);
             $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')->references('id')->on('sprint');
+            $table->foreign('sprint_id')
+            ->references('id')
+            ->on('sprint')
+            ->onDelete('cascade');;
             $table->timestamps();
         });
     }

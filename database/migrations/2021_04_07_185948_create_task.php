@@ -18,7 +18,10 @@ class CreateTask extends Migration
             $table->foreign('id')->references('id')->on('definition_of_done');
             $table->string('description','200')->nullable();
             $table->unsignedBigInteger('user_story_id');
-            $table->foreign('user_story_id')->references('id')->on('user_story');
+            $table->foreign('user_story_id')
+            ->references('id')
+            ->on('user_story')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

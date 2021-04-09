@@ -15,9 +15,15 @@ class CreateTeamHasMemberTable extends Migration
     {
         Schema::create('team_has_member', function (Blueprint $table) {
             $table->unsignedBigInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('team');
+            $table->foreign('team_id')
+            ->references('id')
+            ->on('team')
+            ->onDelete('cascade');
             $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('member');
+            $table->foreign('member_id'
+            )->references('id')
+            ->on('member')
+            ->onDelete('cascade');
             $table->primary(['team_id', 'member_id']);
             $table->timestamps();
         });

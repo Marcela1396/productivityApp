@@ -15,9 +15,18 @@ class CreateMemberHasTask extends Migration
     {
         Schema::create('member_has_task', function (Blueprint $table) {
             $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('member');
+            
+            $table->foreign('member_id')
+            ->references('id')
+            ->on('member')
+            ->onDelete('cascade');
+
             $table->unsignedBigInteger('task_id');
-            $table->foreign('task_id')->references('id')->on('task');
+            $table->foreign('task_id')
+            ->references('id')
+            ->on('task')
+            ->onDelete('cascade');
+
             $table->float('worked_hours');
             $table->primary(['task_id', 'member_id']);
             $table->timestamps();

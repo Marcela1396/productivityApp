@@ -20,7 +20,10 @@ class CreateMemberTable extends Migration
             $table->string('email','50');
             $table->string('speciality','100');
             $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id')->references('id')->on('role');
+            $table->foreign('role_id')
+            ->references('id')
+            ->on('role')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

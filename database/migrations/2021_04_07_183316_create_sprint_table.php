@@ -20,9 +20,12 @@ class CreateSprintTable extends Migration
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->float('duration')->default(0);
-            $table->char('state','1');
+            $table->char('state','1')->default('C');
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('project');
+            $table->foreign('project_id')
+            ->references('id')
+            ->on('project')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

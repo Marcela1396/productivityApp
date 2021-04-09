@@ -20,7 +20,10 @@ class CreateUserStory extends Migration
             $table->char('state','1');
             $table->tinyInteger('priority');
             $table->unsignedBigInteger('sbacklog_id');
-            $table->foreign('sbacklog_id')->references('id')->on('sprint_backlog');
+            $table->foreign('sbacklog_id')
+            ->references('id')
+            ->on('sprint_backlog')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,9 +15,17 @@ class CreateSprintHasMemberTable extends Migration
     {
         Schema::create('sprint_has_member', function (Blueprint $table) {
             $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('member');
+            $table->foreign('member_id')
+            ->references('id')
+            ->on('member')
+            ->onDelete('cascade');
+            
             $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')->references('id')->on('sprint');
+            $table->foreign('sprint_id')
+            ->references('id')
+            ->on('sprint')
+            ->onDelete('cascade');
+
             $table->float('assigned_hours');
             $table->float('capacity');
             $table->primary(['sprint_id', 'member_id']);

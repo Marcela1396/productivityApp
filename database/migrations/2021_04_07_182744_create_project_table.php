@@ -19,7 +19,7 @@ class CreateProjectTable extends Migration
             $table->string('description','300');
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->char('state','1');
+            $table->char('state','1')->default('C');
             $table->float('project_capacity')->default(0);
             $table->timestamps();
         });

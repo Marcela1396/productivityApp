@@ -17,7 +17,10 @@ class CreateDefinitionOfDone extends Migration
             $table->id();
             $table->string('name','200');
             $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')->references('id')->on('sprint');
+            $table->foreign('sprint_id')
+            ->references('id')
+            ->on('sprint')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

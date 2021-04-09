@@ -15,9 +15,15 @@ class CreateSprintHasTeamTable extends Migration
     {
         Schema::create('sprint_has_team', function (Blueprint $table) {
             $table->unsignedBigInteger('team_id');
-            $table->foreign('team_id')->references('id')->on('team');
+            $table->foreign('team_id')
+            ->references('id')
+            ->on('team')
+            ->onDelete('cascade');
             $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')->references('id')->on('sprint');
+            $table->foreign('sprint_id')
+            ->references('id')
+            ->on('sprint')
+            ->onDelete('cascade');
             $table->float('team_capacity');
             $table->primary(['team_id', 'sprint_id']);
             $table->timestamps();
