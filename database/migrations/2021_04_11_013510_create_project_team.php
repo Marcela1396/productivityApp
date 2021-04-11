@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSprintHasTeamTable extends Migration
+class CreateProjectTeam extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreateSprintHasTeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('sprint_has_team', function (Blueprint $table) {
+        Schema::create('project_team', function (Blueprint $table) {
+            $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('team_id');
+
+            $table->foreign('project_id')->references('id')
+            ->on('project')
+            ->onDelete('cascade');
+
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
             ->onDelete('cascade');
-            $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')
-            ->references('id')
-            ->on('sprint')
-            ->onDelete('cascade');
-            $table->float('sprint_team_capacity')->default(0);
-            $table->primary(['team_id', 'sprint_id']);
+            
+            $table->primary(['project_id', 'team_id',]);
+            $table->float('project_team_capacity')->default(0);
             $table->timestamps();
         });
     }
@@ -37,6 +39,6 @@ class CreateSprintHasTeamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sprint_has_team');
+        Schema::dropIfExists('project_team');
     }
 }

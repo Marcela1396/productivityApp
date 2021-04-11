@@ -41,12 +41,14 @@ class Data_Seeder extends Seeder
                 'name' => 'Sapiens Nariño University',
                 'description'=> 'Proyecto Sistema Integrado de Servicios Educativos Universidad de Nariño',
                 'start_date'=>'2021-04-02',
+                'sprint_quantity'=>2,
             ],
 
             [
                 'name' => 'La Merced Restaurant Information System',
                 'description'=> 'Sistema Web para la gestión de servicios del Restaurante la Merced',
                 'start_date'=>'2021-02-07',
+                'sprint_quantity'=>3,
             ],
 
         ];
@@ -181,12 +183,63 @@ class Data_Seeder extends Seeder
         ];
         DB::table('definition_of_done')->insert($ddone);
 
-        $backlog=[
-            [
-                'sprint_id' =>1,
-            ]
-        ];
-        DB::table('sprint_backlog')->insert($backlog);
 
+        $teams_members =[
+            [
+                'team_id' => 1,
+                'member_id' => 1, 
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 2, 
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 3, 
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 4, 
+            ],
+           
+        ];
+        DB::table('team_has_member')->insert($teams_members);
+
+        /*
+        $project_team =[
+            [
+                'team_id' => 1,
+                'member_id' => 1, 
+            ],
+        */
+
+        /*
+        $sprint_members =[
+            [
+                'sprint_id' => 1,
+                'member_id' => 1, 
+            ],
+
+            [
+                'sprint_id' => 1,
+                'member_id' => 2, 
+            ],
+
+            [
+                'sprint_id' => 1,
+                'member_id' => 3, 
+            ],
+
+            [
+                'sprint_id' => 1,
+                'member_id' => 4, 
+            ],
+           
+        ];
+        DB::table('team_has_member')->insert($teams_members);
+        */
     }
 }

@@ -17,8 +17,8 @@ class CreateMemberTable extends Migration
             $table->id();
             $table->string('id_number','50');
             $table->string('name','100');
-            $table->string('email','50');
-            $table->string('speciality','100');
+            $table->string('email','50')->nullable();
+            $table->string('speciality','100')->nullable();
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')
             ->references('id')

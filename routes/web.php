@@ -24,9 +24,18 @@ Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->mi
 
 Route::get('/teams', [Team::class, 'index'])->name('teams')->middleware('auth');
 
+// Projects
 Route::get('/projects', [Project::class, 'index'])->name('projects')->middleware('auth');
 
+Route::get('/allocate_team', [Project::class, 'allocate_team'])->name('allocate_team')->middleware('auth');
+//Route::get('projects/assign_team', [Project::class, 'assign_team'])->name('assign_team')->middleware('auth');
+Route::post('/projects/save_team', [Project::class, 'save_team'])->name('save_team')->middleware('auth');
+Route::get('start_project', [Project::class, 'start_project'])->name('start_project')->middleware('auth');
+
+
+// Sprints
 Route::get('/sprints', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
+
 
 Route::get('/definitionDone', [Sprint::class, 'DoD'])->name('DoD')->middleware('auth');
 

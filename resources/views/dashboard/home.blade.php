@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('projects')}}""user.html">
+                    <a href="{{route('projects')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Projects</p>
                     </a>
@@ -40,9 +40,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('teams')}}">
+                    <a href="{{route('allocate_team')}}">
                         <i class="pe-7s-user"></i>
-                        <p>Teams</p>
+                        <p> Allocate Teams</p>
                     </a>
                 </li>
 

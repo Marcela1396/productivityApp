@@ -17,12 +17,12 @@ class CreateUserStory extends Migration
             $table->id();
             $table->string('name','50');
             $table->string('description','100')->nullable();
-            $table->char('state','1');
-            $table->tinyInteger('priority');
-            $table->unsignedBigInteger('sbacklog_id');
-            $table->foreign('sbacklog_id')
+            $table->char('state','1')->default('C');
+            $table->tinyInteger('priority')->default(0);
+            $table->unsignedBigInteger('sprint_id');
+            $table->foreign('sprint_id')
             ->references('id')
-            ->on('sprint_backlog')
+            ->on('sprint')
             ->onDelete('cascade');
             $table->timestamps();
         });

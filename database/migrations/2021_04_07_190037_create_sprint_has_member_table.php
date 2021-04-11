@@ -26,8 +26,8 @@ class CreateSprintHasMemberTable extends Migration
             ->on('sprint')
             ->onDelete('cascade');
 
-            $table->float('assigned_hours');
-            $table->float('capacity');
+            $table->float('assigned_hours')->nullable();
+            $table->float('capacity')->default(0);
             $table->primary(['sprint_id', 'member_id']);
             $table->timestamps();
         });
