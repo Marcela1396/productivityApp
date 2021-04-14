@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="content">
                     <div class="container-fluid">
-                    <form>
+                    <form action="{{ route('register_story')}}" method="POST" >
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -34,13 +34,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>User Story Name</label>
-                                                    <input type="text" class="form-control" placeholder="Name" name="story_name">
+                                                    <input type="text" class="form-control" placeholder="Name" name="story_name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Priority</label>
-                                                     <input type="number" min="1" max="5" class="form-control" placeholder="Priority" name="story_priority">
+                                                     <input type="number" min="1" max="5" class="form-control" placeholder="Priority" name="story_priority" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -50,6 +50,7 @@
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <input type="text" class="form-control" placeholder="Description" name="story_description">
+                                                    <input type="hidden"  name="sprint" value="{{$sprint}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -63,7 +64,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title"> Task Information </h4>
+                                        <h4 class="title"> Task Information   </h4>
                                     </div>
 
                                     <div class="content">
@@ -84,6 +85,7 @@
                                                         <thead>
                                                             <th scope="col"> ID</th>
                                                             <th scope="col"> Name</th>
+                                                            <th scope="col"> Description </th>
                                                             <th scope="col"> Member </th>
                                                             <th scope="col"> Assigned Hours </th>
                                                         </thead>
@@ -95,7 +97,13 @@
                                                             <tr>
                                                             
                                                                 <td> {{$a}} </td>
-                                                                <td> {{ $d->name }} </td>
+                                                                <td> {{ $d->dod_name }} </td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="hidden" name="task_id"  value="{{$d->dod_id}}">
+                                                                        <input type="text" class="form-control" placeholder="Description"  name="task_description">
+                                                                    </div>
+                                                                </td>
                                                                 <td> 
                                                                     <select name="member"  id="members" class="selectpicker" >
                                                                         <option disabled selected > Select Option </option>

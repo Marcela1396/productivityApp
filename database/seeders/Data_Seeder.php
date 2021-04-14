@@ -168,6 +168,22 @@ class Data_Seeder extends Seeder
                 'speciality' => 'Desarrollador Frontend',
                 'role_id'=> 3,
             ],
+
+            [
+                'id_number'=> '109636662',
+                'name' => 'Lucia Fernandez',
+                'email'=>'lucia@gmail.com',
+                'speciality' => 'Backend Developer',
+                'role_id'=> 3,
+            ],
+
+            [
+                'id_number'=> '1233621210',
+                'name' => 'Juanito Gomez',
+                'email'=>'juanito@gmail.com',
+                'speciality' => 'Desarrollador Frontend',
+                'role_id'=> 3,
+            ],
            
         ];
         DB::table('member')->insert($members);
@@ -198,6 +214,31 @@ class Data_Seeder extends Seeder
                 'name' => 'Elaborar y ejecutar escenarios de pruebas ',
                 'project_id' =>1,
             ],
+
+            [
+                'name' => 'Especificación de historias de usuario',
+                'project_id' =>2,
+            ],
+
+            [
+                'name' => 'Realizar el prototipo de Interfaz de Usuario',
+                'project_id' =>2,
+            ],
+
+            [
+                'name' => 'Diseñar e implementar el modelo de datos',
+                'project_id' =>2,
+            ],
+
+            [
+                'name' => 'Codificación de la historia de usuario',
+                'project_id'=>2,
+            ],
+
+            [
+                'name' => 'Elaborar y ejecutar escenarios de pruebas ',
+                'project_id' =>2,
+            ],
         ];
         DB::table('definition_of_done')->insert($ddone);
 
@@ -222,6 +263,27 @@ class Data_Seeder extends Seeder
                 'team_id' => 1,
                 'member_id' => 4, 
             ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 1, 
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 2, 
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 5, 
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 6, 
+            ],
+
            
         ];
         DB::table('member_team')->insert($teams_members);

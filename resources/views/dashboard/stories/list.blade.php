@@ -26,7 +26,7 @@
                                 <h4> User Story Information </h4>
                             </div>
                             <div class="col-md-12" align="right">
-                                <a class="btn btn-round btn-fill btn-primary" href="{{route('form_create_story', [$team->team_id, $team->project_id]) }}"> Create </a>
+                                <a class="btn btn-round btn-fill btn-primary" href="{{route('form_create_story', [$team->team_id, $team->project_id, $team->sprint_id ]) }}"> Create </a>
                             </div>
                         </div>
                     </div>

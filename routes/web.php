@@ -35,15 +35,16 @@ Route::get('/project/view', [Project::class, 'index'])->name('view_project')->mi
 Route::get('/sprint/start', [Sprint::class, 'index'])->name('start_sprint')->middleware('auth');
 Route::get('/sprint/create', [Sprint::class, 'create_sprint'])->name('create_sprint')->middleware('auth');
 Route::get('/sprint/update', [Sprint::class, 'update_sprint'])->name('update_sprint')->middleware('auth');
-Route::get('/sprints/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
+Route::get('/project/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
 
 // User Story
-Route::get('/stories/create/{id}/{project}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
-Route::get('/stories/{id}', [UserStory::class, 'index'])->name('stories')->middleware('auth');
+Route::post('/stories/register', [UserStory::class, 'register_story'])->name('register_story')->middleware('auth');
+Route::get('/stories/create/{team}/{project}/{sprint}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
+Route::get('/sprint/{id}', [UserStory::class, 'index'])->name('stories')->middleware('auth');
 
-//Route::post('/stories/create', [UserStory::class, 'create_story'])->name('create_story')->middleware('auth');
 Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
 Route::get('/stories/start', [UserStory::class, 'start_story'])->name('start_story')->middleware('auth');
+
 // Teams
 Route::get('/teams', [Team::class, 'index'])->name('teams')->middleware('auth');
 
@@ -53,11 +54,3 @@ Route::get('/members', [Member::class, 'index'])->name('members')->middleware('a
 // Capacity
 Route::get('/capacity', [Capacity::class, 'index'])->name('capacity')->middleware('auth');
 
-
-
-/*
-Route::get('/allocate_team', [Project::class, 'allocate_team'])->name('allocate_team')->middleware('auth');
-//Route::get('projects/assign_team', [Project::class, 'assign_team'])->name('assign_team')->middleware('auth');
-Route::post('/projects/save_team', [Project::class, 'save_team'])->name('save_team')->middleware('auth');
-
-*/

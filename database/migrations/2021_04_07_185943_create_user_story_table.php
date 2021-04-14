@@ -18,7 +18,7 @@ class CreateUserStoryTable extends Migration
             $table->string('name','100');
             $table->string('description','100')->nullable();
             $table->char('state','1')->default('C');
-            $table->tinyInteger('priority')->default(0);
+            $table->tinyInteger('priority')->default(1);
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
