@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Sprint</a>
+                    <a class="navbar-brand" href="#">User Stories</a>
                 </div>
             </div>
         </nav>
@@ -23,10 +23,10 @@
                     <div class="header">
                         <div class="row" >
                             <div class="col-md-12" align="center">
-                                <h4> Sprint Information </h4>
+                                <h4> User Story Information </h4>
                             </div>
                             <div class="col-md-12" align="right">
-                                <a class="btn btn-round btn-fill btn-primary" href="{{ route('create_sprint') }}"> Create </a>
+                                <a class="btn btn-round btn-fill btn-primary" href="{{route('form_create_story', $team->team_id) }}"> Create </a>
                             </div>
                         </div>
                     </div>
@@ -38,47 +38,42 @@
                                 <thead>
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Duration (Weeks) </th>
-                                    <th scope="col"> Start Date </th>
-                                    <th scope="col"> End Date </th>
+                                    <th scope="col"> Priority </th>
                                     <th scope="col"> State </th>
                                     <th scope="col"> Options </th>
                                 </thead>
                                 @php
                                     $a = 1;
                                 @endphp
-
                                 <tbody>
-                                    @foreach($sprints as $s)
+                                    @foreach($stories as $s)
                                     <tr>
                                     
                                         <td> {{$a}} </td>
-                                        <td> {{ $s->sprint_name }} </td>
-                                        <td> {{ $s->duration }}</td>
-                                        <td> {{ $s->start_date }}</td>
-                                        <td> {{ $s->end_date }}</td>
-                                            @if($s->sprint_state == 'C')
-                                                <td> Created </td>
+                                        <td> {{ $s->story_name }} </td>
+                                        <td> {{ $s->priority }}</td>
+                                            @if($s->story_state == 'C')
+                                                <td> To Do </td>
                                                 <td>
                                                     <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}"> Edit </a>
-                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}"> Edit </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> Enter </a>
+                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}"> View </a>
+                                                    <a class="btn btn-round btn-fill btn-success" href=""> Start </a>
                                                 </td>
-                                            @elseif($s->sprint_state == 'S')
+                                            @elseif($s->story_state == 'S')
                                                 <td> In Progress </td>
                                                 <td>
                                                     <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}" disabled> Edit </a>
                                                     <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}" > View </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> Enter </a>
+                                                    <a class="btn btn-round btn-fill btn-success" href=""> Start </a>
                                                 </td>
-                                            @elseif($s->sprint_state == 'F')
+                                            @elseif($s->story_state == 'F')
                                                 <td> Finished </td>
                                                 <td>
                                                     <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}" disabled> Edit </a>
                                                     <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}" > View </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id)}}"> Enter </a>
+                                                    <a class="btn btn-round btn-fill btn-success" href=""> Start </a>
                                                 </td>
-                                            @endif                                     
+                                            @endif
                                     </tr>
                                         @php
                                             $a++;
@@ -90,12 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" >
-                <div class="col-md-12" align="center">
-                    <a class="btn btn-fill btn-primary" href="{{ route('projects')}}"> Back </a>
-                </div>
-            </div>
-        </div>
+        </div>  
 </div>
 
 @stop

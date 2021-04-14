@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDefinitionOfDone extends Migration
+class CreateUserStoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateDefinitionOfDone extends Migration
      */
     public function up()
     {
-        Schema::create('definition_of_done', function (Blueprint $table) {
+        Schema::create('user_story', function (Blueprint $table) {
             $table->id();
-            $table->string('name','200');
+            $table->string('name','100');
+            $table->string('description','100')->nullable();
+            $table->char('state','1')->default('C');
+            $table->tinyInteger('priority')->default(0);
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
@@ -32,6 +35,6 @@ class CreateDefinitionOfDone extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('definition_of_done');
+        Schema::dropIfExists('user_story');
     }
 }

@@ -100,8 +100,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Save</button>
-                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a  class="btn btn-danger btn-fill pull-right" href="{{route('sprints')}}"> Back </a> 
+                                            <button type="submit" class="btn btn-info btn-fill pull-right" >Save</button>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>

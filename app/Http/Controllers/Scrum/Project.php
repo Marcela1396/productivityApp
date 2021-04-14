@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\DB;
 class Project extends Controller
 {
     public function index(){
-        return view('dashboard.projects.list');
+        $projects = DB::table('project AS p')
+        ->join('project_team AS  pt', 'p.id', 'pt.project_id')
+        ->join('team AS t', 'pt.team_id','t.id')
+        ->select('p.id','p.name','p.start_date','p.end_date','p.sprint_quantity','p.state',
+        't.name as team_name', 'pt.project_id', 'pt.team_id')
+        ->get();
+        return view('dashboard.projects.list', ['projects' => $projects]);
     }
 
+
+    public function DoD(){
+        return view('dashboard.DoD.list');
+    }
+
+    /*
     public function allocate_team(){
         $projects = ProjectModel::all();  
         $teams = TeamModel::all(); 
@@ -38,6 +50,7 @@ class Project extends Controller
     }
 
     public function start_project(){
-        return view('dashboard.sprints.start');
+        
     }
+    */
 }

@@ -28,37 +28,33 @@
                 </li>
                 
                 <li>
-                    <a href="{{route('sprints')}}">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Sprint</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('DoD')}}">
-                        <i class="pe-7s-science"></i>
-                        <p>Definition of Done</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('allocate_team')}}">
+                    <a href="">
                         <i class="pe-7s-user"></i>
-                        <p> Allocate Teams</p>
+                        <p> Teams</p>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('members')}}">
                         <i class="pe-7s-bell"></i>
-                        <p>Members</p>
+                        <p> Members </p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{route('members')}}">
+                        <i class="pe-7s-bell"></i>
+                        <p> Roles </p>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('capacity')}}">
                         <i class="pe-7s-map-marker"></i>
-                        <p>Working capacity</p>
+                        <p> Working capacity </p>
                     </a>
                 </li>
+
 				<li class="active-pro">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
                         <i class="pe-7s-

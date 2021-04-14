@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSprintHasTeamTable extends Migration
+class CreateMemberTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,22 @@ class CreateSprintHasTeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('sprint_has_team', function (Blueprint $table) {
-            $table->unsignedBigInteger('team_id');
-            $table->foreign('team_id')
+        Schema::create('member_task', function (Blueprint $table) {
+            $table->unsignedBigInteger('member_id');
+            
+            $table->foreign('member_id')
             ->references('id')
-            ->on('team')
+            ->on('member')
             ->onDelete('cascade');
-            $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')
+
+            $table->unsignedBigInteger('task_id');
+            $table->foreign('task_id')
             ->references('id')
-            ->on('sprint')
+            ->on('task')
             ->onDelete('cascade');
-            $table->float('sprint_team_capacity')->default(0);
-            $table->primary(['team_id', 'sprint_id']);
+
+            $table->float('worked_hours')->default(0);
+            $table->primary(['task_id', 'member_id']);
             $table->timestamps();
         });
     }
@@ -37,6 +40,6 @@ class CreateSprintHasTeamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sprint_has_team');
+        Schema::dropIfExists('member_task');
     }
 }

@@ -41,14 +41,16 @@ class Data_Seeder extends Seeder
                 'name' => 'Sapiens Nariño University',
                 'description'=> 'Proyecto Sistema Integrado de Servicios Educativos Universidad de Nariño',
                 'start_date'=>'2021-04-02',
-                'sprint_quantity'=>2,
+                'sprint_quantity'=>3,
+                'duration'=> 12,
             ],
 
             [
                 'name' => 'La Merced Restaurant Information System',
                 'description'=> 'Sistema Web para la gestión de servicios del Restaurante la Merced',
                 'start_date'=>'2021-02-07',
-                'sprint_quantity'=>3,
+                'sprint_quantity'=>2,
+                'duration'=>8,
             ],
 
         ];
@@ -78,6 +80,22 @@ class Data_Seeder extends Seeder
                 'start_date'=>'2021-06-03',
                 'duration'=> 4,
                 'project_id'=> 1
+            ],
+
+            [
+                'name' => 'Sprint #1A ',
+                'description'=> 'First Sprint',
+                'start_date'=>'2021-04-03',
+                'duration'=> 6,
+                'project_id'=> 2,
+            ],
+
+            [
+                'name' => 'Sprint #2A',
+                'description'=> 'Second Sprint',
+                'start_date'=>'2021-05-03',
+                'duration'=> 6,
+                'project_id'=> 2
             ],
            
         ];
@@ -158,27 +176,27 @@ class Data_Seeder extends Seeder
         $ddone =[
             [
                 'name' => 'Especificación de historias de usuario',
-                'sprint_id' =>1,
+                'project_id' =>1,
             ],
 
             [
                 'name' => 'Realizar el prototipo de Interfaz de Usuario',
-                'sprint_id' =>1,
+                'project_id' =>1,
             ],
 
             [
                 'name' => 'Diseñar e implementar el modelo de datos',
-                'sprint_id' =>1,
+                'project_id' =>1,
             ],
 
             [
                 'name' => 'Codificación de la historia de usuario',
-                'sprint_id' =>1,
+                'project_id'=>1,
             ],
 
             [
                 'name' => 'Elaborar y ejecutar escenarios de pruebas ',
-                'sprint_id' =>1,
+                'project_id' =>1,
             ],
         ];
         DB::table('definition_of_done')->insert($ddone);
@@ -206,15 +224,57 @@ class Data_Seeder extends Seeder
             ],
            
         ];
-        DB::table('team_has_member')->insert($teams_members);
+        DB::table('member_team')->insert($teams_members);
 
-        /*
+        
         $project_team =[
             [
+                'project_id' => 1, 
                 'team_id' => 1,
-                'member_id' => 1, 
-            ],
-        */
+                
+            ],  
+            [
+                'project_id' => 2, 
+                'team_id' => 2,
+                
+            ],  
+        ];
+        DB::table('project_team')->insert($project_team);
+        
+        $stories= [
+            [
+                'name' => "User Story 1.1", 
+                'priority'=> 3,
+                'sprint_id'=> 1, 
+            ],  
+
+            [
+                'name' => "User Story 1.2", 
+                'priority'=> 4,
+                'sprint_id'=> 1, 
+            ], 
+
+            [
+                'name' => "User Story 1.3", 
+                'priority'=> 5,
+                'sprint_id'=> 1, 
+            ], 
+
+            [
+                'name' => "User Story 2.1", 
+                'priority'=> 5,
+                'sprint_id'=> 2,
+            ], 
+
+            [
+                'name' => "User Story 2.2", 
+                'priority'=> 5,
+                'sprint_id'=> 2, 
+            ], 
+
+        ];
+        DB::table('user_story')->insert($stories);
+        
 
         /*
         $sprint_members =[

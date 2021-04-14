@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTeamHasMemberTable extends Migration
+class CreateSprintTeamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateTeamHasMemberTable extends Migration
      */
     public function up()
     {
-        Schema::create('team_has_member', function (Blueprint $table) {
+        Schema::create('sprint_team', function (Blueprint $table) {
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
             ->onDelete('cascade');
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id'
-            )->references('id')
-            ->on('member')
+            $table->unsignedBigInteger('sprint_id');
+            $table->foreign('sprint_id')
+            ->references('id')
+            ->on('sprint')
             ->onDelete('cascade');
-            $table->primary(['team_id', 'member_id']);
+            $table->float('sprint_team_capacity')->default(0);
+            $table->primary(['team_id', 'sprint_id']);
             $table->timestamps();
         });
     }
@@ -36,6 +37,6 @@ class CreateTeamHasMemberTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team_has_member');
+        Schema::dropIfExists('sprint_team');
     }
 }
