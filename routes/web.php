@@ -38,7 +38,7 @@ Route::get('/sprint/update', [Sprint::class, 'update_sprint'])->name('update_spr
 Route::get('/sprints/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
 
 // User Story
-Route::get('/stories/create/{id}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
+Route::get('/stories/create/{id}/{project}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
 Route::get('/stories/{id}', [UserStory::class, 'index'])->name('stories')->middleware('auth');
 
 //Route::post('/stories/create', [UserStory::class, 'create_story'])->name('create_story')->middleware('auth');

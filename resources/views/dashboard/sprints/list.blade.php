@@ -61,7 +61,7 @@
                                                 <td> Created </td>
                                                 <td>
                                                     <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}"> Edit </a>
-                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}"> Edit </a>
+                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}"> View </a>
                                                     <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> Enter </a>
                                                 </td>
                                             @elseif($s->sprint_state == 'S')
