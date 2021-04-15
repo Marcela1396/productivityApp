@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TaskModel extends Model
 {
     protected $table = 'task'; 
+    protected $fillable = ['description','user_story_id'];
 
     //  Task belongs to User Story
     public function story()

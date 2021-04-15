@@ -87,7 +87,6 @@
                                                             <th scope="col"> Name</th>
                                                             <th scope="col"> Description </th>
                                                             <th scope="col"> Member </th>
-                                                            <th scope="col"> Assigned Hours </th>
                                                         </thead>
                                                         @php
                                                             $a = 1;
@@ -100,22 +99,17 @@
                                                                 <td> {{ $d->dod_name }} </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="task_id"  value="{{$d->dod_id}}">
-                                                                        <input type="text" class="form-control" placeholder="Description"  name="task_description">
+                                                                        <input type="hidden" name="id"  value="{{$d->dod_id}}">
+                                                                        <input type="text" class="form-control" placeholder="Description"  name="description">
                                                                     </div>
                                                                 </td>
                                                                 <td> 
-                                                                    <select name="member"  id="members" class="selectpicker" >
+                                                                    <select name="member_id"  id="members" class="selectpicker" >
                                                                         <option disabled selected > Select Option </option>
                                                                         @foreach($members as $m)
                                                                             <option value="{{$m->member_id}}" required > {{ $m->member_name }} : {{ $m->role_name }} </option>
                                                                         @endforeach
                                                                     </select>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="form-group">
-                                                                        <input type="number" class="form-control" placeholder="Hours"  min="1" name="assigned_hours" required>
-                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                                 @php

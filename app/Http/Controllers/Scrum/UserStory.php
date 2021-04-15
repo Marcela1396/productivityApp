@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Scrum\UserStoryModel;
 use App\Models\Scrum\TaskModel;
+use App\Models\Scrum\Member_Model_Task_Model;
 
 class UserStory extends Controller
 {
@@ -57,6 +58,7 @@ class UserStory extends Controller
     }
 
     public function register_story(Request $request){
+
         $item = new UserStoryModel();
         $item->name = $request->input('story_name');
         $item->description = $request->input('story_description');
@@ -64,13 +66,15 @@ class UserStory extends Controller
         $item->sprint_id = $request->input('sprint');
         $item->save();
 
-        $it = new TaskModel();
-        $it->id = $request->input('task_id');
-        $it->description = $request->input('task_description');
-        $it->user_story_id = $request->input('story_id');
-        
-        $item->save();
-        
+        $params = $request->all();
+        if($item){
+            $params['user_story_id']  = $item->id;
+            $item2 = TaskModel::create($params);
 
+            if($item2){
+            $params['task_id']  = $item2->id;
+            $item3 = Member_Model_Task_Model::create($params);
+            }
+        }   
     }
 }

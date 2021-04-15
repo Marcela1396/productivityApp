@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserStoryModel extends Model
 {
     protected $table = 'user_story'; 
+    protected $fillable = ['name', 'description','state', 'priority', 'sprint_id'];
 
     // User Story belongs to SprintBacklog
     public function backlog()

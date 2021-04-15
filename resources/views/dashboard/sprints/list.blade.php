@@ -26,7 +26,7 @@
                                 <h4> Sprint Information </h4>
                             </div>
                             <div class="col-md-12" align="right">
-                                <a class="btn btn-round btn-fill btn-primary" href="{{ route('create_sprint') }}"> Create </a>
+                                <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}"> Create </a>
                             </div>
                         </div>
                     </div>
