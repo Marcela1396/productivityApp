@@ -99,7 +99,7 @@
                                                                 <td> {{ $d->dod_name }} </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="id"  value="{{$d->dod_id}}">
+                                                                        <input type="hidden" name="dod_id"  value="{{$d->dod_id}}">
                                                                         <input type="text" class="form-control" placeholder="Description"  name="description">
                                                                     </div>
                                                                 </td>

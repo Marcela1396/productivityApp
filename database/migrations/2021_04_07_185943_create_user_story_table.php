@@ -15,16 +15,18 @@ class CreateUserStoryTable extends Migration
     {
         Schema::create('user_story', function (Blueprint $table) {
             $table->id();
-            $table->string('name','100');
-            $table->string('description','100')->nullable();
-            $table->char('state','1')->default('C');
-            $table->tinyInteger('priority')->default(1);
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
             ->on('sprint')
             ->onDelete('cascade');
             $table->timestamps();
+
+            $table->string('name','100');
+            $table->string('description','100')->nullable();
+            $table->char('state','1')->default('C');
+            $table->tinyInteger('priority')->default(1);
+            
         });
     }
 

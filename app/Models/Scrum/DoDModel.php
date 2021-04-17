@@ -16,7 +16,7 @@ class DoDModel extends Model
     }
     // DoD Critery has to One Task
     public function task()    {
-        return $this->hasOne(TaskModel::class,'id','id');
+        return $this->hasOne(TaskModel::class,'dod_id','id');
     }
 
 }

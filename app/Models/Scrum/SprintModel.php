@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SprintModel extends Model
 {
     protected $table = 'sprint'; 
-    protected $fillable = ['name', 'description','start_date', 'end_date', 'duration', 'state', 'project_id'];
+    protected $fillable = ['project_id', 'name', 'description','start_date', 'end_date', 'duration', 'state'];
 
     // Sprint belongs to Project
     public function project()

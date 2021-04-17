@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TaskModel extends Model
 {
     protected $table = 'task'; 
-    protected $fillable = ['description','user_story_id'];
+    protected $fillable = ['dod_id', 'user_story_id', 'description'];
 
     //  Task belongs to User Story
     public function story()
@@ -19,7 +19,7 @@ class TaskModel extends Model
      // Task belongs to Definition of done
     public function ddone()
     {
-         return $this->belongsTo(DoDModel::class, 'id', 'id');
+         return $this->belongsTo(DoDModel::class, 'dod_id', 'id');
     }
     
     // Pendiente

@@ -59,7 +59,7 @@ class Data_Seeder extends Seeder
         
         $sprints =[
             [
-                'name' => 'Sprint #1',
+                'name' => 'Sprint #1PA',
                 'description'=> 'First Sprint',
                 'start_date'=>'2021-04-03',
                 'duration'=> 4,
@@ -67,7 +67,7 @@ class Data_Seeder extends Seeder
             ],
 
             [
-                'name' => 'Sprint #2',
+                'name' => 'Sprint #2PA',
                 'description'=> 'Second Sprint',
                 'start_date'=>'2021-05-03',
                 'duration'=> 4,
@@ -75,27 +75,11 @@ class Data_Seeder extends Seeder
             ],
 
             [
-                'name' => 'Sprint #3',
-                'description'=> 'Third Sprint',
-                'start_date'=>'2021-06-03',
-                'duration'=> 4,
-                'project_id'=> 1
-            ],
-
-            [
-                'name' => 'Sprint #1A ',
+                'name' => 'Sprint #1PB ',
                 'description'=> 'First Sprint',
                 'start_date'=>'2021-04-03',
                 'duration'=> 6,
                 'project_id'=> 2,
-            ],
-
-            [
-                'name' => 'Sprint #2A',
-                'description'=> 'Second Sprint',
-                'start_date'=>'2021-05-03',
-                'duration'=> 6,
-                'project_id'=> 2
             ],
            
         ];
@@ -302,66 +286,294 @@ class Data_Seeder extends Seeder
             ],  
         ];
         DB::table('project_team')->insert($project_team);
+
+
         
-        $stories= [
-            [
-                'name' => "User Story 1.1", 
-                'priority'=> 3,
-                'sprint_id'=> 1, 
-            ],  
-
-            [
-                'name' => "User Story 1.2", 
-                'priority'=> 4,
-                'sprint_id'=> 1, 
-            ], 
-
-            [
-                'name' => "User Story 1.3", 
-                'priority'=> 5,
-                'sprint_id'=> 1, 
-            ], 
-
-            [
-                'name' => "User Story 2.1", 
-                'priority'=> 5,
-                'sprint_id'=> 2,
-            ], 
-
-            [
-                'name' => "User Story 2.2", 
-                'priority'=> 5,
-                'sprint_id'=> 2, 
-            ], 
-
-        ];
-        DB::table('user_story')->insert($stories);
-        
-
-        /*
         $sprint_members =[
+            // PROYECTO A - SPRINT 1
             [
                 'sprint_id' => 1,
                 'member_id' => 1, 
+                'assigned_hours' => 10
             ],
 
             [
                 'sprint_id' => 1,
                 'member_id' => 2, 
+                'assigned_hours' => 12
             ],
 
             [
                 'sprint_id' => 1,
                 'member_id' => 3, 
+                'assigned_hours' => 20
             ],
 
             [
                 'sprint_id' => 1,
                 'member_id' => 4, 
+                'assigned_hours' => 15
+            ],
+
+           // PROYECTO A - SPRINT 2
+
+            [
+                'sprint_id' => 2,
+                'member_id' => 1, 
+                'assigned_hours' => 12
+            ],
+            [
+                'sprint_id' => 2,
+                'member_id' => 2, 
+                'assigned_hours' => 5
+            ],
+            [
+                'sprint_id' => 2,
+                'member_id' => 3, 
+                'assigned_hours' => 3
+            ],
+            [
+                'sprint_id' => 2,
+                'member_id' => 4, 
+                'assigned_hours' => 20
+            ],
+
+            // PROYECTO A - SPRINT 3
+            [
+                'sprint_id' => 3,
+                'member_id' => 1, 
+                'assigned_hours' => 7
+            ],
+            [
+                'sprint_id' => 3,
+                'member_id' => 2, 
+                'assigned_hours' => 15
+            ],
+            [
+                'sprint_id' => 3,
+                'member_id' => 5, 
+                'assigned_hours' => 30
+            ],
+            [
+                'sprint_id' => 3,
+                'member_id' => 6, 
+                'assigned_hours' => 20
             ],
            
         ];
-        DB::table('team_has_member')->insert($teams_members);
-        */
+        DB::table('member_sprint')->insert($sprint_members);
+        
+        
+        $stories= [
+            [
+                'name' => "User Story 1.1 PA", 
+                'priority'=> 3,
+                'sprint_id'=> 1, 
+            ],  
+
+            [
+                'name' => "User Story 1.2 PA", 
+                'priority'=> 4,
+                'sprint_id'=> 1, 
+            ],  
+
+            [
+                'name' => "User Story 2.1 PA", 
+                'priority'=> 5,
+                'sprint_id'=> 2,
+            ], 
+
+            [
+                'name' => "User Story 1.1 PB", 
+                'priority'=> 3,
+                'sprint_id'=> 3,
+            ], 
+
+        ];
+        DB::table('user_story')->insert($stories);
+
+        $tasks = [
+            // PROYECTO A - SPRINT 1 - HISTORIA 1
+            [
+                'dod_id' => 1,
+                'user_story_id' => 1,
+            ],  
+            [
+                'dod_id' => 2,
+                'user_story_id' => 1,
+            ],
+            [
+                'dod_id' => 3,
+                'user_story_id' => 1,
+            ],
+            [
+                'dod_id' => 4,
+                'user_story_id' => 1,
+            ],
+            [
+                'dod_id' => 5,
+                'user_story_id' => 1,
+            ],
+
+             // PROYECTO A - SPRINT 1 - HISTORIA 2
+            [
+                'dod_id' => 1,
+                'user_story_id' => 2,
+            ],  
+            [
+                'dod_id' => 2,
+                'user_story_id' => 2,
+            ],
+            [
+                'dod_id' => 3,
+                'user_story_id' => 2,
+            ],
+            [
+                'dod_id' => 4,
+                'user_story_id' => 2,
+            ],
+            [
+                'dod_id' => 5,
+                'user_story_id' => 2,
+            ],
+
+             // PROYECTO A - SPRINT 2 - HISTORIA 1
+
+            [
+                'dod_id' => 1,
+                'user_story_id' => 3,
+            ],  
+            [
+                'dod_id' => 2,
+                'user_story_id' => 3,
+            ],
+            [
+                'dod_id' => 3,
+                'user_story_id' => 3,
+            ],
+            [
+                'dod_id' => 4,
+                'user_story_id' => 3,
+            ],
+            [
+                'dod_id' => 5,
+                'user_story_id' => 3,
+            ],
+
+            // PROYECTO B - SPRINT 1 - HISTORIA 1
+            [
+                'dod_id' => 6,
+                'user_story_id' => 4,
+            ],  
+            [
+                'dod_id' => 7,
+                'user_story_id' => 4,
+            ],
+            [
+                'dod_id' => 8,
+                'user_story_id' => 4,
+            ],
+            [
+                'dod_id' => 9,
+                'user_story_id' => 4,
+            ],
+            [
+                'dod_id' => 10,
+                'user_story_id' => 4,
+            ],
+        ];
+        DB::table('task')->insert($tasks);
+
+        $member_task =[
+             // TEAM 1 PROYECTO 1
+            [
+                'member_id' => 1,
+                'task_id' => 1
+            ],
+            [
+                'member_id' => 2,
+                'task_id' => 2
+            ],
+            [
+                'member_id' => 3,
+                'task_id' => 3
+            ],
+            [
+                'member_id' => 4,
+                'task_id' => 4
+            ],
+            [
+                'member_id' => 1,
+                'task_id' => 5
+            ],
+            // Otra Historia Sprint 1
+            [
+                'member_id' => 1,
+                'task_id' => 6
+            ],
+            [
+                'member_id' => 1,
+                'task_id' => 7
+            ],
+            [
+                'member_id' => 2,
+                'task_id' => 8
+            ],
+            [
+                'member_id' => 3,
+                'task_id' => 9
+            ],
+            [
+                'member_id' => 4,
+                'task_id' => 10
+            ],
+
+            // Sprint 2 H1
+            [
+                'member_id' => 1,
+                'task_id' => 11
+            ],[
+                'member_id' => 1,
+                'task_id' => 12
+            ],
+            [
+                'member_id' => 3,
+                'task_id' => 13
+            ],
+            [
+                'member_id' => 2,
+                'task_id' => 14
+            ],
+            [
+                'member_id' => 4,
+                'task_id' => 15
+            ],
+
+            // TEAM 2 PROYECTO 2
+            [
+                'member_id' => 1,
+                'task_id' => 16
+            ],
+            [
+                'member_id' => 2,
+                'task_id' => 17
+            ],
+            [
+                'member_id' => 6,
+                'task_id' => 18
+            ],
+            [
+                'member_id' => 5,
+                'task_id' => 19
+            ],
+            [
+                'member_id' => 5,
+                'task_id' => 20
+            ],
+        ];
+
+        DB::table('member_task')->insert($member_task);
+
+        
     }
 }

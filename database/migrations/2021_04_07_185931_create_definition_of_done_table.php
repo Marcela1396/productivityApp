@@ -15,13 +15,15 @@ class CreateDefinitionOfDoneTable extends Migration
     {
         Schema::create('definition_of_done', function (Blueprint $table) {
             $table->id();
-            $table->string('name','200');
-            $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')
             ->references('id')
             ->on('project')
             ->onDelete('cascade');
             $table->timestamps();
+            
+            $table->string('name','200');
+            $table->unsignedBigInteger('project_id');
+            
         });
     }
 

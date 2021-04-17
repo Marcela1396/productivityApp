@@ -72,7 +72,7 @@ class UserStory extends Controller
             $item2 = TaskModel::create($params);
 
             if($item2){
-            $params['task_id']  = $item2->id;
+            $params['dod_id']  = $item2->id;
             $item3 = Member_Model_Task_Model::create($params);
             }
         }
