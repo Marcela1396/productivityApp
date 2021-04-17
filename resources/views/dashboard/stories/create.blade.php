@@ -27,19 +27,19 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title"> User Story Information </h4> 
+                                        <h4 class="title"><i class="fa fa-star"></i>  &nbsp; User Story Information </h4> 
                                     </div>
                                     <div class="content">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>User Story Name</label>
+                                                    <label><i class="fa fa-clipboard"></i> User Story Name</label>
                                                     <input type="text" class="form-control" placeholder="Name" name="story_name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label>Priority</label>
+                                                    <label><i class="fa fa-arrow-up"></i> Priority</label>
                                                      <input type="number" min="1" max="5" class="form-control" placeholder="Priority" name="story_priority" required>
                                                 </div>
                                             </div>
@@ -48,7 +48,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Description</label>
+                                                    <label><i class="fa fa-newspaper-o"></i> Description</label>
                                                     <input type="text" class="form-control" placeholder="Description" name="story_description">
                                                     <input type="hidden"  name="sprint" value="{{$sprint}}">
                                                 </div>
@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="header">
-                                        <h4 class="title"> Task Information   </h4>
+                                        <h4 class="title"> <i class="fa fa-tasks"></i> &nbsp;Task Information   </h4>
                                     </div>
 
                                     <div class="content">
@@ -72,7 +72,7 @@
                                             <div class="col-md-12">
                                                 <legend>
                                                     <div class="form-group">
-                                                        <h5> <b> Team Name : </b> {{$team->name}} </h5>
+                                                        <h5> <i class="fa fa-users"></i> <b> Team : </b> {{$team->name}} </h5>
                                                     </div>
                                                 </legend>
                                             </div>
@@ -104,7 +104,7 @@
                                                                     </div>
                                                                 </td>
                                                                 <td> 
-                                                                    <select name="member_id"  id="members" class="selectpicker" >
+                                                                    <select name="member_id"  id="members" class="form-control" >
                                                                         <option disabled selected > Select Option </option>
                                                                         @foreach($members as $m)
                                                                             <option value="{{$m->member_id}}" required > {{ $m->member_name }} : {{ $m->role_name }} </option>
@@ -125,7 +125,7 @@
 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-success btn-fill pull-right" >Save </button>
+                                                <button type="submit" class="btn btn-success btn-fill pull-right" ><i class="fa fa-save"></i> Save </button>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>        

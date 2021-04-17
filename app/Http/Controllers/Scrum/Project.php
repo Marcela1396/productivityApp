@@ -22,6 +22,29 @@ class Project extends Controller
         return view('dashboard.projects.list', ['projects' => $projects]);
     }
 
+    public function form_create_project(){
+        $teams = DB::table('team')->get();
+        return view('dashboard.projects.create', ['team' =>$teams]);
+    }
+
+    public function register_project(Request $request){
+        $item = new ProjectModel();
+        $item->name = $request->input('project_name');
+        $item->description = $request->input('project_description');
+        $item->start_date = $request->input('project_start_date');
+        $item->duration = $request->input('project_duration');
+        $item->sprint_quantity = $request->input('sprint_quantity');
+        $item->save();
+
+        $item2 = new Project_Model_Team_Model();
+        $item2->project_id = $item->id;
+        $item2->team_id = $request->input('team_id');
+        $item2->save();
+        
+        return redirect()->route('projects');  
+    }
+
+
 
     public function DoD(){
         return view('dashboard.DoD.list');

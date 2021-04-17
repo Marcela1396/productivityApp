@@ -40,7 +40,7 @@ class Sprint extends Controller
     }
 
     public function register_sprint(Request $request){
-
+        dd($request->all());
         $item = new SprintModel();
         $item->name = $request->input('sprint_name');
         $item->description = $request->input('sprint_description');

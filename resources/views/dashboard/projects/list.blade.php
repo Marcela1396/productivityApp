@@ -26,7 +26,7 @@
                                 <h4> Project Information </h4>
                             </div>
                             <div class="col-md-12" align="right">
-                                <a class="btn btn-round btn-fill btn-primary"> Create </a>
+                                <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_project')}}" > <i class="fa fa-plus-circle fa-lg"> </i> </a>
                             </div>
                         </div>
                     </div>
@@ -62,25 +62,25 @@
                                             @csrf
                                                 <td>
                                                     <input type="hidden" id='project' name='project_id' value="{{$it->id}}">
-                                                    <button type="submit" class="btn btn-round btn-fill btn-warning"> Edit </button>
-                                                    <a class="btn btn-round btn-fill btn-info" > View </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> Enter </a>
+                                                    <button type="submit" class="btn btn-round btn-fill btn-warning"><i class="fa fa-edit fa-lg"></i> </button>
+                                                    <a class="btn btn-round btn-fill btn-info" > <i class="fa fa-eye fa-lg"> </i> </a>
+                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                                 </td>
                                         </form>
                                     @elseif($it->state == 'S')
                                         <td> In Progress </td>
                                         <td>
-                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> Edit </button>
-                                            <a class="btn btn-round btn-fill btn-info"> View </a>
-                                            <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints') }}"> Enter </a>
+                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
+                                            <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
+                                            <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints') }}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                         </td>
                                        
                                     @elseif($it->state == 'F')
                                         <td> Finished </td>
                                         <td>
-                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> Edit </button>
-                                            <a class="btn btn-round btn-fill btn-info"> View </a>
-                                            <a class="btn btn-round btn-fill btn-success" disabled> Enter </a>
+                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
+                                            <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
+                                            <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                         </td>
                                     @endif
                                 </tr>

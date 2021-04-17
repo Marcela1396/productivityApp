@@ -25,10 +25,15 @@ Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->mi
 
 // Projects
 Route::get('/project', [Project::class, 'index'])->name('projects')->middleware('auth');
-Route::get('/project/definitionDone', [Project::class, 'DoD'])->name('DoD')->middleware('auth');
+Route::get('/project/create', [Project::class, 'form_create_project'])->name('form_create_project')->middleware('auth');
+Route::post('/project/register', [Project::class, 'register_project'])->name('register_project')->middleware('auth');
 
 Route::get('/project/update', [Project::class, 'index'])->name('update_project')->middleware('auth');
 Route::get('/project/view', [Project::class, 'index'])->name('view_project')->middleware('auth');
+
+/*
+Route::get('/project/definitionDone', [Project::class, 'DoD'])->name('DoD')->middleware('auth');
+*/
 
 // Sprints
 
