@@ -68,11 +68,12 @@ class UserStory extends Controller
 
         $params = $request->all();
         if($item){
+            $params['dod_id']  = $request->input('dod_id');
             $params['user_story_id']  = $item->id;
             $item2 = TaskModel::create($params);
 
             if($item2){
-            $params['dod_id']  = $item2->id;
+            $params['task_id']  = $item2->id;
             $item3 = Member_Model_Task_Model::create($params);
             }
         }
