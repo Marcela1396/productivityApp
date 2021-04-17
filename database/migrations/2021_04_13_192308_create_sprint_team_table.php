@@ -14,18 +14,21 @@ class CreateSprintTeamTable extends Migration
     public function up()
     {
         Schema::create('sprint_team', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
             ->onDelete('cascade');
+
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
             ->on('sprint')
             ->onDelete('cascade');
+
             $table->float('sprint_team_capacity')->default(0);
-            $table->primary(['team_id', 'sprint_id']);
+            //$table->primary(['id','team_id', 'sprint_id']);
             $table->timestamps();
         });
     }

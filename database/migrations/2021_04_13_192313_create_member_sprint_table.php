@@ -14,6 +14,7 @@ class CreateMemberSprintTable extends Migration
     public function up()
     {
         Schema::create('member_sprint', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')
             ->references('id')
@@ -28,7 +29,7 @@ class CreateMemberSprintTable extends Migration
 
             $table->float('assigned_hours')->nullable();
             $table->float('capacity')->default(0);
-            $table->primary(['sprint_id', 'member_id']);
+            //$table->primary(['id','sprint_id', 'member_id']);
             $table->timestamps();
         });
     }

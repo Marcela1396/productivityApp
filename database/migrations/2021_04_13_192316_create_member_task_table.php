@@ -14,8 +14,8 @@ class CreateMemberTaskTable extends Migration
     public function up()
     {
         Schema::create('member_task', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('member_id');
-            
             $table->foreign('member_id')
             ->references('id')
             ->on('member')
@@ -28,7 +28,7 @@ class CreateMemberTaskTable extends Migration
             ->onDelete('cascade');
 
             $table->float('worked_hours')->default(0);
-            $table->primary(['task_id', 'member_id']);
+            //$table->primary(['task_id', 'member_id']);
             $table->timestamps();
         });
     }

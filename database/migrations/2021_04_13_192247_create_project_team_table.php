@@ -14,19 +14,19 @@ class CreateProjectTeamTable extends Migration
     public function up()
     {
         Schema::create('project_team', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->unsignedBigInteger('team_id');
-
             $table->foreign('project_id')->references('id')
             ->on('project')
             ->onDelete('cascade');
 
+            $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
             ->onDelete('cascade');
             
-            $table->primary(['project_id', 'team_id',]);
+            //$table->primary(['id','project_id', 'team_id',]);
             $table->float('project_team_capacity')->default(0);
             $table->timestamps();
         });

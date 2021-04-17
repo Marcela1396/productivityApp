@@ -14,17 +14,20 @@ class CreateMemberTeamTable extends Migration
     public function up()
     {
         Schema::create('member_team', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
             ->onDelete('cascade');
+
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id'
             )->references('id')
             ->on('member')
             ->onDelete('cascade');
-            $table->primary(['team_id', 'member_id']);
+
+            //$table->primary(['id','team_id', 'member_id']);
             $table->timestamps();
         });
     }
