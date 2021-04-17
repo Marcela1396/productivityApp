@@ -33,6 +33,7 @@ Route::get('/project/view', [Project::class, 'index'])->name('view_project')->mi
 // Sprints
 
 Route::get('/sprint/start', [Sprint::class, 'index'])->name('start_sprint')->middleware('auth');
+Route::post('/sprint/register', [Sprint::class, 'register_sprint'])->name('register_sprint')->middleware('auth');
 Route::get('/sprint/create/{project}', [Sprint::class, 'form_create_sprint'])->name('form_create_sprint')->middleware('auth');
 Route::get('/sprint/update', [Sprint::class, 'update_sprint'])->name('update_sprint')->middleware('auth');
 Route::get('/project/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');

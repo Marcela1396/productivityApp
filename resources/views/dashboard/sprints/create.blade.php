@@ -17,7 +17,8 @@
             </div>
         </nav>
         <div class="content">
-        <form>
+        <form action="{{ route('register_sprint')}}" method="POST">
+        @csrf
             <div class="container-fluid">
                 <div class="row">
                     <div class="content">
@@ -33,13 +34,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Sprint Name</label>
+                                                        <input type="hidden" value="{{$project}}"  name="project">
                                                         <input type="text" class="form-control" placeholder="Sprint Name" name="sprint_name" >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Description</label>
-                                                        <input type="text" class="form-control" placeholder="Description"  name="description_name">
+                                                        <input type="text" class="form-control" placeholder="Description"  name="sprint_description">
                                                     </div>
                                                 </div>
                                             </div>
@@ -48,13 +50,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Start Date </label>
-                                                        <input type="date" class="form-control" placeholder="Start Date"  name="start_date">
+                                                        <input type="date" class="form-control" placeholder="Start Date"  name="sprint_start_date">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Duration on Weeks </label>
-                                                        <input type="number" class="form-control" placeholder="Duration"  name="duration">
+                                                        <input type="number" class="form-control" placeholder="Duration"  name="sprint_duration">
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +80,7 @@
                                                                 <th scope="col"> ID</th>
                                                                 <th scope="col"> Member Name</th>
                                                                 <th scope="col"> Role </th>
-                                                                <th scope="col"> Assigned Hours For Weeks </th>
+                                                                <th scope="col"> Assigned Hours For Week </th>
                                                             </thead>
                                                             @php
                                                                 $a = 1;
@@ -92,7 +94,7 @@
                                                                     <td> {{ $m->role_name }} </td>
                                                                     <td>
                                                                         <div class="form-group">
-                                                                            <input type="hidden" name="id"  value="{{$m->member_id}}">
+                                                                            <input type="hidden" name="member_id"  value="{{$m->member_id}}">
                                                                             <input type="text" class="form-control" placeholder="Hours"  name="assigned_hours">
                                                                         </div>
                                                                     </td>

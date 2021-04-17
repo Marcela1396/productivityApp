@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\SprintModel;
+use App\Models\Scrum\Member_Model_Sprint_Model;
 use Illuminate\Support\Facades\DB;
+
 class Sprint extends Controller
 {
     public function index($id){
@@ -36,6 +38,26 @@ class Sprint extends Controller
 
         return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members]);
     }
+
+    public function register_sprint(Request $request){
+
+        $item = new SprintModel();
+        $item->name = $request->input('sprint_name');
+        $item->description = $request->input('sprint_description');
+        $item->start_date = $request->input('sprint_start_date');
+        $item->duration = $request->input('sprint_duration');
+        $item->project_id = $request->input('project');
+        $item->save();
+
+        $params = $request->all();
+        if($item){
+            $params['sprint_id']  = $item->id;
+            $item2 = Member_Model_Sprint_Model::create($params);
+        }
+        return redirect()->route('sprints', $item->project_id);   
+    }
+
+
 
     
 }

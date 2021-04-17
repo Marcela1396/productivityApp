@@ -75,6 +75,7 @@ class UserStory extends Controller
             $params['task_id']  = $item2->id;
             $item3 = Member_Model_Task_Model::create($params);
             }
-        }   
+        }
+        return redirect()->route('stories', $item->sprint_id);   
     }
 }
