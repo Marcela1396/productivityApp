@@ -3,7 +3,7 @@
 @section('dashboard') 
 
 <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default navbar-fixed navbar-ct-blue">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -12,7 +12,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Projects</a>
+                    <a class="navbar-brand" href="#"> <i class="pe-7s-note2"></i> Projects</a>
                 </div>
             </div>
         </nav>

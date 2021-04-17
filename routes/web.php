@@ -7,7 +7,9 @@ use App\Http\Controllers\Scrum\Project;
 use App\Http\Controllers\Scrum\Sprint;
 use App\Http\Controllers\Scrum\UserStory;
 use App\Http\Controllers\Scrum\Member;
+use App\Http\Controllers\Scrum\Role;
 use App\Http\Controllers\Scrum\Capacity;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +58,14 @@ Route::get('/teams', [Team::class, 'index'])->name('teams')->middleware('auth');
 
 // Members
 Route::get('/members', [Member::class, 'index'])->name('members')->middleware('auth');
+
+//Roles
+Route::get('/roles', [Role::class, 'index'])->name('roles')->middleware('auth');
+Route::get('/roles/create', [Role::class, 'form_create_role'])->name('form_create_role')->middleware('auth');
+Route::post('/roles/create', [Role::class, 'register_role'])->name('register_role')->middleware('auth');
+Route::get('/roles/update/{id}', [Role::class, 'form_update_role'])->name('form_update_roles')->middleware('auth');
+Route::post('/roles/update/{id}', [Role::class, 'update_role'])->name('update_role')->middleware('auth');
+Route::get('/roles/delete/{id}', [Role::class, 'delete_role'])->name('delete_role')->middleware('auth');
 
 // Capacity
 Route::get('/capacity', [Capacity::class, 'index'])->name('capacity')->middleware('auth');

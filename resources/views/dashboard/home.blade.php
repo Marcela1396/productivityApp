@@ -28,7 +28,7 @@
                 </li>
                 
                 <li>
-                    <a href="">
+                    <a href="{{route('teams')}}">
                         <i class="pe-7s-user"></i>
                         <p> Teams</p>
                     </a>
@@ -36,21 +36,21 @@
 
                 <li>
                     <a href="{{route('members')}}">
-                        <i class="pe-7s-bell"></i>
+                        <i class="pe-7s-users"></i>
                         <p> Members </p>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{route('members')}}">
-                        <i class="pe-7s-bell"></i>
+                    <a href="{{route('roles')}}">
+                        <i class="pe-7s-way"></i>
                         <p> Roles </p>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{route('capacity')}}">
-                        <i class="pe-7s-map-marker"></i>
+                        <i class="pe-7s-graph2"></i>
                         <p> Working capacity </p>
                     </a>
                 </li>
@@ -71,7 +71,7 @@
        @yield('dashboard')         
     </div>
 
-</div>
+
 
 </body>
 

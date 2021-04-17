@@ -12,8 +12,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
         <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
-        <link href="{{ url('/MDbootstrap/css/mdb.min.css') }}" rel="stylesheet">
-        <link href="{{ url('/MDbootstrap/css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('/MDbootstrap/css/mdb.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/MDbootstrap/css/style.css') }}" rel="stylesheet">
        
     </head>
     <body class="antialiased">
@@ -50,7 +50,7 @@
         
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src="{{ url('/MDbootstrap/js/mdb.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/MDbootstrap/js/mdb.min.js') }}"></script>
     <!--   Core JS Files   -->  
     </body>
     
