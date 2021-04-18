@@ -65,6 +65,8 @@
                                     </div>
                                 </div>
 
+                                
+
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="header">
@@ -86,16 +88,16 @@
                                                                 $a = 1;
                                                             @endphp
                                                             <tbody>
-                                                                @foreach($members as $m)
-                                                                <tr>
-                                                                        
+                                                            @foreach($members as $m)
+                                                                <tr>     
                                                                     <td> {{$a}} </td>
                                                                     <td> {{ $m->member_name }} </td>
                                                                     <td> {{ $m->role_name }} </td>
                                                                     <td>
                                                                         <div class="form-group">
-                                                                            <input type="hidden" name="member_id"  value="{{$m->member_id}}">
-                                                                            <input type="text" class="form-control" placeholder="Hours"  name="assigned_hours">
+                                                                          
+                                                                            <input type="hidden" name="{{'member_'.$m->member_id}}"  value="{{$m->member_id}}">
+                                                                            <input type="text" class="form-control" placeholder="Hours"  name="{{'assigned_hours_'.$m->member_id}}">
                                                                         </div>
                                                                     </td>
                                                                 </tr>

@@ -40,7 +40,7 @@ class Sprint extends Controller
     }
 
     public function register_sprint(Request $request){
-        dd($request->all());
+        //dd($request->all());
         $item = new SprintModel();
         $item->name = $request->input('sprint_name');
         $item->description = $request->input('sprint_description');
@@ -48,12 +48,27 @@ class Sprint extends Controller
         $item->duration = $request->input('sprint_duration');
         $item->project_id = $request->input('project');
         $item->save();
+       
+        $members = DB::table('project as p')
+        ->join('project_team AS  pt', 'p.id', 'pt.project_id')
+        ->join('team as t' , 'pt.team_id', 't.id')
+        ->join('member_team as mt','t.id', 'mt.team_id')
+        ->join('member as m' , 'mt.member_id', 'm.id')
+        ->join('role as r', 'm.role_id', 'r.id')
+        ->select('m.id as member_id')
+        ->where('p.id', '=', $request->input('project'))
+        ->get();
 
-        $params = $request->all();
         if($item){
-            $params['sprint_id']  = $item->id;
-            $item2 = Member_Model_Sprint_Model::create($params);
+            foreach($members as $m){
+                $item2 = new Member_Model_Sprint_Model();
+                $item2->member_id = $m->member_id;
+                $item2->sprint_id = $item->id;
+                $item2->assigned_hours = $request->input('assigned_hours_'.$m->member_id);
+                $item2->save();
+            }
         }
+
         return redirect()->route('sprints', $item->project_id);   
     }
 
