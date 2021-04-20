@@ -27,4 +27,9 @@ class MemberModel extends Model
         return $this->belongsToMany(TeamModel::class, 'team_id', 'member_id');
     }
 
+    // ******************************************************************************************
+     // Funciones estaticas
+
+    
+
 }
