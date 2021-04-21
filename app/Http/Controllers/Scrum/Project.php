@@ -36,6 +36,7 @@ class Project extends Controller
         $item2->team_id = $request->input('team_id');
         $item2->save();
         
+        // Falta DOD
         return redirect()->route('projects');  
     }
 

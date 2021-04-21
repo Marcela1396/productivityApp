@@ -18,7 +18,7 @@
         </nav>
         <div class="content">
         <form action="{{ route('register_sprint')}}" method="POST">
-        @csrf
+        @csrf 
             <div class="container-fluid">
                 <div class="row">
                     <div class="content">

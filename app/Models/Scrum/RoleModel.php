@@ -9,7 +9,5 @@ class RoleModel extends Model
 {
     protected $table = 'role'; 
 
-    public function members()    {
-        return $this->hasMany(MemberModel::class,'role_id', 'id');
-    }
+
 }

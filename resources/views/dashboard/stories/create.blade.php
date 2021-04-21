@@ -99,12 +99,13 @@
                                                                 <td> {{ $d->dod_name }} </td>
                                                                 <td>
                                                                     <div class="form-group">
-                                                                        <input type="hidden" name="dod_id"  value="{{$d->dod_id}}">
-                                                                        <input type="text" class="form-control" placeholder="Description"  name="task_description">
+                                                                        <input type="hidden" name="project_id"  value="{{$d->project_id}}">
+                                                                        <input type="hidden" name="{{'dod_id_'.$d->dod_id}}"  value="{{$d->dod_id}}">
+                                                                        <input type="text" class="form-control" placeholder="Description"  name="{{'task_description_'.$d->dod_id}}">
                                                                     </div>
                                                                 </td>
                                                                 <td> 
-                                                                    <select name="member_id"  id="members" class="form-control" >
+                                                                    <select name="{{'member_id_'.$d->dod_id}}"  id="members" class="form-control" >
                                                                         <option disabled selected > Select Option </option>
                                                                         @foreach($members as $m)
                                                                             <option value="{{$m->member_id}}" required > {{ $m->member_name }} : {{ $m->role_name }} </option>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemberSprintTable extends Migration
+class CreateMemberRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,20 @@ class CreateMemberSprintTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_sprint', function (Blueprint $table) {
+        Schema::create('member_role', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')
             ->references('id')
-            ->on('member_role')
-            ->onDelete('cascade');
-            
-            $table->unsignedBigInteger('sprint_id');
-            $table->foreign('sprint_id')
-            ->references('id')
-            ->on('sprint')
+            ->on('member')
             ->onDelete('cascade');
 
-            $table->float('assigned_hours')->nullable();
-            $table->float('capacity')->default(0);
-            //$table->primary(['id','sprint_id', 'member_id']);
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')
+            ->references('id')
+            ->on('role')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -41,6 +38,6 @@ class CreateMemberSprintTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_sprint');
+        Schema::dropIfExists('member_role');
     }
 }

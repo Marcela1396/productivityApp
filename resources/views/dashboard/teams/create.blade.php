@@ -12,12 +12,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> Update Team </a>
+                    <a class="navbar-brand" href="#"> Create Team </a>
                 </div>
             </div>
         </nav>
         <div class="content">
-        <form action="{{ route('update_team', $team->id)}}" method="POST">
+        <form action="{{ route('register_team')}}" method="POST">
         @csrf
             <div class="container-fluid">
                 <div class="row">
@@ -34,13 +34,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clipboard"></i> Name</label>                                                        
-                                                        <input type="text" class="form-control" placeholder="Team Name" name="team_name" value="{{$team->name}}" >
+                                                        <input type="text" class="form-control" placeholder="Team Name" name="team_name" >
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-newspaper-o"></i> Description</label>
-                                                        <input type="text" class="form-control" placeholder="Description"  name="team_description" value= "{{$team->description}}">
+                                                        <input type="text" class="form-control" placeholder="Description"  name="team_description">
                                                     </div>
                                                 </div>
                                             </div>

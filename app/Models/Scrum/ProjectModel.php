@@ -62,8 +62,9 @@ class ProjectModel extends Model
         ->join('team as t' , 'pt.team_id', 't.id')
         ->join('member_team as mt','t.id', 'mt.team_id')
         ->join('member as m' , 'mt.member_id', 'm.id')
-        ->join('role as r', 'm.role_id', 'r.id')
-        ->select('p.id as project_id','t.id as team_id', 'm.id as member_id', 'm.name as member_name', 'r.name as role_name')
+        ->join('member_role as mr' , 'mr.member_id', 'm.id')
+        ->join('role as r', 'mr.role_id', 'r.id')
+        ->select('p.id as project_id','t.id as team_id', 'mr.id as member_id', 'm.name as member_name', 'r.name as role_name')
         ->where('p.id', '=', $project)
         ->get();
         return $members;

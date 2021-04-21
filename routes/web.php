@@ -56,6 +56,11 @@ Route::get('/stories/start', [UserStory::class, 'start_story'])->name('start_sto
 
 // Teams
 Route::get('/teams', [Team::class, 'index'])->name('teams')->middleware('auth');
+Route::get('/teams/create', [Team::class, 'form_create_team'])->name('form_create_team')->middleware('auth');
+Route::post('/teams/create', [Team::class, 'register_team'])->name('register_team')->middleware('auth');
+Route::get('/teams/update/{id}', [Team::class, 'form_update_team'])->name('form_update_team')->middleware('auth');
+Route::post('/teams/update/{id}', [Team::class, 'update_team'])->name('update_team')->middleware('auth');
+Route::get('/teams/delete/{id}', [Team::class, 'delete_team'])->name('delete_team')->middleware('auth');
 
 // Members
 Route::get('/members', [Member::class, 'index'])->name('members')->middleware('auth');

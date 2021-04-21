@@ -125,8 +125,7 @@ class Data_Seeder extends Seeder
                 'id_number'=> '1085329741',
                 'name' => 'Marcela Guerrero',
                 'email'=>'marce123@gmail.com',
-                'speciality' => 'Systems Analyst',
-                'role_id'=> 1,
+                'speciality' => 'Systems Analyst',  
             ],
 
             [
@@ -134,7 +133,6 @@ class Data_Seeder extends Seeder
                 'name' => 'Armando Salazar',
                 'email'=>'armando@gmail.com',
                 'speciality' => 'System Engineer',
-                'role_id'=> 2,
             ],
 
             [
@@ -142,7 +140,6 @@ class Data_Seeder extends Seeder
                 'name' => 'Gerson Lazaro Carillo',
                 'email'=>'gerson@gmail.com',
                 'speciality' => 'Backend Developer',
-                'role_id'=> 3,
             ],
 
             [
@@ -150,7 +147,6 @@ class Data_Seeder extends Seeder
                 'name' => 'Leonora Madrigal',
                 'email'=>'leonora@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
-                'role_id'=> 3,
             ],
 
             [
@@ -158,7 +154,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Lucia Fernandez',
                 'email'=>'lucia@gmail.com',
                 'speciality' => 'Backend Developer',
-                'role_id'=> 3,
+                
             ],
 
             [
@@ -166,11 +162,44 @@ class Data_Seeder extends Seeder
                 'name' => 'Juanito Gomez',
                 'email'=>'juanito@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
-                'role_id'=> 3,
             ],
            
         ];
         DB::table('member')->insert($members);
+
+        $members_role =[
+            [
+                'member_id' => 1,
+                'role_id'=> 1,
+            ],
+
+            [
+                'member_id' => 2,
+                'role_id'=> 2,
+            ],
+
+            [
+                'member_id' => 3,
+                'role_id'=> 3,
+            ],
+
+            [
+                'member_id' => 4,
+                'role_id'=> 3,
+            ],
+
+            [
+                'member_id' => 5,
+                'role_id'=> 3,
+            ],
+
+            [
+                'member_id' => 6,
+                'role_id'=> 3,
+            ],
+
+        ];
+        DB::table('member_role')->insert($members_role);
 
         
         $ddone =[

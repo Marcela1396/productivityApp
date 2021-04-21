@@ -22,9 +22,9 @@ class CreateMemberTeamTable extends Migration
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id'
-            )->references('id')
-            ->on('member')
+            $table->foreign('member_id')
+            ->references('id')
+            ->on('member_role')
             ->onDelete('cascade');
 
             //$table->primary(['id','team_id', 'member_id']);

@@ -18,7 +18,7 @@ class CreateMemberTaskTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')
             ->references('id')
-            ->on('member')
+            ->on('member_role')
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('task_id');
