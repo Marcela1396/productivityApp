@@ -50,6 +50,22 @@ class TeamModel extends Model
         return $team;
     }
 
+    public static function getMembers($id){
+        /* 
+        Obtiene los integrantes de un equipo
+        Recibe como parametro el id del equipo a consultar
+        */
+        $members = DB::table('team as t')
+        ->join('member_team as mt','t.id', 'mt.team_id')
+        ->join('member as m' , 'mt.member_id', 'm.id')
+        ->select('t.id as team_id', 'm.id as member_id', 'm.name as member_name', )
+        ->where('t.id', '=', $id)
+        ->get();
+        return $members;  
+    }
+
+
+
 
     
 }

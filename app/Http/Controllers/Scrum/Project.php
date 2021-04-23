@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\TeamModel;
+use App\Models\Scrum\RoleModel;
+use App\Models\Scrum\Member_Model_Role_Model;
 use App\Models\Scrum\Project_Model_Team_Model;
 use Illuminate\Support\Facades\DB;
 
@@ -22,6 +24,12 @@ class Project extends Controller
         return view('dashboard.projects.create', ['team' =>$teams]);
     }
 
+    public function getMembers($team){
+        $members = TeamModel::getMembers($team);
+        $roles = RoleModel::all();
+        return response()->json([$members]); 
+    }
+
     public function register_project(Request $request){
         $item = new ProjectModel();
         $item->name = $request->input('project_name');
@@ -33,7 +41,7 @@ class Project extends Controller
 
         $item2 = new Project_Model_Team_Model();
         $item2->project_id = $item->id;
-        $item2->team_id = $request->input('team_id');
+        $item2->team_id = $request->input('team_id_project');
         $item2->save();
         
         // Falta DOD

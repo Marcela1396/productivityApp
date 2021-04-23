@@ -19,10 +19,10 @@ class CreateDefinitionOfDoneTable extends Migration
             ->references('id')
             ->on('project')
             ->onDelete('cascade');
-            $table->timestamps();
-            
+
             $table->string('name','200');
             $table->unsignedBigInteger('project_id');
+            $table->timestamps();
             
         });
     }

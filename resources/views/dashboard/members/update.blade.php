@@ -12,12 +12,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> Update Team </a>
+                    <a class="navbar-brand" href="#"> Update Member </a>
                 </div>
             </div>
         </nav>
         <div class="content">
-        <form action="{{ route('update_team', $team->id)}}" method="POST">
+        <form action="{{ route('update_member', $member->id)}}" method="POST">
         @csrf
             <div class="container-fluid">
                 <div class="row">
@@ -27,20 +27,36 @@
                                 <div class="col-md-12">
                                     <div class="card">
                                         <div class="header">
-                                            <h4 class="title"><i class="fa fa-star"></i>  &nbsp;Team Information</h4>
+                                            <h4 class="title"><i class="fa fa-star"></i>  &nbsp;Member Information</h4>
                                         </div>
                                         <div class="content">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label><i class="fa fa-users"></i> Name</label>                                                        
-                                                        <input type="text" class="form-control" placeholder="Team Name" name="team_name" value="{{$team->name}}" >
+                                                        <label><i class="fa fa-newspaper-o"></i> Card ID </label>
+                                                        <input type="text" class="form-control" placeholder="Card ID"  name="member_id" value="{{$member->id_number}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><i class="fa fa-clipboard"></i> Name</label>                                                        
+                                                        <input type="text" class="form-control" placeholder="Member Name" name="member_name" value="{{$member->name}}">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><i class="fa fa-envelope"></i> Email </label>                                                        
+                                                        <input type="email" class="form-control" placeholder="Email" name="member_email" value="{{$member->email}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label><i class="fa fa-newspaper-o"></i> Description</label>
-                                                        <input type="text" class="form-control" placeholder="Description"  name="team_description" value= "{{$team->description}}">
+                                                        <label><i class="fa fa-user"></i> Speciality</label>
+                                                        <input type="text" class="form-control" placeholder="Speciality"  name="member_speciality" value="{{$member->speciality}}">
                                                     </div>
                                                 </div>
                                             </div>

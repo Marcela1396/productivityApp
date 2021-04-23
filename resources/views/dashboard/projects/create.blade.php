@@ -46,41 +46,26 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-calendar"></i> Start Date </label>
                                                         <input type="date" class="form-control" placeholder="Start Date"  name="project_start_date">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clock-o"></i> Duration on Weeks </label>
                                                         <input type="number" class="form-control" placeholder="Duration"  name="project_duration">
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-sort-amount-desc"></i> Sprint Quantity </label> 
                                                         <input type="number" class="form-control" placeholder="Sprint Quantity"  name="sprint_quantity">
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label> <i class="fa fa-users"></i> Select Team </label> <br>
-                                                        <select name="team_id"  id="team_id" class="form-control">
-                                                            <option disabled selected > Select Option </option>
-                                                            @foreach($team as $t)
-                                                                <option value="{{$t->id}}" > {{$t->name}} </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        
+
                                             <div class="clearfix"></div> 
                                         </div>
                                     </div>
@@ -110,25 +95,59 @@
                                                     </a>
                                                 </div>      
                                              </div>
-                                      
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12" >
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title"><i class="fa fa-list"></i>  &nbsp; Assign team roles </h4>
+                                        </div>
+                                        <div class="content" >
+                                            
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-success btn-fill pull-right" >
-                                                        <i class="fa fa-save"></i> Save
-                                                    </button>
-                                                    <div class="clearfix"></div>
+                                                    <div class="form-group">
+                                                        <label> <i class="fa fa-users"></i> Select Team </label> <br>
+                                                        <select name="team_id_project"  id="team_id_project" class="form-control"  onchange="search_members(this.value)">
+                                                            <option disabled selected > Select Option </option>
+                                                            @foreach($team as $t)
+                                                                <option value="{{$t->id}}" > {{$t->name}} </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                 </div>
+                                            </div>
+
+                                            <div class="row" >
+                                                <div class="col-md-12">
+                                                    <div id="resultado"> 
+                                                       
+                                                    </div>
+                                                    <!-- Here -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-success btn-fill pull-right" >
+                                                <i class="fa fa-save"></i> Save
+                                            </button>
+                                                    <div class="clearfix"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
-                        </div>
-                    </div>  
+                        </div>  
+                    </div>
                 </div>
             </div>
-        </div>
         </form>
     </div>
 </div>

@@ -19,12 +19,14 @@ class CreateMemberTeamTable extends Migration
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')
             ->references('id')
-            ->on('member_role')
+            ->on('member')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             //$table->primary(['id','team_id', 'member_id']);

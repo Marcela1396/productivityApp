@@ -94,10 +94,6 @@ class Data_Seeder extends Seeder
             [
                 'name' => 'Team 2'
             ],
-
-            [
-                'name' => 'Team 3'
-            ],
            
         ];
         DB::table('team')->insert($teams);

@@ -27,11 +27,15 @@ Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->mi
 
 // Projects
 Route::get('/project', [Project::class, 'index'])->name('projects')->middleware('auth');
+Route::get('/project/getMembers/{team}', [Project::class, 'getMembers'])->name('getMembers')->middleware('auth');
+
 Route::get('/project/create', [Project::class, 'form_create_project'])->name('form_create_project')->middleware('auth');
 Route::post('/project/register', [Project::class, 'register_project'])->name('register_project')->middleware('auth');
 
+
 Route::get('/project/update', [Project::class, 'index'])->name('update_project')->middleware('auth');
 Route::get('/project/view', [Project::class, 'index'])->name('view_project')->middleware('auth');
+
 
 /*
 Route::get('/project/definitionDone', [Project::class, 'DoD'])->name('DoD')->middleware('auth');
@@ -64,6 +68,11 @@ Route::get('/teams/delete/{id}', [Team::class, 'delete_team'])->name('delete_tea
 
 // Members
 Route::get('/members', [Member::class, 'index'])->name('members')->middleware('auth');
+Route::get('/members/create', [Member::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
+Route::post('/members/create', [Member::class, 'register_member'])->name('register_member')->middleware('auth');
+Route::get('/members/update/{id}', [Member::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
+Route::post('/members/update/{id}', [Member::class, 'update_member'])->name('update_member')->middleware('auth');
+Route::get('/members/delete/{id}', [Member::class, 'delete_member'])->name('delete_member')->middleware('auth');
 
 //Roles
 Route::get('/roles', [Role::class, 'index'])->name('roles')->middleware('auth');

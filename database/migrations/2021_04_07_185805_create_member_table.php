@@ -18,7 +18,9 @@ class CreateMemberTable extends Migration
             $table->string('id_number','50');
             $table->string('name','100');
             $table->string('email','50')->nullable();
-            $table->string('speciality','100')->nullable();            
+            $table->string('speciality','100')->nullable();   
+            $table->timestamps();
+
         });
     }
 

@@ -20,12 +20,12 @@ class CreateUserStoryTable extends Migration
             ->references('id')
             ->on('sprint')
             ->onDelete('cascade');
-            $table->timestamps();
-
+           
             $table->string('name','100');
             $table->string('description','100')->nullable();
             $table->char('state','1')->default('C');
             $table->tinyInteger('priority')->default(1);
+            $table->timestamps();
             
         });
     }

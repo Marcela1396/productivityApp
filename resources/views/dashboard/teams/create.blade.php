@@ -31,17 +31,40 @@
                                         </div>
                                         <div class="content">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label><i class="fa fa-clipboard"></i> Name</label>                                                        
-                                                        <input type="text" class="form-control" placeholder="Team Name" name="team_name" >
+                                                        <label><i class="fa fa-users"></i> Name</label>                                                        
+                                                        <input type="text" class="form-control" placeholder="Team Name" name="team_name" required>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-newspaper-o"></i> Description</label>
-                                                        <input type="text" class="form-control" placeholder="Description"  name="team_description">
+                                                        <input type="text" class="form-control" placeholder="Description"  name="team_description" >
                                                     </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title"><i class="fa fa-users"></i>  &nbsp; Add Members to Team</h4>
+                                        </div>
+                                        <div class="content">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @foreach($members as $m)
+                                                    <div class="checkbox">
+						  							  	<input id="{{'member_id_'.$m->id}}" type="checkbox" value="{{$m->id}}" name="{{'member_id_'.$m->id}}">
+						  							  	<label for="{{'member_id_'.$m->id}}"> {{ $m->name }}</label>
+					  						  		</div>     
+                                                    @endforeach  
                                                 </div>
                                             </div>
                                             <div class="row">
