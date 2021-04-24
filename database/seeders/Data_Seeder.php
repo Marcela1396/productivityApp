@@ -163,41 +163,113 @@ class Data_Seeder extends Seeder
         ];
         DB::table('member')->insert($members);
 
+        $teams_members =[
+            [
+                'team_id' => 1,
+                'member_id' => 1, 
+                'role_id'=> 1,
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 2,
+                'role_id'=> 2, 
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 3, 
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 1,
+                'member_id' => 4, 
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 1, 
+                'role_id'=> 1,
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 2, 
+                'role_id'=> 2,
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 5, 
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 2,
+                'member_id' => 6, 
+                'role_id'=> 3,
+            ],
+
+           
+        ];
+        DB::table('member_team')->insert($teams_members);
+
+        /*
         $members_role =[
             [
                 'member_id' => 1,
                 'role_id'=> 1,
+                'team_id'=> 1,
             ],
 
             [
                 'member_id' => 2,
                 'role_id'=> 2,
+                'team_id'=> 1,
             ],
 
             [
                 'member_id' => 3,
                 'role_id'=> 3,
+                'team_id'=> 1,
             ],
 
             [
                 'member_id' => 4,
                 'role_id'=> 3,
+                'team_id'=> 1,
+            ],
+
+            [
+                'member_id' => 1,
+                'role_id'=> 1,
+                'team_id'=> 2,
+            ],
+
+            [
+                'member_id' => 2,
+                'role_id'=> 2,
+                'team_id'=> 2,
             ],
 
             [
                 'member_id' => 5,
                 'role_id'=> 3,
+                'team_id'=> 2,
             ],
 
             [
                 'member_id' => 6,
                 'role_id'=> 3,
+                'team_id'=> 2,
             ],
 
         ];
         DB::table('member_role')->insert($members_role);
 
-        
+        */
         $ddone =[
             [
                 'name' => 'Especificación de historias de usuario',
@@ -252,50 +324,7 @@ class Data_Seeder extends Seeder
         DB::table('definition_of_done')->insert($ddone);
 
 
-        $teams_members =[
-            [
-                'team_id' => 1,
-                'member_id' => 1, 
-            ],
-
-            [
-                'team_id' => 1,
-                'member_id' => 2, 
-            ],
-
-            [
-                'team_id' => 1,
-                'member_id' => 3, 
-            ],
-
-            [
-                'team_id' => 1,
-                'member_id' => 4, 
-            ],
-
-            [
-                'team_id' => 2,
-                'member_id' => 1, 
-            ],
-
-            [
-                'team_id' => 2,
-                'member_id' => 2, 
-            ],
-
-            [
-                'team_id' => 2,
-                'member_id' => 5, 
-            ],
-
-            [
-                'team_id' => 2,
-                'member_id' => 6, 
-            ],
-
-           
-        ];
-        DB::table('member_team')->insert($teams_members);
+        
 
         
         $project_team =[

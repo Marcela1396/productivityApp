@@ -29,6 +29,13 @@ class CreateMemberTeamTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
+            $table->unsignedBigInteger('role_id')->default(1);
+            $table->foreign('role_id')
+            ->references('id')
+            ->on('role')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
             //$table->primary(['id','team_id', 'member_id']);
             $table->timestamps();
         });

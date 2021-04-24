@@ -18,7 +18,7 @@ class CreateMemberSprintTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->foreign('member_id')
             ->references('id')
-            ->on('member_role')
+            ->on('member')
             ->onDelete('cascade');
             
             $table->unsignedBigInteger('sprint_id');

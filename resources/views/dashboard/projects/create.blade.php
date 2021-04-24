@@ -123,14 +123,13 @@
 
                                             <div class="row" >
                                                 <div class="col-md-12">
-                                                    <div id="resultado"> 
+                                                    <div id="resultado">
                                                        
                                                     </div>
                                                     <!-- Here -->
                                                 </div>
                                             </div>
-                                        </div>
-                                         
+                                        </div>  
                                     </div>
                                 
                                     <div class="row">
