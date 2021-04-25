@@ -61,27 +61,21 @@ function search_members(data){
 	/*
 	$.ajax({
 		type: 'post',
-		url: '/project/getMembers/'.data,
-		success: function (members) {
-		console.log(members)
-		}
-	});
-	
-	var dato = objJSON;
-    $.ajax({
-        url : '/project/getMembers/'.data,
-        data : dato,
-        method : 'post', //en este caso
-        dataType : 'json',
-        success : function(response){
-            alert("funciona bien");
+		url: `/project/getMembers/#${data}`,
+		dataType : 'json',
+		success : function(response){
+			alert('funciona');
+			response.members.forEach(element => {
+				alert("response.members.id");
+				
+			});
         },
         error: function(error){
             alert("No funciona");
         }
-    });
+	});
 	*/
-	document.getElementById('resultado').innerHTML=data;
+	document.getElementById('Option Selected'+ resultado).innerHTML=data;
 }
 
 
@@ -97,7 +91,7 @@ function* addDODGenerator(){
 		newDodContainer.classList.add("dod-container")
 		// create <div class='col-md-10'>
 		const newInputContainer = document.createElement('div')
-		newInputContainer.classList.add("col-md-10")
+		newInputContainer.classList.add("col-md-11")
 		// create <div class='form-group'> 
 		const newFormGroup = document.createElement('div')
 		newFormGroup.classList.add('form-group')
@@ -109,7 +103,7 @@ function* addDODGenerator(){
 		newInput.setAttribute('name', `dod_name_${count}`)
 		newInput.type = 'text'
 		newInput.classList.add('form-control')
-		newInput.placeholder = 'critery name'
+		newInput.placeholder = 'Critery name'
 		newInput.name = `dod_name_${count}`
 		// add to <div class='form-group'> => <label> && <input>
 		newFormGroup.appendChild(newInputLabel)
@@ -119,7 +113,7 @@ function* addDODGenerator(){
 		
 		// create <div class='col-md-2'>
 		const newButtonContainer = document.createElement('div')
-		newButtonContainer.classList.add("col-md-2")
+		newButtonContainer.classList.add("col-md-1")
 		// create <button>
 		const newButton = document.createElement('button')
 		newButton.type = 'button'
@@ -141,21 +135,6 @@ function* addDODGenerator(){
 		newDodContainer.appendChild(newButtonContainer)
 		contenido.appendChild(newDodContainer)
 
-		/*
-		contenido.innerHTML += `<div class="dod-container">
-									<div class="col-md-10">
-										<div class="form-group">
-											<label> Name </label>
-											<input type="text" class="form-control" placeholder="Critery Name"  name='dod_name_${count}'>
-										</div>
-									</div>  
-									<div class="col-md-2">
-										<button type="button" onClick="javascript:deleteDOD(this.id)" class="btn btn-danger btn-fill" id="deleteDOD_${count}">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-									</div>
-								</div>`;
-								*/
 		yield count;
 		count = count + 1;
 	}

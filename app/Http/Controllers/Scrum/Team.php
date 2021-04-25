@@ -41,10 +41,10 @@ class Team extends Controller
         
         if($item){
             foreach($collection as $m){
-                    $item2 = new Member_Model_Team_Model();
-                    $item2->team_id = $item->id;
-                    $item2->member_id = $request->input('member_id_'.$m->id);
-                    $item2->save(); 
+                $item2 = new Member_Model_Team_Model();
+                $item2->team_id = $item->id;
+                $item2->member_id = $request->input('member_id_'.$m->id);
+                $item2->save(); 
             }
         }
 

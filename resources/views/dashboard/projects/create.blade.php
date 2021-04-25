@@ -17,7 +17,7 @@
             </div>
         </nav>
         <div class="content">
-        <form action="{{ route('register_project')}}" method="POST">
+        <form action="{{ route('form_create_project2')}}" method="POST">
         @csrf
             <div class="container-fluid">
                 <div class="row">
@@ -34,7 +34,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label> <i class="fa fa-clipboard"></i> Name</label>
-                                                        <input type="text" class="form-control" placeholder="Project Name" name="project_name" >
+                                                        <input type="text" class="form-control" placeholder="Project Name" name="project_name" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -46,74 +46,30 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-calendar"></i> Start Date </label>
                                                         <input type="date" class="form-control" placeholder="Start Date"  name="project_start_date">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clock-o"></i> Duration on Weeks </label>
                                                         <input type="number" class="form-control" placeholder="Duration"  name="project_duration">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-sort-amount-desc"></i> Sprint Quantity </label> 
                                                         <input type="number" class="form-control" placeholder="Sprint Quantity"  name="sprint_quantity">
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="clearfix"></div> 
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="header">
-                                            <h4 class="title"><i class="fa fa-list"></i>  &nbsp;Definition of Done </h4>
-                                        </div>
-                                        <div class="content">
-
-                                            <div class="row">
-                                                <div class="col-md-12" align="right">
-                                                    <a href="javascript:addDOD.next()" class="btn btn-primary btn-fill" >
-                                                        <i class="fa fa-plus"></i>
-                                                    </a>
-                                                </div>
-                                                <div name="div_dod" id="div_dod">
-                                                    <div class="dod-container">
-                                                        <div class="col-md-11">
-                                                            <div class="form-group">
-                                                                <label> Name </label>
-                                                                <input type="text" class="form-control" placeholder="Critery Name"  name="dod_name_0">
-                                                            </div>
-                                                        </div>  
-     
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-md-12" >
-                                    <div class="card">
-                                        <div class="header">
-                                            <h4 class="title"><i class="fa fa-list"></i>  &nbsp; Assign team roles </h4>
-                                        </div>
-                                        <div class="content" >
-                                            
-                                            <div class="row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label> <i class="fa fa-users"></i> Select Team </label> <br>
-                                                        <select name="team_id_project"  id="team_id_project" class="form-control"  onchange="search_members(this.value)">
-                                                            <option disabled selected > Select Option </option>
+                                                        <select name="team_id"  id="team_id" class="form-control"  onchange="search_members(this.value)" required>
+                                                            <option disabled selected ></option>
                                                             @foreach($team as $t)
                                                                 <option value="{{$t->id}}" > {{$t->name}} </option>
                                                             @endforeach
@@ -121,25 +77,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="row" >
-                                                <div class="col-md-12">
-                                                    <div id="resultado">
-                                                       
-                                                    </div>
-                                                    <!-- Here -->
-                                                </div>
-                                            </div>
-                                        </div>  
+                                            <div class="clearfix"></div> 
+                                        </div>
                                     </div>
-                                
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-success btn-fill pull-right" >
-                                                <i class="fa fa-save"></i> Save
-                                            </button>
-                                                    <div class="clearfix"></div>
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-success btn-fill pull-right" >
+                                            <i class="fa fa-save"></i> Next
+                                        </button>
+                                                <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>
