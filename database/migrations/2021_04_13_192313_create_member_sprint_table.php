@@ -19,12 +19,14 @@ class CreateMemberSprintTable extends Migration
             $table->foreign('member_id')
             ->references('id')
             ->on('member')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
             
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
             ->on('sprint')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->float('assigned_hours')->nullable();

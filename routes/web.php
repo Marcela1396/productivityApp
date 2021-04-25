@@ -27,7 +27,7 @@ Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->mi
 
 // Projects
 Route::get('/project', [Project::class, 'index'])->name('projects')->middleware('auth');
-Route::get('/project/getMembers/{team}', [Project::class, 'getMembers'])->name('getMembers')->middleware('auth');
+Route::post('/project/getMembers/{team}', [Project::class, 'getMembers'])->name('getMembers')->middleware('auth');
 
 Route::get('/project/create', [Project::class, 'form_create_project'])->name('form_create_project')->middleware('auth');
 Route::post('/project/register', [Project::class, 'register_project'])->name('register_project')->middleware('auth');

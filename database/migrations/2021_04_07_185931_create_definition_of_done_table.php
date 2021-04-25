@@ -18,6 +18,7 @@ class CreateDefinitionOfDoneTable extends Migration
             $table->foreign('project_id')
             ->references('id')
             ->on('project')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->string('name','200');

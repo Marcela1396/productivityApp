@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // Adicionales 
 
 use App\Models\Scrum\ProjectModel;
+use App\Models\Scrum\DoDModel;
 use App\Models\Scrum\TeamModel;
 use App\Models\Scrum\RoleModel;
 use App\Models\Scrum\Member_Model_Role_Model;
@@ -31,6 +32,9 @@ class Project extends Controller
     }
 
     public function register_project(Request $request){
+        //dd($request->all());
+
+        
         $item = new ProjectModel();
         $item->name = $request->input('project_name');
         $item->description = $request->input('project_description');
@@ -39,12 +43,30 @@ class Project extends Controller
         $item->sprint_quantity = $request->input('sprint_quantity');
         $item->save();
 
-        $item2 = new Project_Model_Team_Model();
-        $item2->project_id = $item->id;
-        $item2->team_id = $request->input('team_id_project');
-        $item2->save();
-        
-        // Falta DOD
+        if($item){
+            $item2 = new Project_Model_Team_Model();
+            $item2->project_id = $item->id;
+            $item2->team_id = $request->input('team_id_project');
+            $item2->save();
+            
+            $dod = $request->input('.dod-input');
+             
+         // Falta DOD
+            $count = 0;
+            while(true){ 
+                $var = $request->input('dod_name_'.$count);
+                if(!$var){
+                    break;
+                }
+                $item3 = new DoDModel();
+                $item3->project_id = $item->id;
+                $item3->name = $var;
+                $item3->save();
+                $count = $count + 1;    
+            }
+          
+        }
+       
         return redirect()->route('projects');  
     }
 

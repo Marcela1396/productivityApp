@@ -77,24 +77,25 @@
                                             <h4 class="title"><i class="fa fa-list"></i>  &nbsp;Definition of Done </h4>
                                         </div>
                                         <div class="content">
-                                            
+
                                             <div class="row">
-                                                <div class="col-md-10">
-                                                    <div class="form-group">
-                                                        <label> Name </label>
-                                                        <input type="text" class="form-control" placeholder="Critery Name"  name="name">
-                                                    </div>
-                                                </div>         
-                                                <div class="col-md-2">
-                                                    <label>. </label> <br>
-                                                    <a href="" class="btn btn-primary btn-fill" >
+                                                <div class="col-md-12" align="right">
+                                                    <a href="javascript:addDOD.next()" class="btn btn-primary btn-fill" >
                                                         <i class="fa fa-plus"></i>
                                                     </a>
-                                                    <a href="" class="btn btn-danger btn-fill" >
-                                                        <i class="fa fa-trash"></i>
-                                                    </a>
-                                                </div>      
-                                             </div>
+                                                </div>
+                                                <div name="div_dod" id="div_dod">
+                                                    <div class="dod-container">
+                                                        <div class="col-md-11">
+                                                            <div class="form-group">
+                                                                <label> Name </label>
+                                                                <input type="text" class="form-control" placeholder="Critery Name"  name="dod_name_0">
+                                                            </div>
+                                                        </div>  
+     
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

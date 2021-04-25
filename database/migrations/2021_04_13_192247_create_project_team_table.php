@@ -18,12 +18,14 @@ class CreateProjectTeamTable extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')
             ->on('project')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
             
             //$table->primary(['id','project_id', 'team_id',]);

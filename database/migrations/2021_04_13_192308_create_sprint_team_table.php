@@ -19,12 +19,14 @@ class CreateSprintTeamTable extends Migration
             $table->foreign('team_id')
             ->references('id')
             ->on('team')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('sprint_id');
             $table->foreign('sprint_id')
             ->references('id')
             ->on('sprint')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
 
             $table->float('sprint_team_capacity')->default(0);

@@ -19,6 +19,7 @@ class CreateUserStoryTable extends Migration
             $table->foreign('sprint_id')
             ->references('id')
             ->on('sprint')
+            ->onUpdate('cascade')
             ->onDelete('cascade');
            
             $table->string('name','100');
