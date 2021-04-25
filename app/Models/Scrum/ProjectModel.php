@@ -57,12 +57,11 @@ class ProjectModel extends Model
          Recibe como parametro el id del proyecto
         */
 
-        $members = DB::table('project as p')
-        ->join('project_team AS  pt', 'p.id', 'pt.project_id')
-        ->join('team as t' , 'pt.team_id', 't.id')
-        ->join('member_team as mt','t.id', 'mt.team_id')
-        ->join('member as m' , 'mt.member_id', 'm.id')
-        ->join('role as r', 'mt.role_id', 'r.id')
+        $members = DB::table('project as p')        
+        ->join('member_project as mp','p.id', 'mp.project_id') 
+        ->join('team as t' , 'mp.team_id', 't.id')
+        ->join('member as m' , 'mp.member_id', 'm.id')
+        ->join('role as r', 'mp.role_id', 'r.id')
         ->select('p.id as project_id','t.id as team_id', 'm.id as member_id', 'm.name as member_name', 'r.name as role_name')
         ->where('p.id', '=', $project)
         ->get();

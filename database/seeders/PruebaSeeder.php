@@ -13,20 +13,7 @@ class PruebaSeeder extends Seeder
      */
     public function run()
     {
-        
-        $teams =[
-            [
-                'name' => 'Team 1'
-            ],
-
-            [
-                'name' => 'Team 2'
-            ],
-           
-        ];
-        DB::table('team')->insert($teams);
-
-        
+       
         $roles =[
             [
                 'name' => 'Product Owner'
@@ -91,6 +78,20 @@ class PruebaSeeder extends Seeder
         ];
         DB::table('member')->insert($members);
 
+         /*
+        $teams =[
+            [
+                'name' => 'Team 1'
+            ],
+
+            [
+                'name' => 'Team 2'
+            ],
+           
+        ];
+        DB::table('team')->insert($teams);
+
+        
         $teams_members =[
             [
                 'team_id' => 1,
@@ -142,5 +143,6 @@ class PruebaSeeder extends Seeder
 
         ];
         DB::table('member_team')->insert($teams_members);
+        */
     }
 }

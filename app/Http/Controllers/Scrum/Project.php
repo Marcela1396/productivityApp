@@ -11,7 +11,10 @@ use App\Models\Scrum\TeamModel;
 use App\Models\Scrum\RoleModel;
 use App\Models\Scrum\Project_Model_Team_Model;
 use App\Models\Scrum\Member_Model_Team_Model;
+use App\Models\Scrum\Members_Model_Project_Model;
 use Illuminate\Support\Facades\DB;
+
+
 
 class Project extends Controller
 {
@@ -52,27 +55,19 @@ class Project extends Controller
             $item2->team_id = $request->input('team_id');
             $item2->save();
 
-            // Ahora bien si creo un registro en la  tabla project_team
+            // Ahora bien si creo un registro en la  tabla member_project
             if($item2){
-                /*
-                Prosigue a actualizar el rol de un miembro de un equipo
-                ya que por defecto era product owner (Tabla Member_Team)
-                Para ello requiere el team_id, member_id y el id del proyecto al cual 
-                pertenece dicho integrante
-                */
-                // Obtiene el id del proyecto, del proyecto team  y del equipo
-                $project = $item->id;
-                $project_team = $item2->id;
-                $team = $item2->team_id;
                 //Obtiene los miembros del equipo que selecciono
                 $members = TeamModel::getMembers($item2->team_id);
                 foreach($members as $m){
-                    $member = $request->input('member_'.$m->member_id);
-                    $id = Member_Model_Team_Model::getMember($project, $project_team, $team, $member);
-                    $item3 = Member_Model_Team_Model::findOrFail($id->member_team_id);
+                    $item3 = new Members_Model_Project_Model();
+                    $item3->project_id = $item->id;
+                    $item3->team_id = $item2->team_id;
+                    $item3->member_id = $request->input('member_'.$m->member_id);
                     $item3->role_id = $request->input('role_'.$m->member_id); 
                     $item3->save();
                 }
+
             }
             
          // Add DOD to Project

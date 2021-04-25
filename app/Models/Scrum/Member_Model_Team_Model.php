@@ -17,7 +17,7 @@ class Member_Model_Team_Model extends Model
     /*
     Obtener el integrante de un equipo que cumpla la condición 
     de pertenecer a un equipo y a un proyecto determinado
-    */
+    
     public static function getMember($project, $project_team, $team, $member){
         $member = DB::table('project AS p')
         ->join('project_team AS  pt', 'p.id', 'pt.project_id')
@@ -31,4 +31,5 @@ class Member_Model_Team_Model extends Model
         ->first();
         return $member;
     }
+    */
 }

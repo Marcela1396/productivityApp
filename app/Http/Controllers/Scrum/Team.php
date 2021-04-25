@@ -47,7 +47,6 @@ class Team extends Controller
                 $item2->save(); 
             }
         }
-
         return redirect()->route('teams');
     }
 
