@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Member_Model_Team_Model extends Model
+class User_Model_Team_Model extends Model
 {
     protected $table = 'user_team'; 
     protected $fillable = ['team_id', 'user_id'];

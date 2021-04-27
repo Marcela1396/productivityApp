@@ -10,7 +10,7 @@ use App\Models\Scrum\TeamModel;
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\UserStoryModel;
 use App\Models\Scrum\TaskModel;
-use App\Models\Scrum\Member_Model_Task_Model;
+use App\Models\Scrum\User_Model_Task_Model;
 
 class UserStory extends Controller
 {
@@ -25,7 +25,7 @@ class UserStory extends Controller
 
         $team_name = TeamModel::getTeam($team);
         // Aqui estaban los miembros de un equipo = projecto
-        $members = ProjectModel::getMembers($project);
+        $members = ProjectModel::getUsers($project);
         $done = ProjectModel::getDoD($project);
         return view('dashboard.stories.create', ['team' => $team_name, 'done' => $done , 'members' => $members , 'sprint' =>$sprint] );
     
@@ -53,9 +53,9 @@ class UserStory extends Controller
 
 
                 if($item2){
-                $item3 = new Member_Model_Task_Model();
+                $item3 = new User_Model_Task_Model();
                 $item3->task_id  = $item2->id;
-                $item3->member_id = $request->input('member_id_'.$d->dod_id);
+                $item3->user_id = $request->input('member_id_'.$d->dod_id);
                 $item3->save();
                 }
             }

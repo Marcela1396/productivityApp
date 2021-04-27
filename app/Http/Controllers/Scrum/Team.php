@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Scrum;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Scrum\TeamModel;
-use App\Models\Scrum\MemberModel;
+use App\Models\Scrum\UserModel;
 use App\Models\Scrum\RoleModel;
-use App\Models\Scrum\Member_Model_Team_Model;
+use App\Models\Scrum\User_Model_Team_Model;
 
 class Team extends Controller
 {
@@ -17,7 +17,7 @@ class Team extends Controller
     }
 
     public function form_create_team(){
-        $members= MemberModel::all();
+        $members= UserModel::all();
         return view('dashboard.teams.create',[ 'members' => $members]);
     }
 
@@ -29,7 +29,7 @@ class Team extends Controller
         $item->save();
     
         // Obtenga todos los miembros existentes 
-        $members = MemberModel::all();
+        $members = UserModel::all();
         // Cree una nueva coleccion
         $collection= collect();
         foreach($members as $m){
@@ -41,9 +41,9 @@ class Team extends Controller
         
         if($item){
             foreach($collection as $m){
-                $item2 = new Member_Model_Team_Model();
+                $item2 = new User_Model_Team_Model();
                 $item2->team_id = $item->id;
-                $item2->member_id = $request->input('member_id_'.$m->id);
+                $item2->user_id = $request->input('member_id_'.$m->id);
                 $item2->save(); 
             }
         }

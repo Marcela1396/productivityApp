@@ -76,7 +76,7 @@ class PruebaSeeder extends Seeder
             ],
            
         ];
-        DB::table('member')->insert($members);
+        DB::table('users')->insert($members);
 
          /*
         $teams =[

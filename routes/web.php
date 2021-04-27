@@ -7,7 +7,7 @@ use App\Http\Controllers\Scrum\Team;
 use App\Http\Controllers\Scrum\Project;
 use App\Http\Controllers\Scrum\Sprint;
 use App\Http\Controllers\Scrum\UserStory;
-use App\Http\Controllers\Scrum\Member;
+use App\Http\Controllers\Scrum\User;
 use App\Http\Controllers\Scrum\Role;
 use App\Http\Controllers\Scrum\Capacity;
 
@@ -65,12 +65,12 @@ Route::post('/teams/update/{id}', [Team::class, 'update_team'])->name('update_te
 Route::get('/teams/delete/{id}', [Team::class, 'delete_team'])->name('delete_team')->middleware('auth');
 
 // Members
-Route::get('/members', [Member::class, 'index'])->name('members')->middleware('auth');
-Route::get('/members/create', [Member::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
-Route::post('/members/create', [Member::class, 'register_member'])->name('register_member')->middleware('auth');
-Route::get('/members/update/{id}', [Member::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
-Route::post('/members/update/{id}', [Member::class, 'update_member'])->name('update_member')->middleware('auth');
-Route::get('/members/delete/{id}', [Member::class, 'delete_member'])->name('delete_member')->middleware('auth');
+Route::get('/members', [User::class, 'index'])->name('members')->middleware('auth');
+Route::get('/members/create', [User::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
+Route::post('/members/create', [User::class, 'register_member'])->name('register_member')->middleware('auth');
+Route::get('/members/update/{id}', [User::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
+Route::post('/members/update/{id}', [User::class, 'update_member'])->name('update_member')->middleware('auth');
+Route::get('/members/delete/{id}', [User::class, 'delete_member'])->name('delete_member')->middleware('auth');
 
 //Roles
 Route::get('/roles', [Role::class, 'index'])->name('roles')->middleware('auth');

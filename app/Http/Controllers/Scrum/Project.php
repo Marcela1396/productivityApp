@@ -10,8 +10,8 @@ use App\Models\Scrum\DoDModel;
 use App\Models\Scrum\TeamModel;
 use App\Models\Scrum\RoleModel;
 use App\Models\Scrum\Project_Model_Team_Model;
-use App\Models\Scrum\Member_Model_Team_Model;
-use App\Models\Scrum\Members_Model_Project_Model;
+use App\Models\Scrum\User_Model_Team_Model;
+use App\Models\Scrum\Users_Model_Project_Model;
 use Illuminate\Support\Facades\DB;
 
 
@@ -30,7 +30,7 @@ class Project extends Controller
 
     public function form_create_project2(Request $request){
         //dd($request->all());
-        $members = TeamModel::getMembers($request->input('team_id'));
+        $members = TeamModel::getUsers($request->input('team_id'));
         $roles = RoleModel::all();
         $data = $request->all();
         return view('dashboard.projects.create2', ['members'=>$members, 'roles'=>$roles, 'data'=>$data]);
@@ -55,15 +55,15 @@ class Project extends Controller
             $item2->team_id = $request->input('team_id');
             $item2->save();
 
-            // Ahora bien si creo un registro en la  tabla member_project
+            // Ahora bien si creo un registro en la  tabla user_project
             if($item2){
                 //Obtiene los miembros del equipo que selecciono
-                $members = TeamModel::getMembers($item2->team_id);
+                $members = TeamModel::getUsers($item2->team_id);
                 foreach($members as $m){
-                    $item3 = new Members_Model_Project_Model();
+                    $item3 = new Users_Model_Project_Model();
                     $item3->project_id = $item->id;
                     $item3->team_id = $item2->team_id;
-                    $item3->member_id = $request->input('member_'.$m->member_id);
+                    $item3->user_id = $request->input('member_'.$m->member_id);
                     $item3->role_id = $request->input('role_'.$m->member_id); 
                     $item3->save();
                 }

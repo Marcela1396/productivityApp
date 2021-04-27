@@ -58,8 +58,17 @@
                                                         <label><i class="fa fa-user"></i> Speciality</label>
                                                         <input type="text" class="form-control" placeholder="Speciality"  name="member_speciality" value="{{$member->speciality}}">
                                                     </div>
+                                                </div>       
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label><i class="fa fa-key"></i> Password </label>                                                        
+                                                        <input type="password" class="form-control" placeholder="Password" name="member_password" required>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-success btn-fill pull-right" ><i class="fa fa-save"></i> Save</button>

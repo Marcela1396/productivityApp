@@ -5,9 +5,9 @@ namespace App\Models\Scrum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MemberModel extends Model
+class UserModel extends Model
 {
-    protected $table = 'member'; 
+    protected $table = 'users'; 
 
     
 

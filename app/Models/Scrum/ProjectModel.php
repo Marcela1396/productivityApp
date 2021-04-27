@@ -51,21 +51,21 @@ class ProjectModel extends Model
         return $sprints;
     }
 
-    public static function getMembers($project){
+    public static function getUsers($project){
         /* 
         Obtiene los miembros perteneciente a un equipo que ha sido asignado a un proyecto
          Recibe como parametro el id del proyecto
         */
 
-        $members = DB::table('project as p')        
-        ->join('member_project as mp','p.id', 'mp.project_id') 
+        $users = DB::table('project as p')        
+        ->join('user_project as mp','p.id', 'mp.project_id') 
         ->join('team as t' , 'mp.team_id', 't.id')
-        ->join('member as m' , 'mp.member_id', 'm.id')
+        ->join('users as m' , 'mp.user_id', 'm.id')
         ->join('role as r', 'mp.role_id', 'r.id')
         ->select('p.id as project_id','t.id as team_id', 'm.id as member_id', 'm.name as member_name', 'r.name as role_name')
         ->where('p.id', '=', $project)
         ->get();
-        return $members;
+        return $users;
     }
 
     public static function getDoD($project){
