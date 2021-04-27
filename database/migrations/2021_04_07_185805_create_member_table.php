@@ -13,15 +13,15 @@ class CreateMemberTable extends Migration
      */
     public function up()
     {
-        Schema::create('member', function (Blueprint $table) {
-            $table->id();            
-            $table->string('id_number','50');
-            $table->string('name','100');
-            $table->string('email','50')->nullable();
-            $table->string('speciality','100')->nullable();   
-            $table->timestamps();
+        // Schema::create('member', function (Blueprint $table) {
+        //     $table->id();            
+        //     $table->string('id_number','50');
+        //     $table->string('name','100');
+        //     $table->string('email','50')->nullable();
+        //     $table->string('speciality','100')->nullable();   
+        //     $table->timestamps();
 
-        });
+        // });
     }
 
     /**

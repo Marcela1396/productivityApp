@@ -13,7 +13,7 @@ class CreateMemberProject extends Migration
      */
     public function up()
     {
-        Schema::create('member_project', function (Blueprint $table) {
+        Schema::create('user_project', function (Blueprint $table) {
             
             $table->id();
 
@@ -31,10 +31,10 @@ class CreateMemberProject extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('member')
+            ->on('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 

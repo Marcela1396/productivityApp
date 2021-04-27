@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class Member_Model_Team_Model extends Model
 {
-    protected $table = 'member_team'; 
-    protected $fillable = ['team_id', 'member_id'];
+    protected $table = 'user_team'; 
+    protected $fillable = ['team_id', 'user_id'];
+   
 
     /*
     Funciones estaticas

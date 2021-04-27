@@ -45,11 +45,11 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         /* Inovoca a la vistas que van a enlazar a la autenticación" */
-        Fortify::loginView(fn () => view('auth.login'));
+        Fortify::loginView(function () { return view('auth.login');});
 
         
         /* Invoca a la vista que van a generar el formulario de registro" */
-        Fortify::registerView(fn () => view('auth.register'));
+        Fortify::registerView(function () { return view('auth.register');});
 
         /* Invoca a la vista que van a generar el link de recuperacion de contraseña " */
         Fortify::requestPasswordResetLinkView(function () {
@@ -62,7 +62,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.reset-password', ['request' => $request]);
         });
         
-        Fortify::verifyEmailView(fn () => view('auth.verify-email'));
+        Fortify::verifyEmailView(function () { return view('auth.verify-email');});
         Fortify::confirmPasswordView(function () {
             return view('auth.confirm-password');
         });

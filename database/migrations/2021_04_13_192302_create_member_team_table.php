@@ -13,7 +13,7 @@ class CreateMemberTeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_team', function (Blueprint $table) {
+        Schema::create('user_team', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
@@ -22,10 +22,10 @@ class CreateMemberTeamTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('member')
+            ->on('users')
             ->onUpdate('cascade')
             ->onDelete('cascade');
 

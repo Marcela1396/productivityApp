@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
+use App\Models\Scrum\RoleModel;
 class Data_Seeder extends Seeder
 {
     /**
@@ -13,29 +16,36 @@ class Data_Seeder extends Seeder
      */
     public function run()
     {
-        /*
+        
         $users = [
             [
                 'name'=> 'Marcela Guerrero',
                 'email' =>'marce1396@gmai.com',
-                'password'=> '$2y$10$XYBAL0r31dN/xVOOtfkSYO4izzoLTU/n1nCq8rvu3VjYk8bFLDoCC',
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
+                'speciality' => 'Systems Analyst', 
+                'id_number'=>'1234'
             ],
             [
                 'name'=> 'Maria Ordoñez',
                 'email' =>'maria@gmai.com',
-                'password'=> '$2y$10$XYBAL0r31dN/xVOOtfkSYO4izzoLTU/n1nCq8rvu3VjYk8bFLDoCC',
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
+                'speciality' => 'Systems Analyst', 
+
+                'id_number'=>'2345'
             ],
 
             [
-                'name'=> 'Juan Lopez',
-                'email' =>'juab@gmai.com',
-                'password'=> '$2y$10$XYBAL0r31dN/xVOOtfkSYO4izzoLTU/n1nCq8rvu3VjYk8bFLDoCC',
+                'name'=> 'Daniel Jojoa',
+                'email' =>'daniel@gmai.com',
+                'speciality' => 'Systems Analyst', 
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
+                'id_number'=>'3456'
                 
             ],
         ];
 
         DB::table('users')->insert($users);
-        */
+        
         $projects =[
             [
                 'name' => 'Sapiens Nariño University',
@@ -121,7 +131,9 @@ class Data_Seeder extends Seeder
                 'id_number'=> '1085329741',
                 'name' => 'Marcela Guerrero',
                 'email'=>'marce123@gmail.com',
-                'speciality' => 'Systems Analyst',  
+                'speciality' => 'Systems Analyst', 
+                'password'=> sha1('asdf'),
+ 
             ],
 
             [
@@ -129,6 +141,8 @@ class Data_Seeder extends Seeder
                 'name' => 'Armando Salazar',
                 'email'=>'armando@gmail.com',
                 'speciality' => 'System Engineer',
+                'password'=> sha1('asdf'),
+
             ],
 
             [
@@ -136,6 +150,8 @@ class Data_Seeder extends Seeder
                 'name' => 'Gerson Lazaro Carillo',
                 'email'=>'gerson@gmail.com',
                 'speciality' => 'Backend Developer',
+                'password'=> sha1('asdf'),
+
             ],
 
             [
@@ -143,6 +159,8 @@ class Data_Seeder extends Seeder
                 'name' => 'Leonora Madrigal',
                 'email'=>'leonora@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
+                'password'=> sha1('asdf'),
+
             ],
 
             [
@@ -150,6 +168,9 @@ class Data_Seeder extends Seeder
                 'name' => 'Lucia Fernandez',
                 'email'=>'lucia@gmail.com',
                 'speciality' => 'Backend Developer',
+                'password'=> sha1('asdf'),
+
+
                 
             ],
 
@@ -158,110 +179,112 @@ class Data_Seeder extends Seeder
                 'name' => 'Juanito Gomez',
                 'email'=>'juanito@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
+                'password'=> sha1('asdf'),
+
             ],
            
         ];
-        DB::table('member')->insert($members);
+        DB::table('users')->insert($members);
 
         $teams_members =[
             [
                 'team_id' => 1,
-                'member_id' => 1, 
-                'role_id'=> 1,
+                'user_id' => 1, 
+                //'role_id'=> 1,
             ],
 
             [
                 'team_id' => 1,
-                'member_id' => 2,
-                'role_id'=> 2, 
+                'user_id' => 2,
+                //'role_id'=> 2, 
             ],
 
             [
                 'team_id' => 1,
-                'member_id' => 3, 
-                'role_id'=> 3,
+                'user_id' => 3, 
+                //'role_id'=> 3,
             ],
 
             [
                 'team_id' => 1,
-                'member_id' => 4, 
-                'role_id'=> 3,
+                'user_id' => 4, 
+                //'role_id'=> 3,
             ],
 
             [
                 'team_id' => 2,
-                'member_id' => 1, 
-                'role_id'=> 1,
+                'user_id' => 1, 
+                //'role_id'=> 1,
             ],
 
             [
                 'team_id' => 2,
-                'member_id' => 2, 
-                'role_id'=> 2,
+                'user_id' => 2, 
+                //'role_id'=> 2,
             ],
 
             [
                 'team_id' => 2,
-                'member_id' => 5, 
-                'role_id'=> 3,
+                'user_id' => 5, 
+                //'role_id'=> 3,
             ],
 
             [
                 'team_id' => 2,
-                'member_id' => 6, 
-                'role_id'=> 3,
+                'user_id' => 6, 
+                //'role_id'=> 3,
             ],
 
            
         ];
-        DB::table('member_team')->insert($teams_members);
+        DB::table('user_team')->insert($teams_members);
 
         /*
         $members_role =[
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'role_id'=> 1,
                 'team_id'=> 1,
             ],
 
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'role_id'=> 2,
                 'team_id'=> 1,
             ],
 
             [
-                'member_id' => 3,
+                'user_id' => 3,
                 'role_id'=> 3,
                 'team_id'=> 1,
             ],
 
             [
-                'member_id' => 4,
+                'user_id' => 4,
                 'role_id'=> 3,
                 'team_id'=> 1,
             ],
 
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'role_id'=> 1,
                 'team_id'=> 2,
             ],
 
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'role_id'=> 2,
                 'team_id'=> 2,
             ],
 
             [
-                'member_id' => 5,
+                'user_id' => 5,
                 'role_id'=> 3,
                 'team_id'=> 2,
             ],
 
             [
-                'member_id' => 6,
+                'user_id' => 6,
                 'role_id'=> 3,
                 'team_id'=> 2,
             ],
@@ -347,25 +370,25 @@ class Data_Seeder extends Seeder
             // PROYECTO A - SPRINT 1
             [
                 'sprint_id' => 1,
-                'member_id' => 1, 
+                'user_id' => 1, 
                 'assigned_hours' => 10
             ],
 
             [
                 'sprint_id' => 1,
-                'member_id' => 2, 
+                'user_id' => 2, 
                 'assigned_hours' => 12
             ],
 
             [
                 'sprint_id' => 1,
-                'member_id' => 3, 
+                'user_id' => 3, 
                 'assigned_hours' => 20
             ],
 
             [
                 'sprint_id' => 1,
-                'member_id' => 4, 
+                'user_id' => 4, 
                 'assigned_hours' => 15
             ],
 
@@ -373,49 +396,49 @@ class Data_Seeder extends Seeder
 
             [
                 'sprint_id' => 2,
-                'member_id' => 1, 
+                'user_id' => 1, 
                 'assigned_hours' => 12
             ],
             [
                 'sprint_id' => 2,
-                'member_id' => 2, 
+                'user_id' => 2, 
                 'assigned_hours' => 5
             ],
             [
                 'sprint_id' => 2,
-                'member_id' => 3, 
+                'user_id' => 3, 
                 'assigned_hours' => 3
             ],
             [
                 'sprint_id' => 2,
-                'member_id' => 4, 
+                'user_id' => 4, 
                 'assigned_hours' => 20
             ],
 
             // PROYECTO A - SPRINT 3
             [
                 'sprint_id' => 3,
-                'member_id' => 1, 
+                'user_id' => 1, 
                 'assigned_hours' => 7
             ],
             [
                 'sprint_id' => 3,
-                'member_id' => 2, 
+                'user_id' => 2, 
                 'assigned_hours' => 15
             ],
             [
                 'sprint_id' => 3,
-                'member_id' => 5, 
+                'user_id' => 5, 
                 'assigned_hours' => 30
             ],
             [
                 'sprint_id' => 3,
-                'member_id' => 6, 
+                'user_id' => 6, 
                 'assigned_hours' => 20
             ],
            
         ];
-        DB::table('member_sprint')->insert($sprint_members);
+        DB::table('user_sprint')->insert($sprint_members);
         
         
         $stories= [
@@ -538,95 +561,124 @@ class Data_Seeder extends Seeder
         ];
         DB::table('task')->insert($tasks);
 
-        $member_task =[
+        $user_task =[
              // TEAM 1 PROYECTO 1
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 1
             ],
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'task_id' => 2
             ],
             [
-                'member_id' => 3,
+                'user_id' => 3,
                 'task_id' => 3
             ],
             [
-                'member_id' => 4,
+                'user_id' => 4,
                 'task_id' => 4
             ],
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 5
             ],
             // Otra Historia Sprint 1
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 6
             ],
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 7
             ],
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'task_id' => 8
             ],
             [
-                'member_id' => 3,
+                'user_id' => 3,
                 'task_id' => 9
             ],
             [
-                'member_id' => 4,
+                'user_id' => 4,
                 'task_id' => 10
             ],
 
             // Sprint 2 H1
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 11
             ],[
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 12
             ],
             [
-                'member_id' => 3,
+                'user_id' => 3,
                 'task_id' => 13
             ],
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'task_id' => 14
             ],
             [
-                'member_id' => 4,
+                'user_id' => 4,
                 'task_id' => 15
             ],
 
             // TEAM 2 PROYECTO 2
             [
-                'member_id' => 1,
+                'user_id' => 1,
                 'task_id' => 16
             ],
             [
-                'member_id' => 2,
+                'user_id' => 2,
                 'task_id' => 17
             ],
             [
-                'member_id' => 6,
+                'user_id' => 6,
                 'task_id' => 18
             ],
             [
-                'member_id' => 5,
+                'user_id' => 5,
                 'task_id' => 19
             ],
             [
-                'member_id' => 5,
+                'user_id' => 5,
                 'task_id' => 20
             ],
         ];
 
-        DB::table('member_task')->insert($member_task);
+        DB::table('user_task')->insert($user_task);
+        $admin = RoleModel::create(['name' => 'Product owner']);
+        $admin = RoleModel::create(['name' => 'Project Manager']);
+        $admin = RoleModel::create(['name' => 'Invited']);
+
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+        // create permissions
+        Permission::create(['name' => 'edit articles']);
+        Permission::create(['name' => 'delete articles']);
+        Permission::create(['name' => 'publish articles']);
+        Permission::create(['name' => 'unpublish articles']);
+
+        // create roles and assign created permissions
+
+        // this can be done as separate statements
+        $role = Role::create(['name' => 'Product Owner']);
+        $role = Role::create(['name' => 'Product Manager']);
+        $role = Role::create(['name' => 'Invited']);
+        
+
+        
+
+        $role = Role::create(['name' => 'super-admin']);
+        $role->givePermissionTo(Permission::all());
+
+        $user=User::where('id_number','3456')->get()->first();
+        $user->assignRole('super-admin');
+
+
 
         
     }

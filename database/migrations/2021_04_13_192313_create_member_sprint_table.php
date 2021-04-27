@@ -13,13 +13,12 @@ class CreateMemberSprintTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_sprint', function (Blueprint $table) {
+        Schema::create('user_sprint', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('member')
-            ->onUpdate('cascade')
+            ->on('users')
             ->onDelete('cascade');
             
             $table->unsignedBigInteger('sprint_id');

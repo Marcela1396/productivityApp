@@ -13,8 +13,7 @@ class Delete_Seeder extends Seeder
      */
     public function run()
     {
-        DB::table('ddone')->truncate();
-        DB::table('member')->truncate();
+        DB::table('users')->truncate();
         DB::table('role')->truncate();
         DB::table('team')->truncate();
         DB::table('sprint')->truncate();

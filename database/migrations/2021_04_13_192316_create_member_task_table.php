@@ -13,13 +13,12 @@ class CreateMemberTaskTable extends Migration
      */
     public function up()
     {
-        Schema::create('member_task', function (Blueprint $table) {
+        Schema::create('user_task', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('member_id');
-            $table->foreign('member_id')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
             ->references('id')
-            ->on('member')
-            ->onUpdate('cascade')
+            ->on('users')
             ->onDelete('cascade');
 
             $table->unsignedBigInteger('task_id');
@@ -42,6 +41,6 @@ class CreateMemberTaskTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('member_task');
+        Schema::dropIfExists('user_task');
     }
 }
