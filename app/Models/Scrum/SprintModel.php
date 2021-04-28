@@ -68,4 +68,22 @@ class SprintModel extends Model
         ->first();
         return $team;    
     }
+
+    public static function countWeeks($id){
+        /*
+        Obtiene la cantidad de semanas que se llevan acumuladas hasta el momento en un  proyecto
+        por los sprint que tiene 
+        Recibe como parametro el id del proyecto
+        */
+        $weeks = DB::table('project AS p')
+        ->join('sprint AS  s', 'p.id', 's.project_id')
+        ->select(DB::raw('SUM(s.duration) as duration'))
+        ->where('p.id', '=', $id)
+        ->first();
+        return $weeks;
+        
+    }
+
+
+    
 }

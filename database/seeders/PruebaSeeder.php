@@ -30,7 +30,7 @@ class PruebaSeeder extends Seeder
         ];
         DB::table('role')->insert($roles);
 
-       
+       /*
         $members =[
             [
                 'id_number'=> '1085329741',

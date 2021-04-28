@@ -14,14 +14,31 @@ class Sprint extends Controller
 {
     public function index($id){
         //$project = ProjectModel::findOrFail($id);
-        //$quantity = $project->sprint_quantity;
         $sprints = ProjectModel::getSprints($id);
-        return view('dashboard.sprints.list',['sprints' => $sprints, 'project' => $id]);
+        $record = (ProjectModel::detailProject($id)); // Obtiene los datos de un proyecto: duracion, cantidad de sprint
+        $quantity_actual =  ProjectModel::countSprint($id); // Obtiene la cantidad de sprint que tiene el proyecto actualmente
+        $result = SprintModel::countWeeks($id); // Obtiene la cantidad de semanas acumuladas que tiene un proyecto
+        $weeks_sprint = 0;
+        if($result->duration != null){
+            $weeks_sprint = $result->duration;
+        }
+        //
+        return view('dashboard.sprints.list',
+                    [
+                    'sprints' => $sprints, 
+                    'project' => $id, 
+                    'record' =>$record,
+                    'quantity_actual' =>$quantity_actual,
+                    'weeks_sprint'=> $weeks_sprint
+                    ]);
     }
 
     public function form_create_sprint($project){
         $members = ProjectModel::getUsers($project);
-        return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members]);
+        $weeks_project = (ProjectModel::detailProject($project))->duration;
+        $quantity_sprint_project = (ProjectModel::detailProject($project))->sprint_quantity;
+        $record = round($weeks_project/$quantity_sprint_project,2);
+        return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members, 'record' =>$record]);
     }
 
     public function register_sprint(Request $request){

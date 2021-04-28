@@ -38,6 +38,7 @@
                                 <th scope="col"> Name</th>
                                 <th scope="col"> Start Date </th>
                                 <th scope="col"> End Date </th>
+                                <th scope="col"> Duracion (Weeks) </th>
                                 <th scope="col"> Sprint Quantity</th>
                                 <th scope="col"> Team </th>
                                 <th scope="col"> State</th>
@@ -54,6 +55,7 @@
                                     <td> {{ $it->name }} </td>
                                     <td> {{ $it->start_date }} </td>
                                     <td> {{ $it->end_date }} </td>
+                                    <td> {{ $it->duration }} </td>
                                     <td> {{ $it->sprint_quantity }}</td>
                                     <td> {{ $it->team_name }}</td>
                                     @if($it->state == 'C')

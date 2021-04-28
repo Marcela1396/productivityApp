@@ -35,7 +35,7 @@
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clipboard"></i> Name</label>
                                                         <input type="hidden" value="{{$project}}"  name="project">
-                                                        <input type="text" class="form-control" placeholder="Sprint Name" name="sprint_name" >
+                                                        <input type="text" class="form-control" placeholder="Sprint Name" name="sprint_name" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -50,13 +50,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-calendar"></i> Start Date </label>
-                                                        <input type="date" class="form-control" placeholder="Start Date"  name="sprint_start_date">
+                                                        <input type="date" class="form-control" placeholder="Start Date"  name="sprint_start_date" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clock-o"></i> Duration on Weeks </label>
-                                                        <input type="number" class="form-control" placeholder="Duration"  name="sprint_duration">
+                                                        <input disabled type="number" class="form-control" placeholder="Duration"  name="sprint_duration" value={{$record}} required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                                         <div class="form-group">
                                                                           
                                                                             <input type="hidden" name="{{'member_'.$m->member_id}}"  value="{{$m->member_id}}">
-                                                                            <input type="text" class="form-control" placeholder="Hours"  name="{{'assigned_hours_'.$m->member_id}}">
+                                                                            <input type="number" min='1' class="form-control" placeholder="Hours"  name="{{'assigned_hours_'.$m->member_id}}" required>
                                                                         </div>
                                                                     </td>
                                                                 </tr>

@@ -49,19 +49,19 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-calendar"></i> Start Date </label>
-                                                        <input type="date" class="form-control" placeholder="Start Date"  name="project_start_date">
+                                                        <input type="date" class="form-control" placeholder="Start Date"  name="project_start_date" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clock-o"></i> Duration on Weeks </label>
-                                                        <input type="number" class="form-control" placeholder="Duration"  name="project_duration">
+                                                        <input type="number" class="form-control" placeholder="Duration"  name="project_duration" min=1 required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-sort-amount-desc"></i> Sprint Quantity </label> 
-                                                        <input type="number" class="form-control" placeholder="Sprint Quantity"  name="sprint_quantity">
+                                                        <input type="number" class="form-control" placeholder="Sprint Quantity"  name="sprint_quantity" min=1 required>
                                                     </div>
                                                 </div>
 
