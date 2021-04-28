@@ -39,7 +39,7 @@ class User extends Controller
         $item->name = $request->input('member_name');
         $item->email = $request->input('member_email');
         $item->speciality = $request->input('member_speciality');
-        $item->password = $request->input('member_password');
+        //$item->password = $request->input('member_password');
         $item->save();
         return redirect()->route('members');
     }

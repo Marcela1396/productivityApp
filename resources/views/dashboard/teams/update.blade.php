@@ -44,22 +44,50 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-success btn-fill pull-right" ><i class="fa fa-save"></i> Save</button>
-                                                    <div class="clearfix"></div>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="header">
+                                                <h4 class="title"><i class="fa fa-users"></i>  &nbsp; Add Members to Team</h4>
+                                            </div>
+                                            <div class="content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        @foreach($selected as $m)
+                                                            <div class="checkbox">
+                                                                <input id="{{'member_id_'.$m->id}}" type="checkbox" value="{{$m->id}}" name="{{'member_id_'.$m->id}}" checked  >
+                                                                <label for="{{'member_id_'.$m->id}}"> {{ $m->name }}</label>
+                                                            </div>
+                                                        @endforeach 
+
+                                                        @foreach($unselected as $m)
+                                                            <div class="checkbox">
+                                                                <input id="{{'member_id_'.$m->id}}" type="checkbox" value="{{$m->id}}" name="{{'member_id_'.$m->id}}" >
+                                                                <label for="{{'member_id_'.$m->id}}"> {{ $m->name }}</label>
+                                                            </div>
+                                                        @endforeach 
+            
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-success btn-fill pull-right" ><i class="fa fa-save"></i> Save</button>
+                                                        <div class="clearfix"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
-                        </div>
-                    </div>  
-                </div>
+                         </div>  
+                    </div>
+                 </div>
             </div>
-        </div>
         </form>
     </div>
 </div>
