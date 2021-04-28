@@ -56,7 +56,8 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label><i class="fa fa-clock-o"></i> Duration on Weeks </label>
-                                                        <input disabled type="number" class="form-control" placeholder="Duration"  name="sprint_duration" value={{$record}} required>
+                                                        <input disabled type="number" class="form-control" placeholder="Duration"  name="sprint_duration" value={{$size}} required>
+                                                        <input type="hidden" class="form-control" placeholder="Duration"  name="sprint_duration" value={{$size}} required>
                                                     </div>
                                                 </div>
                                             </div>

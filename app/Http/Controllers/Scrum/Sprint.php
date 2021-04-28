@@ -17,28 +17,29 @@ class Sprint extends Controller
         $sprints = ProjectModel::getSprints($id);
         $record = (ProjectModel::detailProject($id)); // Obtiene los datos de un proyecto: duracion, cantidad de sprint
         $quantity_actual =  ProjectModel::countSprint($id); // Obtiene la cantidad de sprint que tiene el proyecto actualmente
+        
+        /*
         $result = SprintModel::countWeeks($id); // Obtiene la cantidad de semanas acumuladas que tiene un proyecto
         $weeks_sprint = 0;
         if($result->duration != null){
             $weeks_sprint = $result->duration;
         }
-        //
+        */
         return view('dashboard.sprints.list',
                     [
                     'sprints' => $sprints, 
                     'project' => $id, 
                     'record' =>$record,
-                    'quantity_actual' =>$quantity_actual,
-                    'weeks_sprint'=> $weeks_sprint
+                    'quantity_actual' =>$quantity_actual
                     ]);
     }
 
     public function form_create_sprint($project){
         $members = ProjectModel::getUsers($project);
-        $weeks_project = (ProjectModel::detailProject($project))->duration;
-        $quantity_sprint_project = (ProjectModel::detailProject($project))->sprint_quantity;
-        $record = round($weeks_project/$quantity_sprint_project,2);
-        return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members, 'record' =>$record]);
+        $weeks_project = (ProjectModel::detailProject($project))->duration; // Obtiene la duracion del proyecto
+        $quantity_sprint_project = (ProjectModel::detailProject($project))->sprint_quantity; // Obtiene la cantidad de sprint del proyecto
+        $size = round($weeks_project/$quantity_sprint_project,2); // Obtiene el tamaño del sprint de acuerdo con la duracion y la cantidad de sprints
+        return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members, 'size' =>$size]);
     }
 
     public function register_sprint(Request $request){

@@ -26,15 +26,9 @@
                                 <h4> Sprint Information </h4>
                             </div>
                             @if(($quantity_actual < $record->sprint_quantity) )
-                                @if(($weeks_sprint >= $record->duration))
-                                    <div class="col-md-12" align="right">
-                                        <a  disabled class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}" > <i class="fa fa-plus-circle fa-lg" > </i> </a>
-                                    </div>
-                                @else
-                                    <div class="col-md-12" align="right">
-                                        <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}"> <i class="fa fa-plus-circle fa-lg"> </i> </a>
-                                    </div>
-                                @endif
+                                <div class="col-md-12" align="right">
+                                    <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}"> <i class="fa fa-plus-circle fa-lg"> </i> </a>
+                                </div>
                             @else
                                 <div class="col-md-12" align="right">
                                     <a  disabled class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}" > <i class="fa fa-plus-circle fa-lg" > </i> </a>
