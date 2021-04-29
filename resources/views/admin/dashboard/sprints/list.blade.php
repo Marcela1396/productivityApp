@@ -96,7 +96,12 @@
                     </div>
                 </div>
             </div>
+            <div align="center">
+                <div class="col-md-12">
+                    <a class="btn btn-primary btn-fill" href="{{route('projects')}}"> <i class="fa fa-undo fa-lg"></i> </a>
+                </div>
+            </div>
         </div>
-    </div>
+</div>
 
 @stop

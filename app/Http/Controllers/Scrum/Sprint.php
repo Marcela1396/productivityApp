@@ -26,12 +26,12 @@ class Sprint extends Controller
         }
         */
         return view('admin.dashboard.sprints.list',
-                    [
-                    'sprints' => $sprints, 
-                    'project' => $id, 
-                    'record' =>$record,
-                    'quantity_actual' =>$quantity_actual
-                    ]);
+                [
+                'sprints' => $sprints, 
+                'project' => $id, 
+                'record' =>$record,
+                'quantity_actual' =>$quantity_actual
+                ]);
     }
 
     public function form_create_sprint($project){

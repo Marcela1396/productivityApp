@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ProjectModel extends Model
 {
     protected $table = 'project'; 
+    protected $fillable = ['name', 'description','start_date', 'end_date', 'duration', 'sprint_quantity', 'state', 'project_capacity'];
 
     // Project has many sprints
     public function sprints()    {

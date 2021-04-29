@@ -75,24 +75,23 @@ class UserStory extends Controller
 
         $sprint = SprintModel::findOrFail($sprint_id);
         
-
         if($sprint->state == 'C'){
             //dd($sprint->state);
             $item2 = SprintModel::findOrFail($sprint_id);
             $item2->state = 'S';
             $item2->save();   
         }
+
         
-        /*
-        $project = ProjectModel::findOrFail($project_id);
-        //dd($project);
+        $project = ProjectModel::find($project_id);
+        ///$modelo->atributo =  $params['atrubuto']; $modelo->save();
+        // $user->fill($params);$user->save();
         if($project->state == 'C'){
             $item3 = ProjectModel::findOrFail($project_id);
             $item3->state = 'S';
             $item3->save();
         }
-        */
-
+        
         return redirect()->route('stories', $sprint_id );   
     }
 }
