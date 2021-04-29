@@ -18,7 +18,8 @@ class UserStory extends Controller
      
         $stories = SprintModel::getStories($id);
         $team = SprintModel::getTeam($id);
-        return view('dashboard.stories.list',['stories' => $stories, 'team' => $team] );
+        
+        return view('admin.dashboard.stories.list',['stories' => $stories, 'team' => $team] );
     }
 
     public function form_create_story($team, $project, $sprint){
@@ -27,7 +28,7 @@ class UserStory extends Controller
         // Aqui estaban los miembros de un equipo = projecto
         $members = ProjectModel::getUsers($project);
         $done = ProjectModel::getDoD($project);
-        return view('dashboard.stories.create', ['team' => $team_name, 'done' => $done , 'members' => $members , 'sprint' =>$sprint] );
+        return view('admin.dashboard.stories.create', ['team' => $team_name, 'done' => $done , 'members' => $members , 'sprint' =>$sprint] );
     
     }
 
@@ -61,5 +62,37 @@ class UserStory extends Controller
             }
         }
         return redirect()->route('stories', $item->sprint_id);   
+    }
+
+    public function start_story($id){
+        $story = UserStoryModel::findOrFail($id);
+        $story->state ='S';
+        $story->save();
+
+        $item = UserStoryModel::getDetails($id);
+        $sprint_id = $item->sprint_id;
+        $project_id = $item->project_id;
+
+        $sprint = SprintModel::findOrFail($sprint_id);
+        
+
+        if($sprint->state == 'C'){
+            //dd($sprint->state);
+            $item2 = SprintModel::findOrFail($sprint_id);
+            $item2->state = 'S';
+            $item2->save();   
+        }
+        
+        /*
+        $project = ProjectModel::findOrFail($project_id);
+        //dd($project);
+        if($project->state == 'C'){
+            $item3 = ProjectModel::findOrFail($project_id);
+            $item3->state = 'S';
+            $item3->save();
+        }
+        */
+
+        return redirect()->route('stories', $sprint_id );   
     }
 }

@@ -10,11 +10,11 @@ class User extends Controller
 {
     public function index(){
         $members= UserModel::all();
-        return view('dashboard.members.list', ['members' =>$members]);
+        return view('admin.dashboard.members.list', ['members' =>$members]);
     }
 
     public function form_create_member(){
-        return view('dashboard.members.create');
+        return view('admin.dashboard.members.create');
     }
 
     public function register_member(Request $request){
@@ -30,7 +30,7 @@ class User extends Controller
 
     public function form_update_member($id){
         $member = UserModel::findOrFail($id);
-        return view('dashboard.members.update', ['member' => $member]);
+        return view('admin.dashboard.members.update', ['member' => $member]);
     }
 
     public function update_member(Request $request, $id){

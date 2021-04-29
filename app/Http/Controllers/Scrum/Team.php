@@ -13,12 +13,12 @@ class Team extends Controller
 {
     public function index(){
         $teams = TeamModel::getTeams();
-        return view('dashboard.teams.list', ['team' =>$teams]);
+        return view('admin.dashboard.teams.list', ['team' =>$teams]);
     }
 
     public function form_create_team(){
         $members= UserModel::all();
-        return view('dashboard.teams.create',[ 'members' => $members]);
+        return view('admin.dashboard.teams.create',[ 'members' => $members]);
     }
 
     public function register_team(Request $request){
@@ -74,7 +74,7 @@ class Team extends Controller
                 }  
             }
         }
-        return view('dashboard.teams.update', ['team' => $team, 'members' => $members, 'selected' =>$selected, 'unselected' =>$unselected]);
+        return view('admin.dashboard.teams.update', ['team' => $team, 'members' => $members, 'selected' =>$selected, 'unselected' =>$unselected]);
     }
 
     public function update_team(Request $request, $id){

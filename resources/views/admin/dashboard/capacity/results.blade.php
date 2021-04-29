@@ -1,4 +1,4 @@
-@extends('dashboard.home')
+@extends('admin.dashboard.home')
 
 @section('dashboard') 
 

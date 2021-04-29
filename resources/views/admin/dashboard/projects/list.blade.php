@@ -1,4 +1,4 @@
-@extends('dashboard.home')
+@extends('admin.dashboard.home')
 
 @section('dashboard') 
 
@@ -64,8 +64,8 @@
                                             @csrf
                                                 <td>
                                                     <input type="hidden" id='project' name='project_id' value="{{$it->id}}">
-                                                    <button type="submit" class="btn btn-round btn-fill btn-warning"><i class="fa fa-edit fa-lg"></i> </button>
-                                                    <a class="btn btn-round btn-fill btn-info" > <i class="fa fa-eye fa-lg"> </i> </a>
+                                                    <button type="submit" class="btn btn-round btn-fill btn-warning" disabled><i class="fa fa-edit fa-lg"></i> </button>
+                                                    <a class="btn btn-round btn-fill btn-info" disabled> <i class="fa fa-eye fa-lg" > </i> </a>
                                                     <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                                 </td>
                                         </form>

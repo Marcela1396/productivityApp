@@ -20,12 +20,12 @@ class Project extends Controller
 {
     public function index(){
         $projects= ProjectModel::getProjects();
-        return view('dashboard.projects.list', ['projects' => $projects]);
+        return view('admin.dashboard.projects.list', ['projects' => $projects]);
     }
 
     public function form_create_project(){
         $teams = TeamModel::getTeams();
-        return view('dashboard.projects.create', ['team' =>$teams]);
+        return view('admin.dashboard.projects.create', ['team' =>$teams]);
     }
 
     public function form_create_project2(Request $request){
@@ -33,7 +33,7 @@ class Project extends Controller
         $members = TeamModel::getUsers($request->input('team_id'));
         $roles = RoleModel::all();
         $data = $request->all();
-        return view('dashboard.projects.create2', ['members'=>$members, 'roles'=>$roles, 'data'=>$data]);
+        return view('admin.dashboard.projects.create2', ['members'=>$members, 'roles'=>$roles, 'data'=>$data]);
     }
 
     public function register_project(Request $request){
@@ -89,30 +89,5 @@ class Project extends Controller
         return redirect()->route('projects');  
     }
 
-    /*
-    public function allocate_team(){
-        $projects = ProjectModel::all();  
-        $teams = TeamModel::all(); 
-        return view('dashboard.projects.allocateTeam',['teams' => $teams, 'projects' => $projects] );
-    }
-
-    public function save_team(Request $request){
-        $item = new Project_Model_Team_Model();
-        $item->team_id = $request->input('team_id');
-        $item->project_id = $request->input('project_id');
-        $item->save();
-
-        $project_id = $request->input('project_id');
-
-        $project = ProjectModel::find($project_id);
-        $project->state = $request->input('state');
-        $project->save();
-
-        return redirect()->route('allocate_team');
-    }
-
-    public function start_project(){
-        
-    }
-    */
+    
 }

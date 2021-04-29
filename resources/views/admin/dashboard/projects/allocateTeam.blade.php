@@ -1,5 +1,5 @@
 
-@extends('dashboard.home')
+@extends('admin.dashboard.home')
 @section('dashboard') 
 
 <div class="main-panel">

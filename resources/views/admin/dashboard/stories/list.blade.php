@@ -1,4 +1,4 @@
-@extends('dashboard.home')
+@extends('admin.dashboard.home')
 
 @section('dashboard')
 
@@ -55,26 +55,26 @@
                                             @if($s->story_state == 'C')
                                                 <td> To Do </td>
                                                 <td>
-                                                    <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}"> <i class="fa fa-edit fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}"> <i class="fa fa-eye fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-danger" href=""> <i class="fa fa-trash fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href=""> <i class="fa fa-play fa-lg"></i> </a>
+                                                    <a disabled class="btn btn-round btn-fill btn-warning" > <i class="fa fa-edit fa-lg"></i> </a>
+                                                    <a disabled class="btn btn-round btn-fill btn-info" > <i class="fa fa-eye fa-lg"></i> </a>
+                                                    <a disabled class="btn btn-round btn-fill btn-danger" > <i class="fa fa-trash fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-success" href="{{route('start_story', $s->story_id)}}"> <i class="fa fa-play fa-lg"></i> </a>
                                                 </td>
                                             @elseif($s->story_state == 'S')
                                                 <td> In Progress </td>
                                                 <td>
-                                                    <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}" disabled> <i class="fa fa-edit fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}" > <i class="fa fa-eye fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-danger" href="" disabled> <i class="fa fa-trash fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="" disabled> <i class="fa fa-play fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-warning"  disabled> <i class="fa fa-edit fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-info"  > <i class="fa fa-eye fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-danger"  disabled> <i class="fa fa-trash fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-play fa-lg"></i> </a>
                                                 </td>
                                             @elseif($s->story_state == 'F')
                                                 <td> Finished </td>
                                                 <td>
-                                                    <a class="btn btn-round btn-fill btn-warning" href="{{ route('update_sprint') }}" disabled> <i class="fa fa-edit fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-info" href="{{ route('update_sprint') }}" > <i class="fa fa-eye fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-danger" href="" disabled> <i class="fa fa-trash fa-lg"></i> </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="" disabled> <i class="fa fa-play fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-warning"  disabled> <i class="fa fa-edit fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-info"  > <i class="fa fa-eye fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-danger"  disabled> <i class="fa fa-trash fa-lg"></i> </a>
+                                                    <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-play fa-lg"></i> </a>
                                                 </td>
                                             @endif
                                     </tr>
@@ -86,9 +86,17 @@
                             </table>
                         </div>
                     </div>
+                    <div align="center">
+                        <div class="col-md-12">
+                            <a class="btn btn-primary btn-fill" href="{{route('sprints', $team->project_id)}}"> <i class="fa fa-undo fa-lg"></i> </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>  
 </div>
+
+
+
 
 @stop

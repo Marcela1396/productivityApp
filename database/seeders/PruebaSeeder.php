@@ -30,13 +30,14 @@ class PruebaSeeder extends Seeder
         ];
         DB::table('role')->insert($roles);
 
-       /*
+       
         $members =[
             [
                 'id_number'=> '1085329741',
                 'name' => 'Marcela Guerrero',
                 'email'=>'marce123@gmail.com',
                 'speciality' => 'Systems Analyst',  
+                'password' => 12345678,
             ],
 
             [
@@ -44,6 +45,7 @@ class PruebaSeeder extends Seeder
                 'name' => 'Armando Salazar',
                 'email'=>'armando@gmail.com',
                 'speciality' => 'System Engineer',
+                'password' => 12345678,
             ],
 
             [
@@ -51,6 +53,7 @@ class PruebaSeeder extends Seeder
                 'name' => 'Gerson Lazaro Carillo',
                 'email'=>'gerson@gmail.com',
                 'speciality' => 'Backend Developer',
+                'password' => 12345678,
             ],
 
             [
@@ -58,6 +61,7 @@ class PruebaSeeder extends Seeder
                 'name' => 'Leonora Madrigal',
                 'email'=>'leonora@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
+                'password' => 12345678,
             ],
 
             [
@@ -65,6 +69,7 @@ class PruebaSeeder extends Seeder
                 'name' => 'Lucia Fernandez',
                 'email'=>'lucia@gmail.com',
                 'speciality' => 'Backend Developer',
+                'password' => 12345678,
                 
             ],
 
@@ -73,6 +78,7 @@ class PruebaSeeder extends Seeder
                 'name' => 'Juanito Gomez',
                 'email'=>'juanito@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
+                'password' => 12345678,
             ],
            
         ];

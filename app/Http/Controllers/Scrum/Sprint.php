@@ -25,7 +25,7 @@ class Sprint extends Controller
             $weeks_sprint = $result->duration;
         }
         */
-        return view('dashboard.sprints.list',
+        return view('admin.dashboard.sprints.list',
                     [
                     'sprints' => $sprints, 
                     'project' => $id, 
@@ -39,7 +39,7 @@ class Sprint extends Controller
         $weeks_project = (ProjectModel::detailProject($project))->duration; // Obtiene la duracion del proyecto
         $quantity_sprint_project = (ProjectModel::detailProject($project))->sprint_quantity; // Obtiene la cantidad de sprint del proyecto
         $size = round($weeks_project/$quantity_sprint_project,2); // Obtiene el tamaño del sprint de acuerdo con la duracion y la cantidad de sprints
-        return view('dashboard.sprints.create', ['project' =>$project, 'members' => $members, 'size' =>$size]);
+        return view('admin.dashboard.sprints.create', ['project' =>$project, 'members' => $members, 'size' =>$size]);
     }
 
     public function register_sprint(Request $request){
@@ -66,7 +66,6 @@ class Sprint extends Controller
         return redirect()->route('sprints', $item->project_id);   
     }
 
-
-
+   
     
 }

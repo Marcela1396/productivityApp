@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class Capacity extends Controller
 {
     public function index(){
-        return view('dashboard.capacity.results');
+        return view('admin.dashboard.capacity.results');
     }
 }
