@@ -55,30 +55,6 @@ function alert_delete_member(data){
 	});
 }
 
-// Funcion Projectos
-// Buscar integrantes de un equipo 
-function search_members(data){
-	/*
-	$.ajax({
-		type: 'post',
-		url: `/project/getMembers/#${data}`,
-		dataType : 'json',
-		success : function(response){
-			alert('funciona');
-			response.members.forEach(element => {
-				alert("response.members.id");
-				
-			});
-        },
-        error: function(error){
-            alert("No funciona");
-        }
-	});
-	*/
-	document.getElementById('Option Selected'+ resultado).innerHTML=data;
-}
-
-
 // Adiciona más criterios a un proyecto
 let count = 1;
 function* addDODGenerator(){

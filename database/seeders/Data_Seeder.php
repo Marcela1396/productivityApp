@@ -20,7 +20,7 @@ class Data_Seeder extends Seeder
         $users = [
             [
                 'name'=> 'Marcela Guerrero',
-                'email' =>'marce1396@gmai.com',
+                'email' =>'marce1396@gmail.com',
                 'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
                 'speciality' => 'Systems Analyst', 
                 'id_number'=>'1234'
@@ -30,7 +30,6 @@ class Data_Seeder extends Seeder
                 'email' =>'maria@gmai.com',
                 'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
                 'speciality' => 'Systems Analyst', 
-
                 'id_number'=>'2345'
             ],
 
@@ -108,7 +107,7 @@ class Data_Seeder extends Seeder
         ];
         DB::table('team')->insert($teams);
 
-        
+        /*
         $roles =[
             [
                 'name' => 'Product Owner'
@@ -124,17 +123,9 @@ class Data_Seeder extends Seeder
            
         ];
         DB::table('role')->insert($roles);
-
+        */
        
         $members =[
-            [
-                'id_number'=> '1085329741',
-                'name' => 'Marcela Guerrero',
-                'email'=>'marce123@gmail.com',
-                'speciality' => 'Systems Analyst', 
-                'password'=> sha1('asdf'),
- 
-            ],
 
             [
                 'id_number'=> '108498762',
@@ -415,7 +406,7 @@ class Data_Seeder extends Seeder
                 'assigned_hours' => 20
             ],
 
-            // PROYECTO A - SPRINT 3
+            // PROYECTO B - SPRINT 1
             [
                 'sprint_id' => 3,
                 'user_id' => 1, 
@@ -650,9 +641,9 @@ class Data_Seeder extends Seeder
         ];
 
         DB::table('user_task')->insert($user_task);
-        $admin = RoleModel::create(['name' => 'Product owner']);
-        $admin = RoleModel::create(['name' => 'Project Manager']);
-        $admin = RoleModel::create(['name' => 'Invited']);
+        $admin = RoleModel::create(['name' => 'Product Owner']);
+        $admin = RoleModel::create(['name' => 'Scrum Master']);
+        $admin = RoleModel::create(['name' => 'Developer']);
 
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -665,21 +656,14 @@ class Data_Seeder extends Seeder
         // create roles and assign created permissions
 
         // this can be done as separate statements
-        $role = Role::create(['name' => 'Product Owner']);
-        $role = Role::create(['name' => 'Product Manager']);
-        $role = Role::create(['name' => 'Invited']);
-        
+        $role = Role::create(['name' => 'Developer Team Member']);
 
-        
 
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
 
-        $user=User::where('id_number','3456')->get()->first();
+        $user=User::where('id_number','1234')->get()->first();
         $user->assignRole('super-admin');
-
-
-
-        
+  
     }
 }
