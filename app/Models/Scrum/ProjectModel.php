@@ -36,7 +36,7 @@ class ProjectModel extends Model
         't.name as team_name', 'pt.project_id', 'pt.team_id');
         $id? $projects->where('users.id',$id):null;
         
-        return $projects->get();
+        return $projects->distinct()->get();
     }
 
 
