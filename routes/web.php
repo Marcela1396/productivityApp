@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Administracion\Administracion;
 use App\Http\Controllers\Administracion\RolesController;
+use App\Http\Controllers\Administracion\UsersController;
 use App\Http\Controllers\Scrum\Team;
 use App\Http\Controllers\Scrum\Project;
 use App\Http\Controllers\Scrum\Sprint;
@@ -83,5 +84,11 @@ Route::get('/roles/delete/{id}', [Role::class, 'delete_role'])->name('delete_rol
 // Capacity
 Route::get('/capacity', [Capacity::class, 'index'])->name('capacity')->middleware('auth');
 
-Route::resource('rol',RolesController::class);
+
+Route::group(['middleware' => ['role:super-admin']], function () {
+   
+   Route::resource('rol',RolesController::class);
+   Route::resource('users',UsersController::class);
+   
+});
 

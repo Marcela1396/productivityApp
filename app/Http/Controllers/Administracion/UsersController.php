@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Administracion;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\ModelHasRoles;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Model;
-class RolesController extends Controller
+use Illuminate\Support\Facades\Hash;
+
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +17,18 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::id());
-        if($user->hasRole('super-admin')){
-            $users = ModelHasRoles::all();
-            $roles = Role::all();
-            return view('roles_permissions.roles',compact('roles'));
+       $users = User::with('roles')->get();
+       $response = array();
+        if(sizeof($users) > 0){
+            $response['status']= true;
+            $response['message']= '';
+
+        }else{
+            $response['status']= false;
+            $response['message']= 'No hay usuarios registrados';
+
         }
-        return view('roles_permissions.forbidden'); 
+        return view('users.index',compact('response','users'));
     }
 
     /**
@@ -34,7 +38,8 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -45,7 +50,12 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->all();
+        $params['password'] =  Hash::make($params['password']); 
+        $user =  User::create($params);
+
+        $user->assignRole(Role::find($params['role'])->name);
+        return redirect()->route('users.index', ['User created']);
     }
 
     /**
@@ -67,7 +77,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('users.edit',compact('user','roles'));
     }
 
     /**
@@ -79,7 +91,15 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $params =$request->all();
+        $user= User::find($id);
+        if ($user) {
+            $params['password'] =  Hash::make($params['password']); 
+            $user->fill($params);
+            $user->save();
+            $user->syncRoles([Role::find($params['role'])->id]);
+        }
+        return redirect()->route('users.index', ['User updated']);
     }
 
     /**
