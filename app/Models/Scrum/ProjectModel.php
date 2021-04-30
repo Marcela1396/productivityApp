@@ -23,17 +23,20 @@ class ProjectModel extends Model
     // ******************************************************************************************
     // Funciones estaticas 
     
-    public static function getProjects(){
+    public static function getProjects($id=null){
         /*
         Obtiene el listado de proyectos existentes hasta el momento
         */
         $projects = DB::table('project AS p')
         ->join('project_team AS  pt', 'p.id', 'pt.project_id')
         ->join('team AS t', 'pt.team_id','t.id')
+        ->join('user_team','t.id','user_team.team_id')
+        ->join('users','users.id','user_team.user_id')
         ->select('p.id','p.name','p.start_date','p.end_date','p.duration', 'p.sprint_quantity','p.state',
-        't.name as team_name', 'pt.project_id', 'pt.team_id')
-        ->get();
-        return $projects;
+        't.name as team_name', 'pt.project_id', 'pt.team_id');
+        $id? $projects->where('users.id',$id):null;
+        
+        return $projects->get();
     }
 
 

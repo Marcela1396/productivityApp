@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\DoDModel;
 use App\Models\Scrum\TeamModel;
+use App\Models\User;
 use App\Models\Scrum\RoleModel;
 use App\Models\Scrum\Project_Model_Team_Model;
 use App\Models\Scrum\User_Model_Team_Model;
 use App\Models\Scrum\Users_Model_Project_Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -19,7 +21,15 @@ use Illuminate\Support\Facades\DB;
 class Project extends Controller
 {
     public function index(){
-        $projects= ProjectModel::getProjects();
+        $user = User::find(auth()->user()->id);
+        if($user){
+            if($user->hasAnyRole(['super-admin'])){
+                $projects= ProjectModel::getProjects();
+            }else{
+                $projects= ProjectModel::getProjects($user->id);
+            }
+        }
+        
         return view('admin.dashboard.projects.list', ['projects' => $projects]);
     }
 
