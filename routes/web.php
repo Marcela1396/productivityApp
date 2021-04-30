@@ -8,7 +8,7 @@ use App\Http\Controllers\Scrum\Team;
 use App\Http\Controllers\Scrum\Project;
 use App\Http\Controllers\Scrum\Sprint;
 use App\Http\Controllers\Scrum\UserStory;
-use App\Http\Controllers\Scrum\Member;
+use App\Http\Controllers\Scrum\User;
 use App\Http\Controllers\Scrum\Role;
 use App\Http\Controllers\Scrum\Capacity;
 
@@ -24,10 +24,10 @@ use App\Http\Controllers\Scrum\Capacity;
 */
 
 Route::get('/', [Administracion::class, 'index'])->name('inicio');
-
 Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 // Projects
+
 Route::get('/project', [Project::class, 'index'])->name('projects')->middleware('auth');
 //Route::post('/project/getMembers/{team}', [Project::class, 'getMembers'])->name('getMembers')->middleware('auth');
 
@@ -35,27 +35,30 @@ Route::get('/project/create', [Project::class, 'form_create_project'])->name('fo
 Route::post('/project/create', [Project::class, 'form_create_project2'])->name('form_create_project2')->middleware('auth');
 Route::post('/project/register', [Project::class, 'register_project'])->name('register_project')->middleware('auth');
 
-
+// Sin asignar
 Route::get('/project/update', [Project::class, 'index'])->name('update_project')->middleware('auth');
 Route::get('/project/view', [Project::class, 'index'])->name('view_project')->middleware('auth');
 
 
 // Sprints
-
-Route::get('/sprint/start', [Sprint::class, 'index'])->name('start_sprint')->middleware('auth');
+Route::get('/projects/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
+Route::get('/sprint/create/{project}', [Sprint::class, 'form_create_sprint'])->name('form_create_sprint')->middleware('auth');
 Route::post('/sprint/register', [Sprint::class, 'register_sprint'])->name('register_sprint')->middleware('auth');
 
-Route::get('/sprint/create/{project}', [Sprint::class, 'form_create_sprint'])->name('form_create_sprint')->middleware('auth');
+// Sin Asignar
+Route::get('/sprint/start', [Sprint::class, 'index'])->name('start_sprint')->middleware('auth');
 Route::get('/sprint/update', [Sprint::class, 'update_sprint'])->name('update_sprint')->middleware('auth');
-Route::get('/project/{id}', [Sprint::class, 'index'])->name('sprints')->middleware('auth');
+
 
 // User Story
-Route::post('/stories/register', [UserStory::class, 'register_story'])->name('register_story')->middleware('auth');
-Route::get('/stories/create/{team}/{project}/{sprint}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
 Route::get('/sprint/{id}', [UserStory::class, 'index'])->name('stories')->middleware('auth');
+Route::get('/stories/create/{team}/{project}/{sprint}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
+Route::post('/stories/register', [UserStory::class, 'register_story'])->name('register_story')->middleware('auth');
+Route::get('/stories/start/{id}', [UserStory::class, 'start_story'])->name('start_story')->middleware('auth');
 
-Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
-Route::get('/stories/start', [UserStory::class, 'start_story'])->name('start_story')->middleware('auth');
+
+//Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
+
 
 // Teams
 Route::get('/teams', [Team::class, 'index'])->name('teams')->middleware('auth');
@@ -66,12 +69,12 @@ Route::post('/teams/update/{id}', [Team::class, 'update_team'])->name('update_te
 Route::get('/teams/delete/{id}', [Team::class, 'delete_team'])->name('delete_team')->middleware('auth');
 
 // Members
-Route::get('/members', [Member::class, 'index'])->name('members')->middleware('auth');
-Route::get('/members/create', [Member::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
-Route::post('/members/create', [Member::class, 'register_member'])->name('register_member')->middleware('auth');
-Route::get('/members/update/{id}', [Member::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
-Route::post('/members/update/{id}', [Member::class, 'update_member'])->name('update_member')->middleware('auth');
-Route::get('/members/delete/{id}', [Member::class, 'delete_member'])->name('delete_member')->middleware('auth');
+Route::get('/members', [User::class, 'index'])->name('members')->middleware('auth');
+Route::get('/members/create', [User::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
+Route::post('/members/create', [User::class, 'register_member'])->name('register_member')->middleware('auth');
+Route::get('/members/update/{id}', [User::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
+Route::post('/members/update/{id}', [User::class, 'update_member'])->name('update_member')->middleware('auth');
+Route::get('/members/delete/{id}', [User::class, 'delete_member'])->name('delete_member')->middleware('auth');
 
 //Roles
 Route::get('/roles', [Role::class, 'index'])->name('roles')->middleware('auth');

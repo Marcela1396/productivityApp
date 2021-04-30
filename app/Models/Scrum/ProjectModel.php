@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ProjectModel extends Model
 {
     protected $table = 'project'; 
+    protected $fillable = ['name', 'description','start_date', 'end_date', 'duration', 'sprint_quantity', 'state', 'project_capacity'];
 
     // Project has many sprints
     public function sprints()    {
@@ -29,7 +30,7 @@ class ProjectModel extends Model
         $projects = DB::table('project AS p')
         ->join('project_team AS  pt', 'p.id', 'pt.project_id')
         ->join('team AS t', 'pt.team_id','t.id')
-        ->select('p.id','p.name','p.start_date','p.end_date','p.sprint_quantity','p.state',
+        ->select('p.id','p.name','p.start_date','p.end_date','p.duration', 'p.sprint_quantity','p.state',
         't.name as team_name', 'pt.project_id', 'pt.team_id')
         ->get();
         return $projects;
@@ -51,21 +52,46 @@ class ProjectModel extends Model
         return $sprints;
     }
 
-    public static function getMembers($project){
+    public static function detailProject($id){
+        /*
+        Obtiene la cantidad de Sprint que se tiene un Proyecto
+        Recibe como parametro el id del proyecto
+        */
+        $record = DB::table('project AS p')
+        ->select('p.sprint_quantity', 'p.duration')
+        ->where('p.id', '=', $id)
+        ->first();
+        return $record;
+    }
+
+    public static function countSprint($id){
+        /*
+        Obtiene la cantidad de sprint que hasta el momento lleva registrado
+        el proyecto
+        Recibe como parametro el id del proyecto
+        */
+        $quantity = DB::table('project AS p')
+        ->join('sprint AS  s', 'p.id', 's.project_id')
+        ->where('p.id', '=', $id)
+        ->count();
+        return $quantity;
+    }
+
+    public static function getUsers($project){
         /* 
         Obtiene los miembros perteneciente a un equipo que ha sido asignado a un proyecto
          Recibe como parametro el id del proyecto
         */
 
-        $members = DB::table('project as p')        
-        ->join('member_project as mp','p.id', 'mp.project_id') 
+        $users = DB::table('project as p')        
+        ->join('user_project as mp','p.id', 'mp.project_id') 
         ->join('team as t' , 'mp.team_id', 't.id')
-        ->join('member as m' , 'mp.member_id', 'm.id')
+        ->join('users as m' , 'mp.user_id', 'm.id')
         ->join('role as r', 'mp.role_id', 'r.id')
         ->select('p.id as project_id','t.id as team_id', 'm.id as member_id', 'm.name as member_name', 'r.name as role_name')
         ->where('p.id', '=', $project)
         ->get();
-        return $members;
+        return $users;
     }
 
     public static function getDoD($project){

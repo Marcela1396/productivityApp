@@ -23,8 +23,8 @@ class TaskModel extends Model
     }
     
     // Pendiente
-     // Relation Task has Many to Many Member
-    public function members(){
-        return $this->belongsToMany(MemberModel::class, 'member_id', 'task_id');
+     // Relation Task has Many to Many User
+    public function users(){
+        return $this->belongsToMany(UserModel::class, 'user_id', 'task_id');
     }
 }

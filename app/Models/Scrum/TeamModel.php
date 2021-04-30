@@ -11,9 +11,9 @@ class TeamModel extends Model
     protected $table = 'team'; 
 
     // Pendiente
-     // Relation Team has Many to Many Members
-     public function members(){
-        return $this->belongsToMany(MemberModel::class, 'member_id', 'team_id');
+     // Relation Team has Many to Many users
+     public function users(){
+        return $this->belongsToMany(UserModel::class, 'user_id', 'team_id');
     }
 
      // Pendiente
@@ -50,18 +50,18 @@ class TeamModel extends Model
         return $team;
     }
 
-    public static function getMembers($id){
+    public static function getUsers($id){
         /* 
         Obtiene los integrantes de un equipo
         Recibe como parametro el id del equipo a consultar
         */
-        $members = DB::table('team as t')
-        ->join('member_team as mt','t.id', 'mt.team_id')
-        ->join('member as m' , 'mt.member_id', 'm.id')
+        $users = DB::table('team as t')
+        ->join('user_team as mt','t.id', 'mt.team_id')
+        ->join('users as m' , 'mt.user_id', 'm.id')
         ->select('t.id as team_id', 'm.id as member_id', 'm.name as member_name', )
         ->where('t.id', '=', $id)
         ->get();
-        return $members;  
+        return $users;  
     }
 
 

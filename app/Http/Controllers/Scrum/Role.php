@@ -10,11 +10,11 @@ class Role extends Controller
 {
     public function index(){
         $roles= RoleModel::all();
-        return view('dashboard.roles.list', ['roles' =>$roles]);
+        return view('admin.dashboard.roles.list', ['roles' =>$roles]);
     }
 
     public function form_create_role(){
-        return view('dashboard.roles.create');
+        return view('admin.dashboard.roles.create');
     }
 
     public function register_role(Request $request){
@@ -27,7 +27,7 @@ class Role extends Controller
 
     public function form_update_role($id){
         $role = RoleModel::findOrFail($id);
-        return view('dashboard.roles.update', ['role' => $role]);
+        return view('admin.dashboard.roles.update', ['role' => $role]);
     }
 
     public function update_role(Request $request, $id){

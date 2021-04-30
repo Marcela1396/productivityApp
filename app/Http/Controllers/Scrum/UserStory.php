@@ -10,7 +10,7 @@ use App\Models\Scrum\TeamModel;
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\UserStoryModel;
 use App\Models\Scrum\TaskModel;
-use App\Models\Scrum\Member_Model_Task_Model;
+use App\Models\Scrum\User_Model_Task_Model;
 
 class UserStory extends Controller
 {
@@ -18,16 +18,17 @@ class UserStory extends Controller
      
         $stories = SprintModel::getStories($id);
         $team = SprintModel::getTeam($id);
-        return view('dashboard.stories.list',['stories' => $stories, 'team' => $team] );
+        
+        return view('admin.dashboard.stories.list',['stories' => $stories, 'team' => $team] );
     }
 
     public function form_create_story($team, $project, $sprint){
 
         $team_name = TeamModel::getTeam($team);
         // Aqui estaban los miembros de un equipo = projecto
-        $members = ProjectModel::getMembers($project);
+        $members = ProjectModel::getUsers($project);
         $done = ProjectModel::getDoD($project);
-        return view('dashboard.stories.create', ['team' => $team_name, 'done' => $done , 'members' => $members , 'sprint' =>$sprint] );
+        return view('admin.dashboard.stories.create', ['team' => $team_name, 'done' => $done , 'members' => $members , 'sprint' =>$sprint] );
     
     }
 
@@ -53,13 +54,44 @@ class UserStory extends Controller
 
 
                 if($item2){
-                $item3 = new Member_Model_Task_Model();
+                $item3 = new User_Model_Task_Model();
                 $item3->task_id  = $item2->id;
-                $item3->member_id = $request->input('member_id_'.$d->dod_id);
+                $item3->user_id = $request->input('member_id_'.$d->dod_id);
                 $item3->save();
                 }
             }
         }
         return redirect()->route('stories', $item->sprint_id);   
+    }
+
+    public function start_story($id){
+        $story = UserStoryModel::findOrFail($id);
+        $story->state ='S';
+        $story->save();
+
+        $item = UserStoryModel::getDetails($id);
+        $sprint_id = $item->sprint_id;
+        $project_id = $item->project_id;
+
+        $sprint = SprintModel::findOrFail($sprint_id);
+        
+        if($sprint->state == 'C'){
+            //dd($sprint->state);
+            $item2 = SprintModel::findOrFail($sprint_id);
+            $item2->state = 'S';
+            $item2->save();   
+        }
+
+        
+        $project = ProjectModel::find($project_id);
+        ///$modelo->atributo =  $params['atrubuto']; $modelo->save();
+        // $user->fill($params);$user->save();
+        if($project->state == 'C'){
+            $item3 = ProjectModel::findOrFail($project_id);
+            $item3->state = 'S';
+            $item3->save();
+        }
+        
+        return redirect()->route('stories', $sprint_id );   
     }
 }

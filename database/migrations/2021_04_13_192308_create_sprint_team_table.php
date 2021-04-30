@@ -30,7 +30,6 @@ class CreateSprintTeamTable extends Migration
             ->onDelete('cascade');
 
             $table->float('sprint_team_capacity')->default(0);
-            //$table->primary(['id','team_id', 'sprint_id']);
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ class CreateMemberTaskTable extends Migration
             ->onDelete('cascade');
 
             $table->float('worked_hours')->default(0);
-            //$table->primary(['task_id', 'member_id']);
+
             $table->timestamps();
         });
     }
