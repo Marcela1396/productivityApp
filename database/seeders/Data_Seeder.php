@@ -95,11 +95,11 @@ class Data_Seeder extends Seeder
 
         $users =[
             [
-                'name'=> 'Daniel Jojoa',
-                'email' =>'daniel@gmai.com',
-                'speciality' => 'Systems Analyst', 
+                'id_number'=>'968266',
+                'name'=> 'Marcela Guerrero',
+                'email' =>'marce1396@gmail.com',
                 'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
-                'id_number'=>'3456'  
+                'speciality' => 'Systems Analyst', 
             ],
 
             [
@@ -144,10 +144,10 @@ class Data_Seeder extends Seeder
 
             [
                 'id_number'=>'1234',
-                'name'=> 'Marcela Guerrero',
-                'email' =>'marce1396@gmail.com',
+                'name'=> 'Admin',
+                'email' =>'admin@gmail.com',
                 'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
-                'speciality' => 'Systems Analyst', 
+                'speciality' => 'Super User', 
             ],
            
         ];
@@ -283,25 +283,30 @@ class Data_Seeder extends Seeder
             [
                 'sprint_id' => 1,
                 'user_id' => 1, 
-                'assigned_hours' => 10
+                'assigned_hours' => 10,
+                'total_assigned_hours' => 40
             ],
 
             [
                 'sprint_id' => 1,
                 'user_id' => 2, 
-                'assigned_hours' => 12
+                'assigned_hours' => 12,
+                'total_assigned_hours' => 48
             ],
 
             [
                 'sprint_id' => 1,
                 'user_id' => 3, 
-                'assigned_hours' => 20
+                'assigned_hours' => 20,
+                'total_assigned_hours' => 80
+                
             ],
 
             [
                 'sprint_id' => 1,
                 'user_id' => 4, 
-                'assigned_hours' => 15
+                'assigned_hours' => 15,
+                'total_assigned_hours' => 60
             ],
 
            // PROYECTO A - SPRINT 2
@@ -309,44 +314,55 @@ class Data_Seeder extends Seeder
             [
                 'sprint_id' => 2,
                 'user_id' => 1, 
-                'assigned_hours' => 12
+                'assigned_hours' => 12,
+                'total_assigned_hours' => 48
+                
             ],
             [
                 'sprint_id' => 2,
                 'user_id' => 2, 
-                'assigned_hours' => 5
+                'assigned_hours' => 50,
+                'total_assigned_hours' => 200
             ],
             [
                 'sprint_id' => 2,
                 'user_id' => 3, 
-                'assigned_hours' => 3
+                'assigned_hours' => 30,
+                'total_assigned_hours' => 120
+                
             ],
             [
                 'sprint_id' => 2,
                 'user_id' => 4, 
-                'assigned_hours' => 20
+                'assigned_hours' => 20,
+                'total_assigned_hours' => 80
+                
             ],
 
             // PROYECTO B - SPRINT 1
             [
                 'sprint_id' => 3,
                 'user_id' => 1, 
-                'assigned_hours' => 7
+                'assigned_hours' => 7,
+                'total_assigned_hours' => 28
             ],
             [
                 'sprint_id' => 3,
                 'user_id' => 2, 
-                'assigned_hours' => 15
+                'assigned_hours' => 15,
+                'total_assigned_hours' => 60
             ],
             [
                 'sprint_id' => 3,
                 'user_id' => 5, 
-                'assigned_hours' => 30
+                'assigned_hours' => 30,
+                'total_assigned_hours' => 120
             ],
             [
                 'sprint_id' => 3,
                 'user_id' => 6, 
-                'assigned_hours' => 20
+                'assigned_hours' => 20,
+                'total_assigned_hours' => 80
             ],
            
         ];

@@ -61,6 +61,7 @@ class Sprint extends Controller
                 $item2->user_id = $m->member_id;
                 $item2->sprint_id = $item->id;
                 $item2->assigned_hours = $request->input('assigned_hours_'.$m->member_id);
+                $item2->total_assigned_hours = ($request->input('assigned_hours_'.$m->member_id)) * ($item->duration) ;
                 $item2->save();
             }
         }

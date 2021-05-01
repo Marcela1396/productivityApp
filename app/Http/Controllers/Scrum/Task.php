@@ -15,7 +15,7 @@ class Task extends Controller
         return view('admin.dashboard.task.work', ['tasks' => $tasks]);
     }
 
-    public function register_work_hours(){
-
+    public function register_work_hours(Request $request){
+        dd($request->all());
     }
 }
