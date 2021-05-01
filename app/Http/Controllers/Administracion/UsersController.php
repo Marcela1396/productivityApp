@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administracion;
 
 use App\Http\Controllers\Controller;
+use App\Models\Scrum\User_Model_Team_Model;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -94,7 +95,8 @@ class UsersController extends Controller
         $params =$request->all();
         $user= User::find($id);
         if ($user) {
-            $params['password'] =  Hash::make($params['password']); 
+           
+            isset($params['password'])?$params['password'] =  Hash::make($params['password']):$params['password']=$user->password; 
             $user->fill($params);
             $user->save();
             $user->syncRoles([Role::find($params['role'])->id]);
@@ -110,6 +112,21 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $response = array();
+        if($user= User::find($id)){
+            $user_team = User_Model_Team_Model::where('user_id',$id)->get()->first();
+            if(!$user_team){
+                $user->delete();
+                $response['status'] = true;
+                $response['msg'] = "User $user->name deleted";
+            }else{
+                $response['status'] = false;
+                $response['msg'] = "User  $user->name is in a team, remove user from team before delete ";
+            }
+        }else{
+            $response['status'] = true;
+            $response['msg'] = "User with id $id not found";
+        }
+        return json_encode($response);
     }
 }

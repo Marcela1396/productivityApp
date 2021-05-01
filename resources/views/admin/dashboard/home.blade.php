@@ -81,7 +81,7 @@
     </div>
 
 
-
+<script src="../../assets/js/eliminar.js"></script>
 </body>
 
 </html>
