@@ -25,9 +25,11 @@
                             <div class="col-md-12" align="center">
                                 <h4> Project Information </h4>
                             </div>
+                            @hasanyrole('writer|super-admin')
                             <div class="col-md-12" align="right">
                                 <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_project')}}" > <i class="fa fa-plus-circle fa-lg"> </i> </a>
                             </div>
+                            @endhasanyrole
                         </div>
                     </div>
                     
@@ -58,34 +60,49 @@
                                     <td> {{ $it->duration }} </td>
                                     <td> {{ $it->sprint_quantity }}</td>
                                     <td> {{ $it->team_name }}</td>
-                                    @if($it->state == 'C')
-                                        <td> Created </td>  
-                                        <form action="{{ route('update_project') }}" method="POST">
-                                            @csrf
-                                                <td>
-                                                    <input type="hidden" id='project' name='project_id' value="{{$it->id}}">
-                                                    <button type="submit" class="btn btn-round btn-fill btn-warning" disabled><i class="fa fa-edit fa-lg"></i> </button>
-                                                    <a class="btn btn-round btn-fill btn-info" disabled> <i class="fa fa-eye fa-lg" > </i> </a>
-                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
-                                                </td>
-                                        </form>
-                                    @elseif($it->state == 'S')
-                                        <td> In Progress </td>
-                                        <td>
+
+                                    @hasanyrole('writer|super-admin')
+                                        @if($it->state == 'C')
+                                            <td> Created </td>  
                                             
-                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
-                                            <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
-                                            <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id) }}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
-                                        </td>
-                                       
-                                    @elseif($it->state == 'F')
-                                        <td> Finished </td>
+                                            <form action="{{ route('update_project') }}" method="POST">
+                                                @csrf
+                                                    <td>
+                                                        <input type="hidden" id='project' name='project_id' value="{{$it->id}}">
+                                                        <button type="submit" class="btn btn-round btn-fill btn-warning" disabled><i class="fa fa-edit fa-lg"></i> </button>
+                                                        <a class="btn btn-round btn-fill btn-info" disabled> <i class="fa fa-eye fa-lg" > </i> </a>
+                                                        <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
+                                                    </td>
+                                            </form>
+                                        @elseif($it->state == 'S')
+                                            <td> In Progress </td>
+                                            <td>
+                                                
+                                                <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
+                                                <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
+                                                <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id) }}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
+                                            </td>
+                                        
+                                        @elseif($it->state == 'F')
+                                            <td> Finished </td>
+                                            <td>
+                                                <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
+                                                <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
+                                                <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i> </a>
+                                            </td>
+                                        @endif
+                                    @else
+                                        @if($it->state == 'C')
+                                            <td> Created </td>
+                                        @elseif($it->state == 'S')
+                                            <td> In Progress </td>
+                                        @elseif($it->state == 'F')
+                                            <td> Finished </td>
+                                        @endif
                                         <td>
-                                            <button type="submit" class="btn btn-round btn-fill btn-warning" disabled> <i class="fa fa-edit fa-lg"></i> </button>
-                                            <a class="btn btn-round btn-fill btn-info"> <i class="fa fa-eye fa-lg"> </i> </a>
-                                            <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i> </a>
+                                            <a class="btn btn-round btn-fill btn-success" href="{{ route('sprints', $it->id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                         </td>
-                                    @endif
+                                    @endhasanyrole
                                 </tr>
                                 @php
                                     $a++;
@@ -94,7 +111,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
             </div>
         </div>

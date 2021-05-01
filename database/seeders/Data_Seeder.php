@@ -16,7 +16,7 @@ class Data_Seeder extends Seeder
      */
     public function run()
     {
-        
+        /*
         $users = [
             [
                 'name'=> 'Marcela Guerrero',
@@ -44,6 +44,7 @@ class Data_Seeder extends Seeder
         ];
 
         DB::table('users')->insert($users);
+        */
         
         $projects =[
             [
@@ -66,6 +67,135 @@ class Data_Seeder extends Seeder
         DB::table('project')->insert($projects);
 
         
+        $teams =[
+            [
+                'name' => 'Team 1'
+            ],
+
+            [
+                'name' => 'Team 2'
+            ],
+           
+        ];
+        DB::table('team')->insert($teams);
+
+        $project_team =[
+            [
+                'project_id' => 1, 
+                'team_id' => 1,
+                
+            ],  
+            [
+                'project_id' => 2, 
+                'team_id' => 2,
+                
+            ],  
+        ];
+        DB::table('project_team')->insert($project_team);
+
+        $users =[
+            [
+                'name'=> 'Daniel Jojoa',
+                'email' =>'daniel@gmai.com',
+                'speciality' => 'Systems Analyst', 
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
+                'id_number'=>'3456'  
+            ],
+
+            [
+                'id_number'=> '108498762',
+                'name' => 'Armando Salazar',
+                'email'=>'armando@gmail.com',
+                'speciality' => 'System Engineer',
+                'password'=> sha1('asdf'),
+            ],
+
+            [
+                'id_number'=> '1096521233',
+                'name' => 'Gerson Lazaro Carillo',
+                'email'=>'gerson@gmail.com',
+                'speciality' => 'Backend Developer',
+                'password'=> sha1('asdf'),
+            ],
+
+            [
+                'id_number'=> '1087594096',
+                'name' => 'Leonora Madrigal',
+                'email'=>'leonora@gmail.com',
+                'speciality' => 'Desarrollador Frontend',
+                'password'=> sha1('asdf'),
+            ],
+
+            [
+                'id_number'=> '109636662',
+                'name' => 'Lucia Fernandez',
+                'email'=>'lucia@gmail.com',
+                'speciality' => 'Backend Developer',
+                'password'=> sha1('asdf'),   
+            ],
+
+            [
+                'id_number'=> '1233621210',
+                'name' => 'Juanito Gomez',
+                'email'=>'juanito@gmail.com',
+                'speciality' => 'Desarrollador Frontend',
+                'password'=> sha1('asdf'),
+            ],
+
+            [
+                'id_number'=>'1234',
+                'name'=> 'Marcela Guerrero',
+                'email' =>'marce1396@gmail.com',
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',//asdfasdf
+                'speciality' => 'Systems Analyst', 
+            ],
+           
+        ];
+        DB::table('users')->insert($users);
+
+        $teams_users =[
+            [
+                'team_id' => 1,
+                'user_id' => 1, 
+            ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 2,
+           ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 3, 
+            ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 4, 
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 1, 
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 2, 
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 5, 
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 6, 
+            ], 
+        ];
+        DB::table('user_team')->insert($teams_users);
+       
         $sprints =[
             [
                 'name' => 'Sprint #1PA',
@@ -87,203 +217,13 @@ class Data_Seeder extends Seeder
                 'name' => 'Sprint #1PB ',
                 'description'=> 'First Sprint',
                 'start_date'=>'2021-04-03',
-                'duration'=> 6,
+                'duration'=> 4,
                 'project_id'=> 2,
             ],
            
         ];
         DB::table('sprint')->insert($sprints);
 
-        
-        $teams =[
-            [
-                'name' => 'Team 1'
-            ],
-
-            [
-                'name' => 'Team 2'
-            ],
-           
-        ];
-        DB::table('team')->insert($teams);
-
-        /*
-        $roles =[
-            [
-                'name' => 'Product Owner'
-            ],
-
-            [
-                'name' => 'Scrum Master'
-            ],
-
-            [
-                'name' => 'Developer'
-            ],
-           
-        ];
-        DB::table('role')->insert($roles);
-        */
-       
-        $members =[
-
-            [
-                'id_number'=> '108498762',
-                'name' => 'Armando Salazar',
-                'email'=>'armando@gmail.com',
-                'speciality' => 'System Engineer',
-                'password'=> sha1('asdf'),
-
-            ],
-
-            [
-                'id_number'=> '1096521233',
-                'name' => 'Gerson Lazaro Carillo',
-                'email'=>'gerson@gmail.com',
-                'speciality' => 'Backend Developer',
-                'password'=> sha1('asdf'),
-
-            ],
-
-            [
-                'id_number'=> '1087594096',
-                'name' => 'Leonora Madrigal',
-                'email'=>'leonora@gmail.com',
-                'speciality' => 'Desarrollador Frontend',
-                'password'=> sha1('asdf'),
-
-            ],
-
-            [
-                'id_number'=> '109636662',
-                'name' => 'Lucia Fernandez',
-                'email'=>'lucia@gmail.com',
-                'speciality' => 'Backend Developer',
-                'password'=> sha1('asdf'),
-
-
-                
-            ],
-
-            [
-                'id_number'=> '1233621210',
-                'name' => 'Juanito Gomez',
-                'email'=>'juanito@gmail.com',
-                'speciality' => 'Desarrollador Frontend',
-                'password'=> sha1('asdf'),
-
-            ],
-           
-        ];
-        DB::table('users')->insert($members);
-
-        $teams_members =[
-            [
-                'team_id' => 1,
-                'user_id' => 1, 
-                //'role_id'=> 1,
-            ],
-
-            [
-                'team_id' => 1,
-                'user_id' => 2,
-                //'role_id'=> 2, 
-            ],
-
-            [
-                'team_id' => 1,
-                'user_id' => 3, 
-                //'role_id'=> 3,
-            ],
-
-            [
-                'team_id' => 1,
-                'user_id' => 4, 
-                //'role_id'=> 3,
-            ],
-
-            [
-                'team_id' => 2,
-                'user_id' => 1, 
-                //'role_id'=> 1,
-            ],
-
-            [
-                'team_id' => 2,
-                'user_id' => 2, 
-                //'role_id'=> 2,
-            ],
-
-            [
-                'team_id' => 2,
-                'user_id' => 5, 
-                //'role_id'=> 3,
-            ],
-
-            [
-                'team_id' => 2,
-                'user_id' => 6, 
-                //'role_id'=> 3,
-            ],
-
-           
-        ];
-        DB::table('user_team')->insert($teams_members);
-
-        /*
-        $members_role =[
-            [
-                'user_id' => 1,
-                'role_id'=> 1,
-                'team_id'=> 1,
-            ],
-
-            [
-                'user_id' => 2,
-                'role_id'=> 2,
-                'team_id'=> 1,
-            ],
-
-            [
-                'user_id' => 3,
-                'role_id'=> 3,
-                'team_id'=> 1,
-            ],
-
-            [
-                'user_id' => 4,
-                'role_id'=> 3,
-                'team_id'=> 1,
-            ],
-
-            [
-                'user_id' => 1,
-                'role_id'=> 1,
-                'team_id'=> 2,
-            ],
-
-            [
-                'user_id' => 2,
-                'role_id'=> 2,
-                'team_id'=> 2,
-            ],
-
-            [
-                'user_id' => 5,
-                'role_id'=> 3,
-                'team_id'=> 2,
-            ],
-
-            [
-                'user_id' => 6,
-                'role_id'=> 3,
-                'team_id'=> 2,
-            ],
-
-        ];
-        DB::table('member_role')->insert($members_role);
-
-        */
         $ddone =[
             [
                 'name' => 'Especificación de historias de usuario',
@@ -338,26 +278,7 @@ class Data_Seeder extends Seeder
         DB::table('definition_of_done')->insert($ddone);
 
 
-        
-
-        
-        $project_team =[
-            [
-                'project_id' => 1, 
-                'team_id' => 1,
-                
-            ],  
-            [
-                'project_id' => 2, 
-                'team_id' => 2,
-                
-            ],  
-        ];
-        DB::table('project_team')->insert($project_team);
-
-
-        
-        $sprint_members =[
+        $user_sprint =[
             // PROYECTO A - SPRINT 1
             [
                 'sprint_id' => 1,
@@ -429,7 +350,7 @@ class Data_Seeder extends Seeder
             ],
            
         ];
-        DB::table('user_sprint')->insert($sprint_members);
+        DB::table('user_sprint')->insert($user_sprint);
         
         
         $stories= [
@@ -664,6 +585,143 @@ class Data_Seeder extends Seeder
 
         $user=User::where('id_number','1234')->get()->first();
         $user->assignRole('super-admin');
+
+        $users_project = [
+            [
+                'team_id' => 1,
+                'user_id' => 1, 
+                'project_id'=> 1,
+                'role_id'=> 1,
+            ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 2,
+                'project_id'=> 1, 
+                'role_id'=> 2,
+            ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 3, 
+                'project_id'=> 1,
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 1,
+                'user_id' => 4, 
+                'project_id'=> 1,
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 1, 
+                'project_id'=> 2,
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 2, 
+                'project_id'=> 2,
+                'role_id'=> 3,
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 5, 
+                'project_id'=> 2,
+                'role_id'=> 2,
+            ],
+
+            [
+                'team_id' => 2,
+                'user_id' => 6, 
+                'project_id'=> 2,
+                'role_id'=> 1,
+            ], 
+        ];
+        DB::table('user_project')->insert($users_project);
   
     }
 }
+
+
+
+
+       
+
+        /*
+        $roles =[
+            [
+                'name' => 'Product Owner'
+            ],
+
+            [
+                'name' => 'Scrum Master'
+            ],
+
+            [
+                'name' => 'Developer'
+            ],
+           
+        ];
+        DB::table('role')->insert($roles);
+        */
+
+        /*
+        $members_role =[
+            [
+                'user_id' => 1,
+                'role_id'=> 1,
+                'team_id'=> 1,
+            ],
+
+            [
+                'user_id' => 2,
+                'role_id'=> 2,
+                'team_id'=> 1,
+            ],
+
+            [
+                'user_id' => 3,
+                'role_id'=> 3,
+                'team_id'=> 1,
+            ],
+
+            [
+                'user_id' => 4,
+                'role_id'=> 3,
+                'team_id'=> 1,
+            ],
+
+            [
+                'user_id' => 1,
+                'role_id'=> 1,
+                'team_id'=> 2,
+            ],
+
+            [
+                'user_id' => 2,
+                'role_id'=> 2,
+                'team_id'=> 2,
+            ],
+
+            [
+                'user_id' => 5,
+                'role_id'=> 3,
+                'team_id'=> 2,
+            ],
+
+            [
+                'user_id' => 6,
+                'role_id'=> 3,
+                'team_id'=> 2,
+            ],
+
+        ];
+        DB::table('member_role')->insert($members_role);
+
+        */

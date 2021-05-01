@@ -26,6 +26,13 @@
                         <p>Projects</p>
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{route('capacity')}}">
+                        <i class="pe-7s-graph2"></i>
+                        <p> Working capacity </p>
+                    </a>
+                </li>
                 @hasanyrole('writer|super-admin')
                 <li>
                     <a href="{{route('teams')}}">
@@ -33,10 +40,8 @@
                         <p> Teams</p>
                     </a>
                 </li>
-
                 @endhasanyrole
 
-               
                 @hasanyrole('writer|super-admin')
                 <li>
                     <a href="{{route('roles')}}">
@@ -53,20 +58,14 @@
                 </li>
                 @endhasanyrole
 
-                <li>
-                    <a href="{{route('capacity')}}">
-                        <i class="pe-7s-graph2"></i>
-                        <p> Working capacity </p>
-                    </a>
-                </li>
-
 				<li class="active-pro">
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
-                        <i class="pe-7s-
-                        "></i><p>Logout</p>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <p> Logout</p>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
                             @csrf
-                        </form>
+                    </form>
                 </li>
             </ul>
     	</div>

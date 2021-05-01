@@ -25,15 +25,17 @@
                             <div class="col-md-12" align="center">
                                 <h4> Sprint Information </h4>
                             </div>
-                            @if(($quantity_actual < $record->sprint_quantity) )
-                                <div class="col-md-12" align="right">
-                                    <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}"> <i class="fa fa-plus-circle fa-lg"> </i> </a>
-                                </div>
-                            @else
-                                <div class="col-md-12" align="right">
-                                    <a  disabled class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}" > <i class="fa fa-plus-circle fa-lg" > </i> </a>
-                                </div>
-                            @endif
+                            @hasanyrole('writer|super-admin')
+                                @if(($quantity_actual < $record->sprint_quantity) )
+                                    <div class="col-md-12" align="right">
+                                        <a class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}"> <i class="fa fa-plus-circle fa-lg"> </i> </a>
+                                    </div>
+                                @else
+                                    <div class="col-md-12" align="right">
+                                        <a  disabled class="btn btn-round btn-fill btn-primary" href="{{ route('form_create_sprint', $project)}}" > <i class="fa fa-plus-circle fa-lg" > </i> </a>
+                                    </div>
+                                @endif
+                            @endhasanyrole
                         </div>
                     </div>
                 </div>
@@ -63,6 +65,7 @@
                                         <td> {{ $s->duration }}</td>
                                         <td> {{ $s->start_date }}</td>
                                         <td> {{ $s->end_date }}</td>
+                                        @hasanyrole('writer|super-admin')
                                             @if($s->sprint_state == 'C')
                                                 <td> Created </td>
                                                 <td>
@@ -84,7 +87,19 @@
                                                     <a class="btn btn-round btn-fill btn-info"  > <i class="fa fa-eye fa-lg"></i> </a>
                                                     <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                                 </td>
-                                            @endif                                     
+                                            @endif 
+                                        @else
+                                            @if($s->sprint_state == 'C')
+                                                <td> Created </td>
+                                            @elseif($s->sprint_state == 'S')
+                                                <td> In Progress </td>
+                                            @elseif($s->sprint_state == 'F')
+                                                <td> Finished </td>
+                                            @endif
+                                            <td>
+                                                <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> <i class="fa fa-arrow-right fa-lg"></i></a>
+                                            </td>
+                                        @endhasanyrole                                   
                                     </tr>
                                         @php
                                             $a++;

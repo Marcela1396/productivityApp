@@ -35,6 +35,7 @@ class Sprint extends Controller
     }
 
     public function form_create_sprint($project){
+        //dd($project);
         $members = ProjectModel::getUsers($project);
         $weeks_project = (ProjectModel::detailProject($project))->duration; // Obtiene la duracion del proyecto
         $quantity_sprint_project = (ProjectModel::detailProject($project))->sprint_quantity; // Obtiene la cantidad de sprint del proyecto

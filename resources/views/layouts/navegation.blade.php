@@ -12,11 +12,6 @@
             <li class="nav-item me-3 me-lg-1">
                 <a href="{{ route('login') }}" class="btn btn-warning me-3" > <i class="fas fa-user"></i> Login </a>
             </li>
-            @if (Route::has('register'))
-                <li class="nav-item me-3 me-lg-1">
-                    <a href="{{ route('register') }}" class="btn btn-success me-1"  > <i class="fas fa-user-edit"></i> Register </a>
-                </li>
-            @endif
         </ul>
         <!-- Right elements -->
     </div>

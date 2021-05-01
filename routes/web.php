@@ -8,7 +8,7 @@ use App\Http\Controllers\Scrum\Team;
 use App\Http\Controllers\Scrum\Project;
 use App\Http\Controllers\Scrum\Sprint;
 use App\Http\Controllers\Scrum\UserStory;
-use App\Http\Controllers\Scrum\User;
+use App\Http\Controllers\Scrum\Task;
 use App\Http\Controllers\Scrum\Role;
 use App\Http\Controllers\Scrum\Capacity;
 
@@ -56,6 +56,9 @@ Route::get('/stories/create/{team}/{project}/{sprint}', [UserStory::class, 'form
 Route::post('/stories/register', [UserStory::class, 'register_story'])->name('register_story')->middleware('auth');
 Route::get('/stories/start/{id}', [UserStory::class, 'start_story'])->name('start_story')->middleware('auth');
 
+//Task
+Route::get('/stories/{id}/task/', [Task::class, 'index'])->name('task_story')->middleware('auth');
+
 
 //Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
 
@@ -68,14 +71,6 @@ Route::get('/teams/update/{id}', [Team::class, 'form_update_team'])->name('form_
 Route::post('/teams/update/{id}', [Team::class, 'update_team'])->name('update_team')->middleware('auth');
 Route::get('/teams/delete/{id}', [Team::class, 'delete_team'])->name('delete_team')->middleware('auth');
 
-// Members
-Route::get('/members', [User::class, 'index'])->name('members')->middleware('auth');
-Route::get('/members/create', [User::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
-Route::post('/members/create', [User::class, 'register_member'])->name('register_member')->middleware('auth');
-Route::get('/members/update/{id}', [User::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
-Route::post('/members/update/{id}', [User::class, 'update_member'])->name('update_member')->middleware('auth');
-Route::get('/members/delete/{id}', [User::class, 'delete_member'])->name('delete_member')->middleware('auth');
-
 //Roles
 Route::get('/roles', [Role::class, 'index'])->name('roles')->middleware('auth');
 Route::get('/roles/create', [Role::class, 'form_create_role'])->name('form_create_role')->middleware('auth');
@@ -83,6 +78,16 @@ Route::post('/roles/create', [Role::class, 'register_role'])->name('register_rol
 Route::get('/roles/update/{id}', [Role::class, 'form_update_role'])->name('form_update_roles')->middleware('auth');
 Route::post('/roles/update/{id}', [Role::class, 'update_role'])->name('update_role')->middleware('auth');
 Route::get('/roles/delete/{id}', [Role::class, 'delete_role'])->name('delete_role')->middleware('auth');
+
+/*
+Members
+Route::get('/members', [User::class, 'index'])->name('members')->middleware('auth');
+Route::get('/members/create', [User::class, 'form_create_member'])->name('form_create_member')->middleware('auth');
+Route::post('/members/create', [User::class, 'register_member'])->name('register_member')->middleware('auth');
+Route::get('/members/update/{id}', [User::class, 'form_update_member'])->name('form_update_member')->middleware('auth');
+Route::post('/members/update/{id}', [User::class, 'update_member'])->name('update_member')->middleware('auth');
+Route::get('/members/delete/{id}', [User::class, 'delete_member'])->name('delete_member')->middleware('auth');
+*/ 
 
 // Capacity
 Route::get('/capacity', [Capacity::class, 'index'])->name('capacity')->middleware('auth');
@@ -94,4 +99,8 @@ Route::group(['middleware' => ['role:super-admin']], function () {
    Route::resource('users',UsersController::class);
    
 });
+
+
+
+
 

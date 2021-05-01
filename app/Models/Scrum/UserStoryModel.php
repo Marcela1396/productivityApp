@@ -41,4 +41,29 @@ class UserStoryModel extends Model
 
     }
 
+    public static function getTasks($story,$user){
+         /* 
+        Funcion que retorna las tareas que pertenecen una historia de usuario
+        y que fueron asignados a un integrante
+        Parametro: id de la historia
+        */
+        $task = DB::table('project AS p')
+        ->join('sprint AS  s', 'p.id', 's.project_id')
+        ->join('user_story AS us', 's.id', 'us.sprint_id')
+        ->join('task AS t', 'us.id', 't.user_story_id')
+        ->join('definition_of_done AS d', 't.dod_id', 'd.id')
+        ->join('user_task AS ut', 't.id', 'ut.task_id')
+        ->join('users AS u', 'ut.user_id', 'u.id')
+        ->select('d.name as task_name')
+        ->where('us.id', '=', $story)
+        ->where('u.id', '=', $user)
+        ->get();
+
+        return $task;
+
+
+    }
+
+
+
 }

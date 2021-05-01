@@ -65,8 +65,8 @@
                                     <div class="col-md-6 col-sm-12 mx-auto">
                                     <div class="form-group">
                                     <label for="rol"><i class="fa fa-user"></i> Role</label></label>
-                                    <select name="role" class="form-control">
-                                        <option value="0">Select a role</option>
+                                    <select name="role" class="form-control" required>
+                                        <option></option>
                                         @foreach($roles as $role)
                                           @if(!isset($user))
                                              <option value="{{$role['id']}}">{{$role['name']}}</option>
