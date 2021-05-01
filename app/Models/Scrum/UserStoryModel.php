@@ -54,7 +54,7 @@ class UserStoryModel extends Model
         ->join('definition_of_done AS d', 't.dod_id', 'd.id')
         ->join('user_task AS ut', 't.id', 'ut.task_id')
         ->join('users AS u', 'ut.user_id', 'u.id')
-        ->select('d.name as task_name')
+        ->select('t.id as task_id','d.name as task_name')
         ->where('us.id', '=', $story)
         ->where('u.id', '=', $user)
         ->get();

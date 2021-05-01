@@ -27,22 +27,21 @@
                     </a>
                 </li>
 
+                @hasanyrole('writer|super-admin')
                 <li>
                     <a href="{{route('capacity')}}">
                         <i class="pe-7s-graph2"></i>
                         <p> Working capacity </p>
                     </a>
                 </li>
-                @hasanyrole('writer|super-admin')
+
                 <li>
                     <a href="{{route('teams')}}">
                         <i class="pe-7s-user"></i>
                         <p> Teams</p>
                     </a>
                 </li>
-                @endhasanyrole
 
-                @hasanyrole('writer|super-admin')
                 <li>
                     <a href="{{route('roles')}}">
                         <i class="pe-7s-way"></i>
@@ -59,6 +58,12 @@
                 @endhasanyrole
 
 				<li class="active-pro">
+                    
+                    <a href="{{route('about')}}">
+                        <i class="fa fa-info-circle"></i>
+                        <p> About us </p>
+                    </a>
+        
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         <p> Logout</p>

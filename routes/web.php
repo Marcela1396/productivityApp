@@ -25,6 +25,7 @@ use App\Http\Controllers\Scrum\Capacity;
 
 Route::get('/', [Administracion::class, 'index'])->name('inicio');
 Route::get('/home', [Administracion::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/about', [Administracion::class, 'about'])->name('about')->middleware('auth');
 
 // Projects
 
@@ -55,12 +56,12 @@ Route::get('/sprint/{id}', [UserStory::class, 'index'])->name('stories')->middle
 Route::get('/stories/create/{team}/{project}/{sprint}', [UserStory::class, 'form_create_story'])->name('form_create_story')->middleware('auth');
 Route::post('/stories/register', [UserStory::class, 'register_story'])->name('register_story')->middleware('auth');
 Route::get('/stories/start/{id}', [UserStory::class, 'start_story'])->name('start_story')->middleware('auth');
+//Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
+
 
 //Task
 Route::get('/stories/{id}/task/', [Task::class, 'index'])->name('task_story')->middleware('auth');
-
-
-//Route::get('/stories/update', [UserStory::class, 'update_story'])->name('update_story')->middleware('auth');
+Route::post('/stories/task/register_work', [Task::class, 'register_work_hours'])->name('register_work_hours')->middleware('auth');
 
 
 // Teams

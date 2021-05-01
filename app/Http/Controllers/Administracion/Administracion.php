@@ -14,4 +14,8 @@ class Administracion extends Controller
     public function dashboard(){
         return view('admin.dashboard.dashboard');
     }
+
+    public function about(){
+        return view('admin.dashboard.about');
+    }
 }
