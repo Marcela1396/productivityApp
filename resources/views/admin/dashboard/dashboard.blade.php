@@ -12,7 +12,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Dashboard</a>
+                    <a class="navbar-brand" href="#">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i>  Dashboard 
+                        <p style="text-align:right;"> Welcome:  {{ $user->name }}</p>
+                    </a>
                 </div>
             </div>
         </nav>

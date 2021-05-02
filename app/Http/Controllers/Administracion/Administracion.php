@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administracion;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Scrum\UserModel;
 
 class Administracion extends Controller
 {
@@ -12,7 +13,8 @@ class Administracion extends Controller
     }
 
     public function dashboard(){
-        return view('admin.dashboard.dashboard');
+        $user = UserModel::getUser(auth()->user()->id);
+        return view('admin.dashboard.dashboard', ['user' =>$user]);
     }
 
     public function about(){

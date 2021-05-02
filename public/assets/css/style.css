@@ -13,7 +13,13 @@ footer {
 #textCard{
     text-align: justify;
 }
+#txtcontenedor{
+    font-family: 'Original Surfer', cursive;
+}
 
 #contenedor{
-    font-family: 'Balsamiq Sans', cursive;
+    background-color: #CEE3F6;
+    border-style: solid;
+    border-color: #0080FF;
 }
+

@@ -19,10 +19,12 @@
 
     <!--  Light Bootstrap Table core CSS    -->
     <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=1.4.0')}}" rel="stylesheet"/>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" />
 
     <!-- CSS only -->
    

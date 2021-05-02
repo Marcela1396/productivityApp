@@ -15,7 +15,7 @@ use App\Models\Scrum\User_Model_Task_Model;
 class UserStory extends Controller
 {
     public function index($id){
-     
+        // Recibe el id del sprint
         $stories = SprintModel::getStories($id);
         $team = SprintModel::getTeam($id);
         

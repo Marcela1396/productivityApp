@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> Sprint </a>
+                    <a class="navbar-brand" href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint </a>
                 </div>
             </div>
         </nav>

@@ -84,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-success btn-fill pull-right" >
-                                            <i class="fa fa-save"></i> Next
+                                            <i class="fa fa-arrow-right"> Next </i>
                                         </button>
                                                 <div class="clearfix"></div>
                                         </div>

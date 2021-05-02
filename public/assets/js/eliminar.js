@@ -29,21 +29,16 @@ function eliminar(ruta) {
 
             $(document).ready(function () {
                 document.getElementById('close').addEventListener('click', () => {
-                    alert();
                     close()
                 });
             })
         }
-
         http.send(dataForm)
     }
-
 }
 
-
 function close() {
-    alert('entra')
-
     let respuesta = document.getElementById('respuesta');
     respuesta.hidden = true;
+    
 }
