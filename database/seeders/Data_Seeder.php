@@ -107,7 +107,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Armando Salazar',
                 'email'=>'armando@gmail.com',
                 'speciality' => 'System Engineer',
-                'password'=> sha1('asdf'),
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',
             ],
 
             [
@@ -115,7 +115,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Gerson Lazaro Carillo',
                 'email'=>'gerson@gmail.com',
                 'speciality' => 'Backend Developer',
-                'password'=> sha1('asdf'),
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',
             ],
 
             [
@@ -123,7 +123,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Leonora Madrigal',
                 'email'=>'leonora@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
-                'password'=> sha1('asdf'),
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',
             ],
 
             [
@@ -131,7 +131,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Lucia Fernandez',
                 'email'=>'lucia@gmail.com',
                 'speciality' => 'Backend Developer',
-                'password'=> sha1('asdf'),   
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',   
             ],
 
             [
@@ -139,7 +139,7 @@ class Data_Seeder extends Seeder
                 'name' => 'Juanito Gomez',
                 'email'=>'juanito@gmail.com',
                 'speciality' => 'Desarrollador Frontend',
-                'password'=> sha1('asdf'),
+                'password'=> '$2y$10$EF9TL6IQyXBsBL09W8DKT..6VGej57A4OYMvB7MTn/iyDBFr8k/eW',
             ],
 
             [
@@ -576,8 +576,87 @@ class Data_Seeder extends Seeder
                 'task_id' => 20
             ],
         ];
-
         DB::table('user_task')->insert($user_task);
+
+        $user_user_stories= [
+            // Projecto 1, Sprint 1, Historia 1.1
+            [
+                'user_id'=> 1,
+                'user_story_id'=> 1
+            ],
+            [
+                'user_id'=> 2,
+                'user_story_id'=> 1
+            ],
+            [
+                'user_id'=> 3,
+                'user_story_id'=> 1
+            ],
+            [
+                'user_id'=> 4,
+                'user_story_id'=> 1
+            ],
+
+            // Projecto 1, Sprint 1, Historia 1.2
+            [
+                'user_id'=> 1,
+                'user_story_id'=> 2
+            ],
+            [
+                'user_id'=> 2,
+                'user_story_id'=> 2
+            ],
+            [
+                'user_id'=> 3,
+                'user_story_id'=> 2
+            ],
+            [
+                'user_id'=> 4,
+                'user_story_id'=> 2
+            ],
+
+            
+            // Projecto 1, Sprint 2, Historia 2.1
+            [
+                'user_id'=> 1,
+                'user_story_id'=> 3
+            ],
+            [
+                'user_id'=> 2,
+                'user_story_id'=> 3
+            ],
+            [
+                'user_id'=> 3,
+                'user_story_id'=> 3
+            ],
+            [
+                'user_id'=> 4,
+                'user_story_id'=> 3
+            ],
+
+            
+            // Projecto 2, Sprint 1, Historia 1.1
+            [
+                'user_id'=> 1,
+                'user_story_id'=> 4
+            ],
+            [
+                'user_id'=> 2,
+                'user_story_id'=> 4
+            ],
+            [
+                'user_id'=> 5,
+                'user_story_id'=> 4
+            ],
+            [
+                'user_id'=> 6,
+                'user_story_id'=> 4
+            ],
+
+        ];
+        DB::table('user_user_story')->insert($user_user_stories);
+
+
         $admin = RoleModel::create(['name' => 'Product Owner']);
         $admin = RoleModel::create(['name' => 'Scrum Master']);
         $admin = RoleModel::create(['name' => 'Developer']);

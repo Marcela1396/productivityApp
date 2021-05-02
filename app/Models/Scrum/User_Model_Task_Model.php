@@ -9,4 +9,9 @@ class User_Model_Task_Model extends Model
 {
     protected $table = 'user_task'; 
     protected $fillable = ['user_id', 'task_id', 'worked_hours'];
+
+
+     // ******************************************************************************************
+    // Funciones estaticas 
+    
 }

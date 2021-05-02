@@ -24,7 +24,7 @@ class CreateSprintTable extends Migration
 
             $table->string('name','50');
             $table->string('description','300')->nullable();
-            $table->date('start_date');
+            $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->float('duration')->default(0);
             $table->char('state','1')->default('C');

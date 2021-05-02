@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Scrum\UserStoryModel;
 use App\Models\Scrum\TaskModel;
 use App\Models\Scrum\User_Model_Task_Model;
+use App\Models\Scrum\User_Model_User_Story_Model;
 
 class Task extends Controller
 {
@@ -39,7 +40,20 @@ class Task extends Controller
                 $item->finished_task = $request->input('workRadio_id_'.$t->user_task_id);
                 $item->save();
             }
+        }      
+        
+        $state = TaskModel::getStateTasks($story,$user);
+        
+        if($state == 1){
+            // Si el usuario ya finalizo todas las tareas asignadas en esa historia se le debe actualizar
+            // el estado en el modelo User_User_Story
+            $record = User_Model_User_Story_Model::getRecord($story, $user);
+            $item2 = User_Model_User_Story_Model::findOrFail($record->id);
+            $item2->state = 1;
+            $item2->save();
         }
+        //dd($states);
+        
         $data = UserStoryModel::getDetails($story);
         $tasks = TaskModel::getDetailsTasks($story, $user, $data->sprint_id);
         return view('admin.dashboard.task.work', ['tasks' => $tasks]);   

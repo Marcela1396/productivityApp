@@ -8,23 +8,27 @@ use Illuminate\Http\Request;
 use App\Models\Scrum\ProjectModel;
 use App\Models\Scrum\SprintModel;
 use App\Models\Scrum\User_Model_Sprint_Model;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class Sprint extends Controller
 {
-    public function index($id){
-        //$project = ProjectModel::findOrFail($id);
-        $sprints = ProjectModel::getSprints($id);
+    public function index($id){      
+        $user = User::find(auth()->user()->id);
+        // Valida si el usuario es administrador o no 
+        if($user){
+            if($user->hasAnyRole(['super-admin'])){
+                $sprints = ProjectModel::getSprints($id);
+            }else{
+                // Sino es admin le muestra unicamente los sprint en los cuales esta agregado
+                $sprints = ProjectModel::getSprints($id,$user->id);
+            }
+        }
+  
         $record = (ProjectModel::detailProject($id)); // Obtiene los datos de un proyecto: duracion, cantidad de sprint
         $quantity_actual =  ProjectModel::countSprint($id); // Obtiene la cantidad de sprint que tiene el proyecto actualmente
         
-        /*
-        $result = SprintModel::countWeeks($id); // Obtiene la cantidad de semanas acumuladas que tiene un proyecto
-        $weeks_sprint = 0;
-        if($result->duration != null){
-            $weeks_sprint = $result->duration;
-        }
-        */
         return view('admin.dashboard.sprints.list',
                 [
                 'sprints' => $sprints, 

@@ -38,21 +38,25 @@ class SprintModel extends Model
     // ******************************************************************************************
     // Funciones estaticas 
     
-    public static function getStories($id){
+    public static function getStories($id, $user=null){
     /* 
         Obtiene las historias de usuario pertenecientes a un Sprint
         Recibe como parametro el id del Sprint
     */
         $stories = DB::table('project AS p')
         ->join('sprint AS  s', 'p.id', 's.project_id')
-        ->join('user_story AS u', 's.id', 'u.sprint_id')
+        ->join('user_story AS us', 's.id', 'us.sprint_id')
+        ->join('user_user_story as uus', 'uus.user_story_id', 'us.id')
+        ->join('users as u', 'uus.user_id', 'u.id')
         ->select('p.id as project_id', 's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.state as sprint_state',
-        'u.id as story_id', 'u.name as story_name', 'u.state as story_state', 'u.priority')
+        'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state', 'uus.state as uu_story_state')
         ->where('s.id', '=', $id)
-        ->orderby('u.priority', 'desc')
-        ->get();
+        ->orderby('us.priority', 'desc');
+        
+        $user? $stories->where('u.id',$user):null;
 
-        return $stories;
+        return $stories->distinct()->get();
+
     }
     
     public static function getTeam($id){

@@ -17,7 +17,7 @@ class CreateProjectTable extends Migration
             $table->id();
             $table->string('name','100')->unique();
             $table->string('description','300')->nullable();
-            $table->date('start_date');
+            $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->integer('duration')->default('0');
             $table->integer('sprint_quantity')->default('1');

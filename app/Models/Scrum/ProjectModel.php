@@ -32,7 +32,7 @@ class ProjectModel extends Model
         ->join('team AS t', 'pt.team_id','t.id')
         ->join('user_team','t.id','user_team.team_id')
         ->join('users','users.id','user_team.user_id')
-        ->select('p.id','p.name','p.start_date','p.end_date','p.duration', 'p.sprint_quantity','p.state',
+        ->select('p.id','p.name','p.start_date','p.end_date','p.duration', 'p.sprint_quantity','p.state','p.project_capacity',
         't.name as team_name', 'pt.project_id', 'pt.team_id');
         $id? $projects->where('users.id',$id):null;
         
@@ -40,19 +40,21 @@ class ProjectModel extends Model
     }
 
 
-     public static function getSprints($id){
+     public static function getSprints($id, $user=null){
         /*
         Obtiene los Sprint pertenecientes a un proyecto
         Recibe como parametro el id del proyecto
         */
         $sprints = DB::table('project AS p')
         ->join('sprint AS  s', 'p.id', 's.project_id')
+        ->join('user_sprint as usp','s.id','usp.sprint_id')
+        ->join('users as u','usp.user_id','u.id')
         ->select('p.id as project_id','p.name as project_name','p.sprint_quantity','p.state as project_state',
          's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.start_date', 's.end_date', 's.state as sprint_state')
-        ->where('p.id', '=', $id)
-        ->get();
-
-        return $sprints;
+        ->where('p.id', '=', $id);
+    
+        $user? $sprints->where('u.id',$user):null;
+        return $sprints->distinct()->get();;
     }
 
     public static function detailProject($id){
