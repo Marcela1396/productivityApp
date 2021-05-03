@@ -40,8 +40,9 @@ class ProjectModel extends Model
     }
 
 
-     public static function getSprints($id, $user=null){
+     public static function getSprints($id){
         /*
+        Solo Administradores
         Obtiene los Sprint pertenecientes a un proyecto
         Recibe como parametro el id del proyecto
         */
@@ -53,8 +54,25 @@ class ProjectModel extends Model
          's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.start_date', 's.end_date', 's.state as sprint_state')
         ->where('p.id', '=', $id);
     
-        $user? $sprints->where('u.id',$user):null;
-        return $sprints->distinct()->get();;
+        return $sprints->distinct()->get();
+    }
+
+    public static function getSprints2($id, $user){
+        /*
+        Obtiene los Sprint pertenecientes a un proyecto
+        Recibe como parametro el id del proyecto y el id del usuario
+        */
+        $sprints = DB::table('project AS p')
+        ->join('sprint AS  s', 'p.id', 's.project_id')
+        ->join('user_sprint as usp','s.id','usp.sprint_id')
+        ->join('users as u','usp.user_id','u.id')
+        ->select('p.id as project_id','p.name as project_name','p.sprint_quantity','p.state as project_state',
+         's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.start_date', 's.end_date', 's.state as sprint_state',
+         'usp.state as user_sprint_state', 'usp.capacity as user_capacity',  'usp.total_assigned_hours', 'usp.worked_hours as sprint_worked_hours')
+        ->where('p.id', '=', $id)
+        ->where('u.id',$user);
+       
+        return $sprints->distinct()->get();
     }
 
     public static function detailProject($id){

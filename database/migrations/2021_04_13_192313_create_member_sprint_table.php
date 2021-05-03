@@ -30,6 +30,8 @@ class CreateMemberSprintTable extends Migration
 
             $table->float('assigned_hours')->nullable();
             $table->float('total_assigned_hours')->nullable();
+            $table->float('worked_hours')->default(0);
+            $table->boolean('state')->default(0); 
             $table->float('capacity')->default(0);
             //$table->primary(['id','sprint_id', 'member_id']);
             $table->timestamps();

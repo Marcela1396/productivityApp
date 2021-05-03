@@ -41,8 +41,5 @@ class UserStoryModel extends Model
 
     }
 
-    
-
-
-
+  
 }

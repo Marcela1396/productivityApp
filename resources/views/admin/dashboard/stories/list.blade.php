@@ -136,6 +136,7 @@
                                 <th scope="col"> Priority </th>
                                 <th scope="col"> Overall State </th>
                                 <th scope="col"> Particular State </th>
+                                <th scope="col"> Worked hours </th>
                                 <th scope="col"> Options </th>
                             </thead>
                             @php
@@ -163,12 +164,14 @@
                                     @if($s->uu_story_state == 0)
                                         @if($s->story_state == 'C')
                                             <td> To Do </td>
+                                            <td> Pending </td>
                                             <td>
                                                 <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                             </td>
                                         
                                         @elseif($s->story_state == 'S')
                                             <td> In Progress </td>
+                                            <td> Pending </td>
                                             <td>
                                                 <a class="btn btn-round btn-fill btn-success" href="{{route('task_story', $s->story_id)}}"> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                             </td>
@@ -176,6 +179,7 @@
 
                                     @elseif($s->uu_story_state == 1)
                                         <td> Finished </td>
+                                        <td> {{$s->story_worked_hours}} </td>
                                         <td>
                                             <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i> </a>
                                         </td>

@@ -28,7 +28,9 @@ class CreateSprintTeamTable extends Migration
             ->on('sprint')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
+            
+            $table->boolean('state')->default(0); 
+            $table->float('sprint_team_worked_hours')->default(0);
             $table->float('sprint_team_capacity')->default(0);
             $table->timestamps();
         });

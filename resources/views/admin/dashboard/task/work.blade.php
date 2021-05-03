@@ -50,6 +50,7 @@
                                 @php
                                     $a = 1;
                                 @endphp
+                                <input type="hidden" name="sprint_id"  value=" {{ $tasks->first()->sprint_id }}">
                                 <input type="hidden" name="user_story_id"  value=" {{ $tasks->first()->user_story_id }}">
                                 <tbody>
                                     @foreach($tasks as $t)

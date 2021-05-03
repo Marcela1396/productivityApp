@@ -42,7 +42,6 @@
                                 <th scope="col"> Duracion (Weeks) </th>
                                 <th scope="col"> Sprint Quantity</th>
                                 <th scope="col"> Team </th>
-                                <th scope="col"> Project Capacity </th>
                                 <th scope="col"> State</th>
                                 <th scope="col"> Options </th>
                             </thead>
@@ -59,7 +58,6 @@
                                     <td> {{ $it->duration }} </td>
                                     <td> {{ $it->sprint_quantity }}</td>
                                     <td> {{ $it->team_name }}</td>
-                                    <td> {{ $it->project_capacity}} </td>
 
                                     @hasanyrole('writer|super-admin')
                                         @if($it->state == 'C')

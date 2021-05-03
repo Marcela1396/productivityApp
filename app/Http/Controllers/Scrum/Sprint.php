@@ -22,7 +22,7 @@ class Sprint extends Controller
                 $sprints = ProjectModel::getSprints($id);
             }else{
                 // Sino es admin le muestra unicamente los sprint en los cuales esta agregado
-                $sprints = ProjectModel::getSprints($id,$user->id);
+                $sprints = ProjectModel::getSprints2($id,$user->id);
             }
         }
   

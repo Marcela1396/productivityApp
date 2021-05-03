@@ -25,7 +25,9 @@ class UserStory extends Controller
         if($user){
             if($user->hasAnyRole(['super-admin'])){
                 $stories = SprintModel::getStories($id);
-            }else{
+            }
+            else{
+                
                 $stories = SprintModel::getStories($id, $user->id);
             }   
         }
@@ -90,6 +92,7 @@ class UserStory extends Controller
                 $item4->user_story_id = $item->id;
                 $item4->save();
             }
+
         }
         return redirect()->route('stories', $item->sprint_id);   
     }
@@ -119,7 +122,7 @@ class UserStory extends Controller
             $item3->state = 'S';
             $item3->save();
         }
-        
+
         return redirect()->route('stories', $sprint_id );   
     }
 }

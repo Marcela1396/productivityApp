@@ -28,7 +28,7 @@ class CreateProjectTeamTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             
-            //$table->primary(['id','project_id', 'team_id',]);
+            $table->float('project_team_worked_hours')->default(0);
             $table->float('project_team_capacity')->default(0);
             $table->timestamps();
         });

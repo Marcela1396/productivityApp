@@ -139,8 +139,11 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Duration (Weeks) </th>
-                                    <th scope="col"> Start Date </th>
-                                    <th scope="col"> State </th>
+                                    <th scope="col"> Overall State </th>
+                                    <th scope="col"> Particular State </th>
+                                    <th scope="col"> Assigned hours </th>
+                                    <th scope="col"> Worked hours </th>
+                                    <th scope="col"> Work Capacity (%) </th>
                                     <th scope="col"> Options </th>
                                 </thead>
                                 @php
@@ -154,20 +157,48 @@
                                         <td> {{$a}} </td>
                                         <td> {{ $s->sprint_name }} </td>
                                         <td> {{ $s->duration }}</td>
-                                        <td> {{ $s->start_date }}</td>
                                 
-                                       
                                         @if($s->sprint_state == 'C')
                                             <td> Created </td>
+                                            
                                         @elseif($s->sprint_state == 'S')
                                             <td> In Progress </td>
+                                           
                                         @elseif($s->sprint_state == 'F')
                                             <td> Finished </td>
+                    
                                         @endif
-                                        <td>
-                                            <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> <i class="fa fa-arrow-right fa-lg"></i></a>
-                                        </td>
-                                                                    
+
+                                        @if($s->user_sprint_state == 0)
+                                            
+                                            @if($s->sprint_state == 'C')
+                                                <td> To Do </td>
+                                                <td> {{$s->total_assigned_hours}} </td>
+                                                <td> Pending </td>
+                                                <td> Pending </td>
+                                                <td>
+                                                    <a class="btn btn-round btn-fill btn-success" disabled> <i class="fa fa-arrow-right fa-lg"></i></a>
+                                                </td>
+                                            
+                                            @elseif($s->sprint_state == 'S')
+                                                <td> In Progress </td>
+                                                <td> {{$s->total_assigned_hours}} </td>
+                                                <td> Pending </td>
+                                                <td> Pending </td>
+                                                <td>
+                                                    <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> <i class="fa fa-arrow-right fa-lg"></i></a>
+                                                </td>
+                                            @endif
+                                        @elseif($s->user_sprint_state == 1)
+                                            <td> Finished </td>
+                                            <td> {{$s->total_assigned_hours}} </td>
+                                            <td> {{$s->sprint_worked_hours}} </td>   
+                                            <td> {{$s->user_capacity}} </td>
+                                            <td>
+                                                <a class="btn btn-round btn-fill btn-success" href="{{ route('stories', $s->sprint_id) }}"> <i class="fa fa-arrow-right fa-lg"></i></a>
+                                            </td>
+                                        @endif
+                                                            
                                     </tr>
                                         @php
                                             $a++;

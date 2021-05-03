@@ -28,7 +28,8 @@ class CreateUserStoryUserTable extends Migration
             ->on('user_story')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-
+            
+            $table->float('worked_hours')->default(0);
             $table->boolean('state')->default(0); 
             $table->timestamps();
         });

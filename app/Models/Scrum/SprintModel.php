@@ -49,7 +49,8 @@ class SprintModel extends Model
         ->join('user_user_story as uus', 'uus.user_story_id', 'us.id')
         ->join('users as u', 'uus.user_id', 'u.id')
         ->select('p.id as project_id', 's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.state as sprint_state',
-        'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state', 'uus.state as uu_story_state')
+        'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state', 
+        'uus.state as uu_story_state', 'uus.worked_hours as story_worked_hours')
         ->where('s.id', '=', $id)
         ->orderby('us.priority', 'desc');
         
