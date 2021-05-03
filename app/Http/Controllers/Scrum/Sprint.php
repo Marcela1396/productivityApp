@@ -29,10 +29,12 @@ class Sprint extends Controller
         $record = (ProjectModel::detailProject($id)); // Obtiene los datos de un proyecto: duracion, cantidad de sprint
         $quantity_actual =  ProjectModel::countSprint($id); // Obtiene la cantidad de sprint que tiene el proyecto actualmente
         
+        $project = ProjectModel::detailProject($id);
         return view('admin.dashboard.sprints.list',
                 [
                 'sprints' => $sprints, 
                 'project' => $id, 
+                'project_name' => $project->name,
                 'record' =>$record,
                 'quantity_actual' =>$quantity_actual
                 ]);

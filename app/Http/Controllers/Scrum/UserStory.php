@@ -28,10 +28,17 @@ class UserStory extends Controller
             }
             else{
                 
-                $stories = SprintModel::getStories($id, $user->id);
+                $stories = SprintModel::getStories2($id, $user->id);
             }   
         }
-        return view('admin.dashboard.stories.list',['stories' => $stories, 'team' => $team] );  
+        $sprint = SprintModel::detailSprint($id);
+
+        return view('admin.dashboard.stories.list',
+                                                    [
+                                                    'stories' => $stories, 
+                                                    'team' => $team,
+                                                    'sprint_name' => $sprint->name
+                                                    ] );  
     }
 
     public function form_create_story($team, $project, $sprint){
@@ -96,6 +103,7 @@ class UserStory extends Controller
         }
         return redirect()->route('stories', $item->sprint_id);   
     }
+
 
     public function start_story($id){
         $story = UserStoryModel::findOrFail($id);

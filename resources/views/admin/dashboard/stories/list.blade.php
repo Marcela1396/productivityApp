@@ -13,7 +13,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><i class="pe-7s-paper-plane"></i> User Stories: Sprint {{$stories->first()->sprint_name}}</a>
+                <a class="navbar-brand" href="#"><i class="pe-7s-paper-plane"></i> User Stories: Sprint {{$sprint_name}}</a>
             </div>
         </div>
     </nav>
@@ -111,7 +111,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><i class="pe-7s-paper-plane"></i> User Stories: Sprint {{$stories->first()->sprint_name}}</a>
+                <a class="navbar-brand" href="#"><i class="pe-7s-paper-plane"></i> User Stories: Sprint {{$sprint_name}}</a>
             </div>
         </div>
     </nav>

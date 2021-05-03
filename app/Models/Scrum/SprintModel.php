@@ -38,8 +38,8 @@ class SprintModel extends Model
     // ******************************************************************************************
     // Funciones estaticas 
     
-    public static function getStories($id, $user=null){
-    /* 
+    public static function getStories($id){
+    /*  SOLO ADMINISTRADORES
         Obtiene las historias de usuario pertenecientes a un Sprint
         Recibe como parametro el id del Sprint
     */
@@ -49,15 +49,34 @@ class SprintModel extends Model
         ->join('user_user_story as uus', 'uus.user_story_id', 'us.id')
         ->join('users as u', 'uus.user_id', 'u.id')
         ->select('p.id as project_id', 's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.state as sprint_state',
-        'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state', 
-        'uus.state as uu_story_state', 'uus.worked_hours as story_worked_hours')
+        'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state')
         ->where('s.id', '=', $id)
         ->orderby('us.priority', 'desc');
-        
-        $user? $stories->where('u.id',$user):null;
 
         return $stories->distinct()->get();
 
+    }
+
+
+    public static function getStories2($id, $user){
+        /*  USUARIOS CONVENCIONALES
+            Obtiene las historias de usuario pertenecientes a un Sprint
+            Recibe como parametro el id del Sprint
+        */
+            $stories = DB::table('project AS p')
+            ->join('sprint AS  s', 'p.id', 's.project_id')
+            ->join('user_story AS us', 's.id', 'us.sprint_id')
+            ->join('user_user_story as uus', 'uus.user_story_id', 'us.id')
+            ->join('users as u', 'uus.user_id', 'u.id')
+            ->select('p.id as project_id', 's.id as sprint_id', 's.name as sprint_name', 's.duration', 's.state as sprint_state',
+            'us.id as story_id', 'us.name as story_name', 'us.priority', 'us.state as story_state', 
+            'uus.state as uu_story_state', 'uus.worked_hours as story_worked_hours')
+            ->where('s.id', '=', $id)
+            ->where('u.id',$user)
+            ->orderby('us.priority', 'desc');
+            
+            return $stories->distinct()->get();
+    
     }
     
     public static function getTeam($id){
@@ -87,6 +106,18 @@ class SprintModel extends Model
         ->first();
         return $weeks;
         
+    }
+
+    public static function detailSprint($id){
+        /*
+        Obtiene detalles de un sprint
+        Recibe como parametro el id del proyecto
+        */
+        $record = DB::table('sprint AS  s')
+        ->select('s.name')
+        ->where('s.id', '=', $id)
+        ->first();
+        return $record;
     }
 
 

@@ -81,7 +81,7 @@ class ProjectModel extends Model
         Recibe como parametro el id del proyecto
         */
         $record = DB::table('project AS p')
-        ->select('p.sprint_quantity', 'p.duration')
+        ->select('p.sprint_quantity', 'p.duration', 'p.name')
         ->where('p.id', '=', $id)
         ->first();
         return $record;

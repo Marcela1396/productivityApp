@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint : Project {{$sprints->first()->project_name}} </a>
+                    <a class="navbar-brand" href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint : Project {{$project_name}} </a>
                 </div>
             </div>
         </nav>
@@ -116,7 +116,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint : Project {{$sprints->first()->project_name}} </a>
+                    <a class="navbar-brand" href="#"> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint : Project {{$project_name}} </a>
                 </div>
             </div>
         </nav>

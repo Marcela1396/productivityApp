@@ -46,7 +46,7 @@
                 <li>
                     <a href="{{route('roles')}}">
                         <i class="pe-7s-way"></i>
-                        <p> Roles </p>
+                        <p> Team Roles </p>
                     </a>
                 </li>
 
