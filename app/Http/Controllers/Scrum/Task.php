@@ -10,6 +10,7 @@ use App\Models\Scrum\User_Model_Task_Model;
 use App\Models\Scrum\User_Model_User_Story_Model; 
 use App\Models\Scrum\User_Model_Sprint_Model;
 use App\Models\Scrum\SprintModel;
+use App\Models\Scrum\Sprint_Model_Team_Model;
 
 class Task extends Controller
 {
@@ -26,6 +27,8 @@ class Task extends Controller
         //dd($request->all());
         $user = auth()->user()->id;
         $story = $request->input('user_story_id');
+        $team = $request->input('team_id');
+        $sprint = $request->input('sprint_id');
 
         // Consulta todas las tareas correspondientes a un usuario en una historia determinada
         $tasks = TaskModel::getTasks($story,$user);
@@ -65,7 +68,7 @@ class Task extends Controller
         // Obtiene el estado para saber si un usuario termino todas las historias de usuario asignadas en un sprint
         // para cambiar el estado del Modelo User_Sprint
 
-        $sprint = $request->input('sprint_id');
+      
         $state_stories = User_Model_User_Story_Model::getStateStories($sprint, $user);
 
         // Si todas las historias de usuario asignadas en un sprint a un usuario fueron finalizadas
@@ -85,22 +88,23 @@ class Task extends Controller
         // Obtiene el estado de User_Sprint para saber si un sprint fue finalizado
         // para cambiar el estado del Sprint
 
-        $sprint = $request->input('sprint_id');
         $state_sprint = User_Model_Sprint_Model::getStateSprint($sprint);
-        if($state_stories == 1){
+        if($state_sprint == 1){
             // Entonces actualice el estado del sprint
             $item4 = SprintModel::findOrFail($sprint);
             $item4->state = 'F';
             $item4->save();
 
+            // Pendiente
+            /*
             $result = User_Model_Sprint_Model::getWorkHoursTeam($sprint); // Obtiene el total de horas trabajadas por ese equipo en un sprint
-            
-            $record = User_Model_Sprint_Model::getRecord($sprint,$user);
-            $item3 = User_Model_Sprint_Model::findOrFail($record->id);
-            $item3->state = 1;
-            $item3->worked_hours = $result->hours; // Asignar horas trabajadas por sprint por ese usuario
-            $item3->capacity = ($item3->worked_hours/$item3->total_assigned_hours)*100;
-            $item3->save();
+            $record = Sprint_Model_Team_Model::getRecord($sprint,$team);
+            $item5 = Sprint_Model_Team_Model::findOrFail($record->id);
+            $item5->state = 1;
+            $item5->sprint_team_worked_hours = $result->hours; // Asignar horas trabajadas por sprint por ese equipo
+            $item5->sprint_team_capacity = ($item5->worked_hours/$item5->total_assigned_hours)*100;
+            $item5->save();
+            */
         }
             
      

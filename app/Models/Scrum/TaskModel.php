@@ -68,12 +68,14 @@ class TaskModel extends Model
       ->join('user_task AS ut', 't.id', 'ut.task_id')
       ->join('users AS u', 'ut.user_id', 'u.id')
       ->join('user_sprint as usp', 'u.id','usp.user_id' )
+      ->join('project_team as pt', 'p.id', 'pt.project_id')
       ->select('t.id as task_id','d.name as task_name', 
       'u.id as user_id', 'u.name as user_name',
       'us.id as user_story_id','us.name as user_story_name', 
       's.id as sprint_id', 's.name as sprint_name',
       'usp.total_assigned_hours', 
-      'ut.id as user_task_id', 'ut.worked_hours', 'ut.finished_task',)
+      'ut.id as user_task_id', 'ut.worked_hours', 'ut.finished_task',
+      'pt.team_id as team_id')
       ->where('us.id', '=', $story)
       ->where('u.id', '=', $user)
       ->where('usp.sprint_id', '=', $sprint)

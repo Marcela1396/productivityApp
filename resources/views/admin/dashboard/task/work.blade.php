@@ -27,7 +27,7 @@
                                 <b> <i class="fa fa-calendar" aria-hidden="true"></i> Sprint : </b> {{ $tasks->first()->sprint_name }} <br>
                                 <b> <i class="pe-7s-paper-plane" aria-hidden="true"></i> User Story : </b>{{ $tasks->first()->user_story_name }} <br>
                                 <b> <i class="fa fa-user" aria-hidden="true"></i>  Member : </b>{{ $tasks->first()->user_name }} <br>
-                                <b> <i class="fa fa-clock-o" aria-hidden="true"></i> Assigned Hours :</b> {{ $tasks->first()->total_assigned_hours }} <br>
+                                <b> <i class="fa fa-clock-o" aria-hidden="true"></i> Assigned Hours/Sprint :</b> {{ $tasks->first()->total_assigned_hours }} <br>
                             </div>
                             
                         </div>
@@ -52,6 +52,7 @@
                                 @endphp
                                 <input type="hidden" name="sprint_id"  value=" {{ $tasks->first()->sprint_id }}">
                                 <input type="hidden" name="user_story_id"  value=" {{ $tasks->first()->user_story_id }}">
+                                <input type="hidden" name="team_id"  value=" {{ $tasks->first()->team_id }}">
                                 <tbody>
                                     @foreach($tasks as $t)
                                     <tr>
