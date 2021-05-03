@@ -28,13 +28,14 @@
                 </li>
 
                 @hasanyrole('writer|super-admin')
+                <!--
                 <li>
                     <a href="{{route('capacity')}}">
                         <i class="pe-7s-graph2"></i>
                         <p> Working capacity </p>
                     </a>
                 </li>
-
+                -->
                 <li>
                     <a href="{{route('teams')}}">
                         <i class="pe-7s-user"></i>
