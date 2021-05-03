@@ -143,7 +143,7 @@
                                     <th scope="col"> Particular State </th>
                                     <th scope="col"> Assigned hours </th>
                                     <th scope="col"> Worked hours </th>
-                                    <th scope="col"> Work Capacity (%) </th>
+                                    <th scope="col"> Working Capacity (%) </th>
                                     <th scope="col"> Options </th>
                                 </thead>
                                 @php

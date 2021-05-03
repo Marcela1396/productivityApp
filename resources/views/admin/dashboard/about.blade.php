@@ -23,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="card card-user">
                             <div class="image">
-                                <img src="https://sintec.com/wp-content/uploads/2012/01/Blog_tecnologias-informacion.jpg" alt="..."/>
+                                <img src="https://image.freepik.com/foto-gratis/imagen-primer-plano-programador-trabajando-su-escritorio-oficina_1098-18707.jpg" alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
@@ -53,7 +53,7 @@
                     <div class="col-md-6">
                         <div class="card card-user">
                             <div class="image">
-                                <img src="https://sintec.com/wp-content/uploads/2012/01/Blog_tecnologias-informacion.jpg" alt="..."/>
+                                <img src="https://image.freepik.com/foto-gratis/imagen-primer-plano-programador-trabajando-su-escritorio-oficina_1098-18707.jpg" alt="..."/>
                             </div>
                             <div class="content">
                                 <div class="author">
